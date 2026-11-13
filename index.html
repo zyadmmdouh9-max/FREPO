@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACC402 · Financial Reporting — Mid Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f6fb; --bg2:#ffffff; --card:#ffffff; --ink:#151a2d; --muted:#5d6480; --line:#e3e6f0;
+  --brand:#4f46e5; --brand2:#06b6d4; --accent:#f59e0b; --ok:#10b981; --bad:#ef4444; --pink:#ec4899;
+  --soft:#eef0ff; --soft2:#e9fbfe; --warn:#fff7e6; --shadow:0 10px 30px -12px rgba(30,35,90,.18);
+  --r:18px;
+}
+[data-theme="dark"]{
+  --bg:#0b0e1a; --bg2:#11152a; --card:#151a31; --ink:#eef0ff; --muted:#a2a9c7; --line:#252b4a;
+  --soft:#1d2142; --soft2:#0f2a33; --warn:#2b2312; --shadow:0 10px 30px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Cairo","Inter",system-ui,sans-serif;line-height:1.75;transition:background .3s,color .3s}
+html[lang="en"] body{font-family:"Inter","Cairo",system-ui,sans-serif;line-height:1.65}
+html[lang="ar"] .en, html[lang="en"] .ar{display:none!important}
+a{color:inherit}
+.wrap{max-width:1150px;margin:auto;padding:0 20px}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:14px;height:64px}
+.logo{font-weight:900;font-size:1.05rem;display:flex;align-items:center;gap:10px;white-space:nowrap}
+.logo b{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;border-radius:10px;padding:2px 10px;font-family:Inter}
+.nav{display:flex;gap:4px;margin-inline-start:auto;overflow-x:auto;scrollbar-width:none}
+.nav a{text-decoration:none;padding:7px 12px;border-radius:10px;font-weight:600;font-size:.9rem;color:var(--muted);white-space:nowrap}
+.nav a:hover{background:var(--soft);color:var(--brand)}
+.tbtn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;height:40px;min-width:46px;padding:0 12px;font-weight:800;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:6px;box-shadow:var(--shadow);transition:transform .15s}
+.tbtn:hover{transform:translateY(-2px);border-color:var(--brand)}
+@media(max-width:860px){.nav{display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:70px 0 50px}
+.hero:before{content:"";position:absolute;inset:-40% -10% auto -10%;height:600px;background:radial-gradient(circle at 20% 30%,rgba(79,70,229,.35),transparent 45%),radial-gradient(circle at 80% 20%,rgba(6,182,212,.30),transparent 45%),radial-gradient(circle at 60% 80%,rgba(236,72,153,.18),transparent 45%);filter:blur(10px);z-index:-1}
+.hero h1{font-size:clamp(2rem,5vw,3.6rem);line-height:1.15;margin:.2em 0;font-weight:900}
+.grad{background:linear-gradient(135deg,var(--brand),var(--brand2) 60%,var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:6px 14px;font-weight:700;font-size:.85rem;box-shadow:var(--shadow)}
+.hero p.lead{font-size:1.15rem;color:var(--muted);max-width:720px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;box-shadow:var(--shadow)}
+.stat .n{font-size:2rem;font-weight:900;font-family:Inter;background:linear-gradient(135deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .l{color:var(--muted);font-weight:600;font-size:.9rem}
+@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}}
+.progress{margin-top:22px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px 18px;box-shadow:var(--shadow)}
+.bar{height:12px;border-radius:99px;background:var(--soft);overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--ok),var(--brand2));transition:width .4s}
+
+/* sections */
+section{padding:46px 0}
+.sh{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.sh .ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:1.6rem;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;box-shadow:var(--shadow);flex:none}
+.sh h2{margin:0;font-size:clamp(1.5rem,3vw,2.1rem);font-weight:900}
+.sh p{margin:0;color:var(--muted)}
+
+/* roadmap */
+.road{position:relative;display:grid;gap:18px}
+.road:before{content:"";position:absolute;inset-inline-start:27px;top:10px;bottom:10px;width:4px;border-radius:4px;background:linear-gradient(var(--brand),var(--brand2),var(--pink))}
+.stop{position:relative;padding-inline-start:74px}
+.stop .dot{position:absolute;inset-inline-start:6px;top:6px;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-weight:900;color:#fff;font-family:Inter;background:linear-gradient(135deg,var(--brand),var(--brand2));border:4px solid var(--bg);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 35%,transparent)}
+.stop .box{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;box-shadow:var(--shadow)}
+.stop h3{margin:0 0 6px;font-size:1.2rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.chip{direction:ltr;unicode-bidi:isolate;font-size:.82rem;font-weight:700;padding:4px 11px;border-radius:99px;background:var(--soft);color:var(--brand);text-decoration:none;border:1px solid transparent}
+.chip:hover{border-color:var(--brand)}
+.chip.c2{background:var(--soft2);color:var(--brand2)}
+.chip.c3{background:color-mix(in srgb,var(--pink) 14%,transparent);color:var(--pink)}
+.time{direction:ltr;unicode-bidi:isolate;float:inline-end;font-size:.8rem;font-weight:800;color:var(--accent);background:var(--warn);padding:3px 10px;border-radius:99px}
+
+/* chapter cards */
+.chapter{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);margin-bottom:26px;overflow:hidden}
+.chhead{padding:22px 24px;color:#fff;background:linear-gradient(135deg,var(--brand),#7c3aed)}
+.chhead.c2{background:linear-gradient(135deg,#0891b2,#06b6d4)}
+.chhead.c3{background:linear-gradient(135deg,#db2777,#f97316)}
+.chhead small{opacity:.85;font-weight:700;letter-spacing:.5px}
+.chhead h3{margin:2px 0 0;font-size:1.5rem;font-weight:900}
+.chbody{padding:12px 18px 20px}
+details{border:1px solid var(--line);border-radius:14px;margin:10px 0;background:var(--bg2);overflow:hidden}
+details[open]{border-color:color-mix(in srgb,var(--brand) 45%,var(--line))}
+summary{cursor:pointer;list-style:none;padding:14px 18px;font-weight:800;display:flex;align-items:center;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary:before{content:"＋";display:grid;place-items:center;width:26px;height:26px;border-radius:8px;background:var(--soft);color:var(--brand);font-weight:900;flex:none}
+details[open] summary:before{content:"－"}
+summary .tag{margin-inline-start:auto;font-size:.72rem;color:var(--muted);font-weight:700;font-family:Inter}
+.dc{padding:2px 20px 18px}
+.dc ul{margin:6px 0;padding-inline-start:22px}
+.dc li{margin:4px 0}
+.dc li::marker{color:var(--brand)}
+.tip,.trap,.ex{border-radius:12px;padding:10px 14px;margin:10px 0;font-weight:600;font-size:.95rem}
+.tip{background:var(--soft2);border-inline-start:4px solid var(--brand2)}
+.trap{background:var(--warn);border-inline-start:4px solid var(--accent)}
+.ex{background:var(--soft);border-inline-start:4px solid var(--brand)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+.mini{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.mini h4{margin:0 0 4px;color:var(--brand)}
+.mini p{margin:0;font-size:.93rem;color:var(--muted)}
+kbd,.k{font-family:"JetBrains Mono",monospace;font-size:.85em;background:var(--soft);color:var(--brand);padding:1px 7px;border-radius:6px;white-space:nowrap}
+
+/* tables */
+.tw{overflow-x:auto;margin:10px 0}
+table{width:100%;border-collapse:collapse;font-family:Inter,"Cairo",sans-serif;font-size:.92rem;direction:ltr;text-align:left;background:var(--card);border-radius:12px;overflow:hidden}
+th,td{padding:8px 12px;border-bottom:1px solid var(--line)}
+th{background:var(--soft);color:var(--brand);font-weight:800}
+td.n,th.n{text-align:right;font-family:"JetBrains Mono",monospace;white-space:nowrap}
+tr.sub td{font-weight:800;background:color-mix(in srgb,var(--soft) 55%,transparent)}
+tr.tot td{font-weight:900;background:color-mix(in srgb,var(--ok) 15%,transparent);border-top:2px solid var(--ok)}
+td.ind{padding-left:28px}
+.neg{color:var(--bad)}
+
+/* exercises */
+.q{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px 22px;margin:16px 0;box-shadow:var(--shadow)}
+.q .qh{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.q .qn{font-family:Inter;font-weight:900;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;padding:3px 12px;border-radius:10px}
+.q h4{margin:0;font-size:1.1rem}
+.q .src{font-size:.78rem;color:var(--muted);font-weight:700;margin-inline-start:auto}
+.qtext{direction:ltr;text-align:left;font-family:Inter,sans-serif;background:var(--bg2);border:1px dashed var(--line);border-radius:12px;padding:12px 14px;font-size:.93rem}
+.showbtn{margin-top:12px;border:none;cursor:pointer;font-family:inherit;font-weight:800;padding:10px 18px;border-radius:12px;color:#fff;background:linear-gradient(135deg,var(--ok),#059669);box-shadow:var(--shadow)}
+.showbtn.on{background:linear-gradient(135deg,#64748b,#475569)}
+.sol{display:none;margin-top:14px;border-top:2px dashed var(--line);padding-top:12px;animation:fade .35s}
+.sol.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+.steps{counter-reset:s;list-style:none;padding:0;margin:8px 0}
+.steps li{counter-increment:s;position:relative;padding-inline-start:40px;margin:10px 0}
+.steps li:before{content:counter(s);position:absolute;inset-inline-start:0;top:2px;width:28px;height:28px;border-radius:9px;background:var(--soft);color:var(--brand);display:grid;place-items:center;font-weight:900;font-family:Inter}
+.ans{display:inline-block;margin-top:8px;font-weight:900;font-size:1.1rem;padding:8px 16px;border-radius:12px;background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok);border:1px solid color-mix(in srgb,var(--ok) 40%,transparent)}
+.f{direction:ltr;font-family:"JetBrains Mono",monospace;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:8px 0;font-size:.92rem;overflow-x:auto;white-space:pre}
+
+/* MCQ */
+.mcq{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 18px;margin:12px 0;box-shadow:var(--shadow)}
+.mcq .qq{font-weight:800;direction:ltr;text-align:left;font-family:Inter}
+.opts{display:grid;gap:8px;margin-top:10px;direction:ltr}
+.opt{text-align:left;font-family:Inter;border:1.5px solid var(--line);background:var(--bg2);color:var(--ink);border-radius:12px;padding:10px 14px;cursor:pointer;font-size:.93rem;transition:.15s}
+.opt:hover{border-color:var(--brand)}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,transparent);font-weight:800}
+.opt.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 12%,transparent);text-decoration:line-through}
+.why{display:none;margin-top:8px;font-size:.9rem;color:var(--muted)}
+.mcq.done .why{display:block}
+.score{position:sticky;top:74px;z-index:5;display:inline-block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 14px;font-weight:900;box-shadow:var(--shadow)}
+
+/* cheat sheet */
+.cheat{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.fc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.fc:before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:5px;background:linear-gradient(var(--brand),var(--brand2))}
+.fc h4{margin:0 0 6px;font-size:1rem}
+.fc .f{margin:6px 0 4px}
+.fc p{margin:4px 0 0;font-size:.88rem;color:var(--muted)}
+.check{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:760px){.check{grid-template-columns:1fr}}
+.check li{display:flex;gap:10px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;cursor:pointer;transition:.15s}
+.check li:hover{border-color:var(--brand)}
+.check li .box{flex:none;width:22px;height:22px;border-radius:7px;border:2px solid var(--line);display:grid;place-items:center;font-size:.8rem;margin-top:3px}
+.check li.done{opacity:.65}
+.check li.done .box{background:var(--ok);border-color:var(--ok);color:#fff}
+.check li.done .box:after{content:"✓"}
+.check li.done span.t{text-decoration:line-through}
+h3.sub{margin:30px 0 12px;font-size:1.25rem;display:flex;align-items:center;gap:10px}
+h3.sub:before{content:"";width:10px;height:26px;border-radius:4px;background:linear-gradient(var(--brand),var(--brand2))}
+footer{padding:40px 0 60px;text-align:center;color:var(--muted);font-size:.9rem}
+.totop{position:fixed;inset-inline-end:18px;bottom:18px;z-index:40;width:48px;height:48px;border-radius:14px;border:none;cursor:pointer;color:#fff;font-size:1.3rem;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:var(--shadow)}
+@media print{.top,.totop,.showbtn{display:none}.sol{display:block!important}details{open:true}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="logo"><b>ACC402</b><span class="ar">مراجعة الميد</span><span class="en">Mid Review</span></div>
+    <nav class="nav">
+      <a href="#roadmap"><span class="ar">الرود ماب</span><span class="en">Roadmap</span></a>
+      <a href="#lectures"><span class="ar">المحاضرات</span><span class="en">Lectures</span></a>
+      <a href="#sections"><span class="ar">السكاشن محلولة</span><span class="en">Solved Sections</span></a>
+      <a href="#cheat"><span class="ar">ملخص القوانين</span><span class="en">Cheat Sheet</span></a>
+    </nav>
+    <button class="tbtn" id="langBtn" title="Language"><span class="ar">EN</span><span class="en">عربي</span></button>
+    <button class="tbtn" id="themeBtn" title="Theme"><span id="themeIc">🌙</span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap">
+    <span class="pill">📘 Financial Reporting · Dr. Mohamed Mahmoud · Fall 2026-2027</span>
+    <h1><span class="ar">المادة كلها في <span class="grad">ليلة واحدة</span> 🚀</span><span class="en">The whole course in <span class="grad">one night</span> 🚀</span></h1>
+    <p class="lead ar">10 محاضرات + 6 سكاشن اتدمجوا في مسار واحد مترتب: افهم ← اتمرن ← راجع القوانين. امشي بالترتيب، وكل ما تخلص حاجة علّم عليها تحت في الملخص عشان تشوف تقدمك.</p>
+    <p class="lead en">10 lectures + 6 sections merged into one ordered path: understand → practice → review formulas. Go in order and tick items in the checklist to track your progress.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">3</div><div class="l"><span class="ar">شباتر (1 · 2 · 3)</span><span class="en">Chapters (1 · 2 · 3)</span></div></div>
+      <div class="stat"><div class="n">10</div><div class="l"><span class="ar">محاضرات متدمجة</span><span class="en">Lectures merged</span></div></div>
+      <div class="stat"><div class="n">25</div><div class="l"><span class="ar">تمرين وسؤال محلول</span><span class="en">Solved problems & MCQs</span></div></div>
+      <div class="stat"><div class="n">19</div><div class="l"><span class="ar">قانون في الملخص</span><span class="en">Formulas in cheat sheet</span></div></div>
+    </div>
+    <div class="progress">
+      <b><span class="ar">تقدمك في المراجعة:</span><span class="en">Your review progress:</span> <span id="pct">0%</span></b>
+      <div class="bar"><i id="barFill"></i></div>
+    </div>
+  </div>
+</div>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="wrap">
+    <div class="sh"><div class="ic">🗺️</div><div><h2><span class="ar">الرود ماب — تمشي إزاي النهارده</span><span class="en">Roadmap — how to study tonight</span></h2><p><span class="ar">محاضرة 10 هي مراجعة الدكتور للميد، فده يأكد إن الميد = شابتر 1 + 2 + 3 (الميزانية).</span><span class="en">Lecture 10 is the doctor's own mid review, confirming the mid = Ch.1 + Ch.2 + Ch.3 (balance sheet).</span></p></div></div>
+    <div class="road">
+      <div class="stop"><div class="dot">1</div><div class="box">
+        <span class="time">⏱ 40 min</span>
+        <h3><span class="ar">شابتر 1 — البيئة الاقتصادية والمؤسسية للتقارير المالية</span><span class="en">Ch.1 — Economic & Institutional Setting</span></h3>
+        <span class="ar">نظري بالكامل: ليه القوائم مهمة، مين بيستخدمها، الخصائص النوعية، مين بيحط المعايير، التقرير السنوي.</span><span class="en">Fully theory: why statements matter, users, qualitative characteristics, standard setters, annual report.</span>
+        <div class="chips"><a class="chip" href="#c1-why">Why FS</a><a class="chip" href="#c1-econ">Info Asymmetry</a><a class="chip" href="#c1-users">Users</a><a class="chip" href="#c1-qc">Relevance / Faithful Rep.</a><a class="chip" href="#c1-std">IFRS vs GAAP</a><a class="chip" href="#c1-ar">Annual Report</a><a class="chip c3" href="#s1">Section 1 MCQ</a></div>
+      </div></div>
+      <div class="stop"><div class="dot">2</div><div class="box">
+        <span class="time">⏱ 90 min</span>
+        <h3><span class="ar">شابتر 2 — Accrual Accounting وقائمة الدخل</span><span class="en">Ch.2 — Accrual Accounting & Income Determination</span></h3>
+        <span class="ar">ده قلب الميد 🔥 فيه أغلب المسائل: Cash vs Accrual، شكل قائمة الدخل، Discontinued Ops، EPS، NCI، OCI.</span><span class="en">The heart of the mid 🔥 most problems live here: cash vs accrual, income statement format, discontinued ops, EPS, NCI, OCI.</span>
+        <div class="chips"><a class="chip" href="#c2-cash">Cash vs Accrual</a><a class="chip" href="#c2-cant">Canterbury</a><a class="chip" href="#c2-art">Articulation</a><a class="chip" href="#c2-is">Income Statement</a><a class="chip" href="#c2-disc">Discontinued Ops</a><a class="chip" href="#c2-eps">EPS · NCI</a><a class="chip" href="#c2-oci">OCI · Earnings Mgmt</a><a class="chip c3" href="#s3">Sections 3 · 4 · 5</a></div>
+      </div></div>
+      <div class="stop"><div class="dot">3</div><div class="box">
+        <span class="time">⏱ 50 min</span>
+        <h3><span class="ar">شابتر 3 — هيكل الميزانية (Balance Sheet)</span><span class="en">Ch.3 — Structure of the Balance Sheet</span></h3>
+        <span class="ar">احفظ كل بند بيتقاس بإيه (Measurement basis) + اعرف تعمل Classified Balance Sheet.</span><span class="en">Memorize each item's measurement basis + be able to prepare a classified balance sheet.</span>
+        <div class="chips"><a class="chip" href="#c3-el">Elements</a><a class="chip" href="#c3-meas">Measurement bases</a><a class="chip" href="#c3-ca">Assets</a><a class="chip" href="#c3-li">Liabilities</a><a class="chip" href="#c3-eq">Equity</a><a class="chip c3" href="#s6">Section 6</a></div>
+      </div></div>
+      <div class="stop"><div class="dot">4</div><div class="box">
+        <span class="time">⏱ 30 min</span>
+        <h3><span class="ar">مراجعة نهائية — الملخص والقوانين</span><span class="en">Final pass — cheat sheet & formulas</span></h3>
+        <span class="ar">اقرا الملخص، علّم على كل نقطة فاهمها، وحل مسائل الـ Lecture Exercises تاني من غير ما تبص على الحل.</span><span class="en">Read the cheat sheet, tick what you know, and redo lecture exercises without peeking.</span>
+        <div class="chips"><a class="chip c2" href="#cheat">Formulas</a><a class="chip c2" href="#valtable">Valuation table</a><a class="chip c2" href="#checklist">Checklist</a></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LECTURES -->
+<section id="lectures">
+  <div class="wrap">
+    <div class="sh"><div class="ic">📚</div><div><h2><span class="ar">المحاضرات — متدمجة ومترتبة</span><span class="en">Lectures — merged & organized</span></h2><p><span class="ar">افتح كل جزء واقرا النقط. المصطلحات بالإنجليزي زي الامتحان بالظبط.</span><span class="en">Open each part and read the points. Terms are kept exactly as in the exam.</span></p></div></div>
+
+    <!-- CH1 -->
+    <div class="chapter">
+      <div class="chhead"><small>CHAPTER 1 · Lectures 1–3</small><h3>The Economic and Institutional Setting for Financial Reporting</h3></div>
+      <div class="chbody">
+
+        <details id="c1-why" open><summary><span class="ar">ليه القوائم المالية مهمة؟ + المحاسبة مش علم دقيق</span><span class="en">Why financial statements matter + accounting isn't exact</span><span class="tag">L1</span></summary><div class="dc">
+          <ul class="ar">
+            <li>من غير معلومات كفاية، المستثمر مش هيعرف يحكم على <b>الفرص والمخاطر</b> بتاعة البدائل الاستثمارية.</li>
+            <li>القوائم المالية غالبًا هي <b>أحسن مصدر</b> عن أداء الشركة اللي فات، وصحتها الحالية، وتوقعاتها للمستقبل.</li>
+            <li>بتوري <b>الثروة الاقتصادية</b> للشركة والتغير فيها.</li>
+          </ul>
+          <ul class="en">
+            <li>Without adequate information, investors can't judge the <b>opportunities and risks</b> of investment alternatives.</li>
+            <li>Financial statements are often the <b>best source</b> of information about past performance, current health and future prospects.</li>
+            <li>They show a company's <b>economic wealth and changes</b> in that wealth.</li>
+          </ul>
+          <div class="grid3">
+            <div class="mini"><h4>Analytical tool</h4><p class="ar">أداة تحليل</p><p class="en">For analysis</p></div>
+            <div class="mini"><h4>Management report card</h4><p class="ar">شهادة تقييم للإدارة</p><p class="en">Grades management</p></div>
+            <div class="mini"><h4>Early warning signal</h4><p class="ar">إنذار مبكر</p><p class="en">Flags trouble early</p></div>
+            <div class="mini"><h4>Basis for prediction</h4><p class="ar">أساس للتنبؤ</p><p class="en">For forecasting</p></div>
+            <div class="mini"><h4>Measure of accountability</h4><p class="ar">قياس المساءلة</p><p class="en">Holds managers accountable</p></div>
+          </div>
+          <div class="trap"><span class="ar">⚠️ فخ MCQ: "Guaranteed return predictor" أو "eliminate all risks" <b>مش</b> من استخدامات القوائم.</span><span class="en">⚠️ MCQ trap: "Guaranteed return predictor" or "eliminate all risks" are <b>NOT</b> uses of financial statements.</span></div>
+          <h4><span class="ar">Accounting Is Not an Exact Science</span><span class="en">Accounting Is Not an Exact Science</span></h4>
+          <ul class="ar">
+            <li>بنود زي <b>Cash</b> بتتقاس بدقة عالية، وبنود زي <b>Warranty liabilities</b> فيها تقدير وحكم شخصي (estimates لأحداث مستقبلية).</li>
+            <li>عشان كده القارئ لازم: يفهم المعايير، يعرف إن <b>الإدارة تقدر تشكّل المعلومة</b>، ويفرق بين المعلومة الموثوقة والمعلومة التقديرية.</li>
+          </ul>
+          <ul class="en">
+            <li><b>Cash</b> is measured precisely; items like <b>warranty liabilities</b> are judgmental (estimates of future events).</li>
+            <li>Readers must: understand the standards, recognize that <b>management can shape information</b>, and distinguish reliable vs judgmental information.</li>
+          </ul>
+        </div></details>
+
+        <details id="c1-econ"><summary><span class="ar">اقتصاديات المعلومات المحاسبية + العرض والطلب</span><span class="en">Economics of accounting info + demand & supply</span><span class="tag">L1 · L10</span></summary><div class="dc">
+          <div class="grid2">
+            <div class="mini"><h4>① Information Asymmetry</h4><p class="ar">القوائم بتنقل المعلومات عن نشاط الشركة <b>من الإدارة للناس اللي برا</b> الشركة (الإدارة عارفة أكتر).</p><p class="en">A way for management to <b>transfer information to outsiders</b> (management knows more).</p></div>
+            <div class="mini"><h4>② Contract Efficiency</h4><p class="ar">أرقام القوائم بتدخل في <b>العقود</b> بين الشركة والأطراف التانية (قروض، مكافآت...).</p><p class="en">FS numbers are often used in <b>contracts</b> with other parties (loans, bonuses…).</p></div>
+          </div>
+          <ul class="ar">
+            <li><b>Demand:</b> القوائم مطلوبة لأنها مصدر معلومات عن الأداء، المركز المالي، و<b>resource stewardship</b> (إزاي الإدارة بتدير الموارد).</li>
+            <li><b>Supply:</b> المعروض محكوم بـ <b>التكلفة مقابل المنفعة</b> (Cost vs Benefit).</li>
+            <li><b>Mandated reporting</b> (SEC, FASB) = حد أدنى إجباري. الشركات كتير بتفصح <b>أكتر</b> من الحد الأدنى = <b>Voluntary disclosure</b> ومحكوم بالـ cost/benefit.</li>
+          </ul>
+          <ul class="en">
+            <li><b>Demand:</b> value as a source of information about performance, financial condition and <b>resource stewardship</b>.</li>
+            <li><b>Supply:</b> guided by the <b>costs of producing/disseminating vs the benefits</b>.</li>
+            <li><b>Mandated reporting</b> (SEC, FASB) sets minimum levels; firms often go beyond = <b>voluntary disclosure</b>, guided by cost/benefit.</li>
+          </ul>
+          <div class="grid2">
+            <div class="mini"><h4>✅ Disclosure benefits</h4><p>• Obtaining capital more cheaply<br>• Better terms from suppliers</p></div>
+            <div class="mini"><h4>❌ Disclosure costs</h4><p>• Information collection, processing & dissemination<br>• Competitive disadvantage<br>• Litigation costs<br>• Political costs</p></div>
+          </div>
+        </div></details>
+
+        <details id="c1-users"><summary><span class="ar">مستخدمي القوائم المالية وبيستخدموها في إيه</span><span class="en">Users of financial statements</span><span class="tag">L1</span></summary><div class="dc">
+          <div class="tw"><table>
+            <tr><th>User</th><th>Uses</th></tr>
+            <tr><td><b>Shareholders & Investors</b></td><td>Investment decisions · Proxy contests</td></tr>
+            <tr><td><b>Managers & Employees</b></td><td>Performance assessment · Compensation contracts · Company-sponsored pension plans</td></tr>
+            <tr><td><b>Lenders & Suppliers</b></td><td>Lending decisions · Covenant compliance</td></tr>
+            <tr><td><b>Customers</b></td><td>Seller's health · Repeat purchases · Warranties & support</td></tr>
+            <tr><td><b>Government & Regulators</b></td><td>Mandatory reporting · Taxing authorities · Regulated industries</td></tr>
+          </table></div>
+          <div class="tip"><span class="ar">💡 حركة حفظ: "Proxy" = مستثمرين، "Covenant" = مقرضين، "Compensation/Pension" = موظفين، "Warranties" = عملاء، "Taxing" = حكومة.</span><span class="en">💡 Memory hook: "Proxy" = investors, "Covenant" = lenders, "Compensation/Pension" = employees, "Warranties" = customers, "Taxing" = government.</span></div>
+        </div></details>
+
+        <details id="c1-qc"><summary><span class="ar">الخصائص النوعية للمعلومة (Conceptual Framework – FASB)</span><span class="en">Qualitative characteristics (FASB Conceptual Framework)</span><span class="tag">L2</span></summary><div class="dc">
+          <div class="grid2">
+            <div class="mini"><h4>1) Relevance</h4>
+              <p class="ar">بتساعد المستخدم يتوقع المستقبل أو يفهم أثر الأحداث اللي فاتت.</p><p class="en">Helps users predict the future or understand how past events affected the business.</p>
+              <p>• <b>Predictive value</b> — <span class="ar">بتحسن قدرتك تتوقع</span><span class="en">improves forecasting</span><br>• <b>Confirmatory value</b> — <span class="ar">بتأكد أو تعدّل توقعاتك السابقة</span><span class="en">confirms/alters earlier beliefs</span><br>• <b>Materiality</b> — <span class="ar">لو اتحذفت أو اتغلط فيها هتأثر على القرار</span><span class="en">omission/misstatement could influence decisions</span></p></div>
+            <div class="mini"><h4>2) Faithful Representation</h4>
+              <p class="ar">المعلومة بتعبّر فعلًا عن الحدث الاقتصادي.</p><p class="en">Information actually depicts the underlying economic event.</p>
+              <p>• <b>Completeness</b> — <span class="ar">مفيش حقايق مهمة ناقصة</span><span class="en">no important facts omitted</span><br>• <b>Neutrality</b> — <span class="ar">مش منحازة لطرف</span><span class="en">not selected to favor one party</span><br>• <b>Free from material error</b> — <span class="ar">حد أدنى من الدقة</span><span class="en">minimum level of accuracy</span></p></div>
+          </div>
+          <h4>3) Decision Usefulness (Enhancing)</h4>
+          <div class="grid2">
+            <div class="mini"><h4>Comparability</h4><p class="ar">تقدر تقارن الشركات من غير ما طرق المحاسبة تخبي الفروق الحقيقية.</p><p class="en">Real similarities/differences aren't obscured by accounting methods.</p></div>
+            <div class="mini"><h4>Verifiability</h4><p class="ar">لو أكتر من حد قاس بنفس المقياس يطلعوا بنتايج متقاربة.</p><p class="en">Independent measurers get similar results using the same yardstick.</p></div>
+            <div class="mini"><h4>Timeliness</h4><p class="ar">المعلومة توصل وهي لسه طازة وتقدر تأثر على القرار.</p><p class="en">Available while still fresh enough to influence decisions.</p></div>
+            <div class="mini"><h4>Understandability</h4><p class="ar">المستخدم يقدر يفهم معناها.</p><p class="en">Enables users to comprehend its meaning.</p></div>
+          </div>
+          <div class="trap"><span class="ar">⚠️ متلخبطش: Materiality تحت <b>Relevance</b>، و Neutrality/Completeness تحت <b>Faithful Representation</b>.</span><span class="en">⚠️ Don't mix: Materiality is under <b>Relevance</b>; Neutrality/Completeness are under <b>Faithful Representation</b>.</span></div>
+        </div></details>
+
+        <details id="c1-std"><summary><span class="ar">مين بيحط المعايير؟ IFRS vs GAAP + مصر</span><span class="en">Who sets standards? IFRS vs GAAP + Egypt</span><span class="tag">L2 · L10</span></summary><div class="dc">
+          <ul class="ar">
+            <li><b>أمريكا:</b> الـ <b>SEC</b> عنده السلطة النهائية وسلطة الإلزام (enforcement)، لكن اللي بيحط المعايير فعليًا هو <b>FASB</b>.</li>
+            <li><b>باقي العالم:</b> <b>IASB</b> بيطوّر معايير عالمية، وأصدر <b>16 IFRS</b>.</li>
+          </ul>
+          <ul class="en">
+            <li><b>U.S.:</b> the <b>SEC</b> has ultimate & enforcement authority, but <b>FASB</b> currently sets the standards.</li>
+            <li><b>Other countries:</b> the <b>IASB</b> develops worldwide standards; it issued <b>16 IFRS</b>.</li>
+          </ul>
+          <div class="tw"><table>
+            <tr><th></th><th>IFRS</th><th>U.S. GAAP</th></tr>
+            <tr><td>Set by</td><td>IASB</td><td>FASB</td></tr>
+            <tr><td>Used in</td><td>140+ countries</td><td>USA only</td></tr>
+            <tr><td>Guidance</td><td>Less detailed, general overview</td><td>Narrowly defined, detailed</td></tr>
+            <tr><td>Approach</td><td><b>Principles-based</b></td><td><b>Rules-based</b></td></tr>
+          </table></div>
+          <h4><span class="ar">أهداف الـ IASB الأربعة</span><span class="en">IASB's four goals</span></h4>
+          <ol>
+            <li>Develop a single set of high-quality, understandable, enforceable, globally accepted IFRS.</li>
+            <li>Promote the use and rigorous application of those standards.</li>
+            <li>Consider the needs of emerging economies and SMEs.</li>
+            <li>Promote adoption of IFRS through <b>convergence</b> of national standards with IFRS.</li>
+          </ol>
+          <h4>🇪🇬 <span class="ar">مصر</span><span class="en">Egypt</span></h4>
+          <div class="grid2">
+            <div class="mini"><h4>EAS</h4><p class="ar">معايير المحاسبة المصرية — متوافقة إلى حد كبير مع IFRS.</p><p class="en">Egyptian Accounting Standards — largely aligned with IFRS.</p></div>
+            <div class="mini"><h4>FRA — 2009</h4><p class="ar">الهيئة العامة للرقابة المالية، اتأسست 2009.</p><p class="en">Financial Regulatory Authority, established 2009.</p></div>
+            <div class="mini"><h4>ESAA — 1946</h4><p class="ar">جمعية المحاسبين والمراجعين المصرية (1946) — ترفع الوعي الفني وتخلي المهنة ماشية بأفضل الممارسات الدولية.</p><p class="en">Egyptian Society of Accountants & Auditors (1946) — raises awareness, aligns profession with international best practice.</p></div>
+            <div class="mini"><h4>EGX</h4><p class="ar">البورصة المصرية — الشركات المقيدة لازم تنشر معلوماتها المالية على موقعها.</p><p class="en">Egyptian Exchange — listed firms must disclose financial info on its website.</p></div>
+          </div>
+          <div class="tip"><span class="ar">💡 أرقام بتيجي في MCQ: 16 IFRS · 140+ دولة · FRA 2009 · ESAA 1946.</span><span class="en">💡 MCQ numbers: 16 IFRS · 140+ countries · FRA 2009 · ESAA 1946.</span></div>
+        </div></details>
+
+        <details id="c1-ar"><summary><span class="ar">التقرير السنوي (Annual Report) + الاستدامة</span><span class="en">Annual Report + Sustainability</span><span class="tag">L3 · Sec 2</span></summary><div class="dc">
+          <ol class="ar">
+            <li><b>Financial Statements:</b> Balance sheet · Income statement · Cash flow statement · Stockholders' equity statement.</li>
+            <li><b>Notes:</b> نوعين — (1) بيوصف <b>السياسات المحاسبية</b> المستخدمة، (2) بيدي <b>تفاصيل إضافية</b> عن بند أو أكتر في القوائم.</li>
+            <li><b>Auditor's Opinion:</b> رأي مكتب مراجعة <b>مستقل</b> إن القوائم اتعملت صح وينفع يُعتمد عليها.</li>
+            <li><b>MD&A:</b> رسالة مطولة من <b>الإدارة</b> بتلخص أهم العوامل اللي أثرت على نتايج التشغيل.</li>
+          </ol>
+          <ol class="en">
+            <li><b>Financial Statements:</b> balance sheet, income statement, cash flow statement, stockholders' equity statement.</li>
+            <li><b>Notes:</b> two types — (1) describe the <b>accounting policies</b>; (2) give <b>additional detail</b> on line items.</li>
+            <li><b>Auditor's Opinion:</b> from an <b>independent</b> public accounting firm attesting the statements were correctly prepared.</li>
+            <li><b>MD&A:</b> an extended letter from <b>management</b> summarizing significant factors affecting operating results.</li>
+          </ol>
+          <div class="ex"><span class="ar">📎 مثال الدكتور: التقرير السنوي لـ Telecom Egypt على ir.te.eg — دور على الأربع مكونات دول فيه.</span><span class="en">📎 Doctor's example: Telecom Egypt's annual report (ir.te.eg) — locate the four components.</span></div>
+          <h4>Sustainability Accounting</h4>
+          <ul class="ar"><li>آخر 25 سنة زاد الطلب على إفصاح الشركات عن <b>مخاطر تغير المناخ</b> وإزاي بتساهم فيه.</li><li>منظمات كتير عملت مبادئ وإرشادات، لكن <b>لا FASB ولا SEC</b> لحد دلوقتي ألزموا بإفصاح محدد عن المناخ.</li><li>هيئات دولية بتحاول تزوّد الإفصاح الإجباري عن الاستدامة.</li></ul>
+          <ul class="en"><li>Over the past 25 years, demand rose for disclosures on <b>climate change risk</b>.</li><li>Many organizations issued guidelines, but <b>neither FASB nor SEC</b> has required specific climate disclosures to date.</li><li>Several international bodies seek to increase required sustainability disclosures.</li></ul>
+        </div></details>
+      </div>
+    </div>
+
+    <!-- CH2 -->
+    <div class="chapter">
+      <div class="chhead c2"><small>CHAPTER 2 · Lectures 3–6</small><h3>Accrual Accounting and Income Determination</h3></div>
+      <div class="chbody">
+
+        <details id="c2-cash" open><summary><span class="ar">Cash Basis vs Accrual Basis + أنواع المصروفات</span><span class="en">Cash vs Accrual basis + types of expenses</span><span class="tag">L3 · L4</span></summary><div class="dc">
+          <div class="grid2">
+            <div class="mini"><h4>💵 Cash basis</h4><p class="ar">الإيراد يتسجل لما <b>الفلوس تدخل</b>، والمصروف لما <b>الفلوس تخرج</b>.</p><p class="en">Revenue when <b>cash is received</b>; expense when <b>cash is paid</b>.</p></div>
+            <div class="mini"><h4>📒 Accrual basis</h4><p class="ar">الإيراد يتسجل لما الشركة <b>توفي بالتزامها</b> وتنقل <b>السيطرة (control)</b> على السلعة/الخدمة للعميل — بغض النظر عن الفلوس.</p><p class="en">Revenue when the entity <b>satisfies its obligation</b> by <b>transferring control</b> of goods/services — regardless of cash.</p></div>
+          </div>
+          <ul class="ar">
+            <li>الـ Accrual <b>بيفصل</b> (decouples) الربح عن التدفقات النقدية → ممكن يبقى فيه فرق كبير بين الربح والكاش.</li>
+            <li>الـ Accrual غالبًا <b>أدق</b> في قياس القيمة الاقتصادية المضافة، وأحسن للتنبؤ بالأداء المستقبلي.</li>
+          </ul>
+          <ul class="en">
+            <li>Accrual accounting <b>decouples</b> earnings from operating cash flows → large differences possible.</li>
+            <li>It usually gives a <b>more accurate</b> measure of value added and a better basis for prediction.</li>
+          </ul>
+          <h4><span class="ar">المصروفات نوعين</span><span class="en">Two types of expenses</span></h4>
+          <div class="grid2">
+            <div class="mini"><h4>Traceable costs</h4><p class="ar">موارد بتتستهلك في إنتاج الإيراد وسهل تربطها بيه — أشهرها <b>Product cost</b> (زي COGS).</p><p class="en">Resources consumed producing revenue, easily traced — most common: <b>product cost</b> (COGS).</p></div>
+            <div class="mini"><h4>Period costs</h4><p class="ar">ضرورية للإيراد لكن صعب تحدد مساهمتها في بيعة معينة (زي الإيجار والإعلان والمرتبات الإدارية).</p><p class="en">Necessary, but contribution to a specific sale is hard to quantify (rent, advertising, admin salaries).</p></div>
+          </div>
+        </div></details>
+
+        <details id="c2-cant"><summary><span class="ar">مثال Canterbury Publishing (أهم مثال في الشابتر)</span><span class="en">Canterbury Publishing example (key example)</span><span class="tag">L3</span></summary><div class="dc">
+          <div class="qtext">Jan 20X1: 3-year subscriptions to 1,000 customers, paid up front: $300 each (12 issues × $25) → $300,000. Loan $100,000, 3 years, 10% interest <b>payable at maturity</b> (12/31/20X3). Publishing cost $60,000/year paid in cash.</div>
+          <h4><span class="ar">على الأساس النقدي</span><span class="en">Cash basis</span> ($000)</h4>
+          <div class="tw"><table>
+            <tr><th></th><th class="n">20X1</th><th class="n">20X2</th><th class="n">20X3</th></tr>
+            <tr><td>Operating cash inflows</td><td class="n">300.0</td><td class="n">—</td><td class="n">—</td></tr>
+            <tr><td>Production & distribution</td><td class="n">(60.0)</td><td class="n">(60.0)</td><td class="n">(60.0)</td></tr>
+            <tr><td>Interest on loan</td><td class="n">—</td><td class="n">—</td><td class="n">(33.1)</td></tr>
+            <tr class="tot"><td>Operating cash flow</td><td class="n">240.0</td><td class="n neg">(60.0)</td><td class="n neg">(93.1)</td></tr>
+          </table></div>
+          <h4><span class="ar">على أساس الاستحقاق</span><span class="en">Accrual basis</span> ($000)</h4>
+          <div class="tw"><table>
+            <tr><th></th><th class="n">20X1</th><th class="n">20X2</th><th class="n">20X3</th></tr>
+            <tr><td>Subscription revenue (300 ÷ 3)</td><td class="n">100.0</td><td class="n">100.0</td><td class="n">100.0</td></tr>
+            <tr><td>Publishing & distribution</td><td class="n">(60.0)</td><td class="n">(60.0)</td><td class="n">(60.0)</td></tr>
+            <tr><td>Interest expense (compounded)</td><td class="n">(10.0)</td><td class="n">(11.0)</td><td class="n">(12.1)</td></tr>
+            <tr class="tot"><td>Net income</td><td class="n">30.0</td><td class="n">29.0</td><td class="n">27.9</td></tr>
+          </table></div>
+          <div class="f">Interest 20X1 = 100,000 × 10%            = 10,000
+Interest 20X2 = (100,000 + 10,000) × 10%   = 11,000
+Interest 20X3 = (110,000 + 11,000) × 10%   = 12,100
+Total interest paid at maturity             = 33,100</div>
+          <h4><span class="ar">القيود الأساسية</span><span class="en">Key journal entries</span></h4>
+          <div class="f">20X1  Dr Cash 300,000              Cr Unearned subscription revenue 300,000
+      Dr Cash 100,000              Cr Loan payable 100,000
+      Dr Publishing expense 60,000 Cr Cash 60,000
+12/31 Dr Unearned sub. rev 100,000 Cr Subscription revenue 100,000   (adjusting)
+      Dr Interest expense 10,000   Cr Interest payable 10,000        (adjusting)
+20X3  Dr Loan payable 100,000
+      Dr Interest payable 33,100   Cr Cash 133,100</div>
+          <div class="tip"><span class="ar">💡 الخلاصة: الـ Accrual (1) بيفصل الربح عن الكاش، (2) بيقابل المنفعة (الإيراد) بالمجهود (المصروفات)، (3) بيدي صورة أواقعية للأداء. لاحظ مجموع الكاش (240−60−93.1=86.9) = مجموع الأرباح (30+29+27.9=86.9) على الـ 3 سنين!</span><span class="en">💡 Takeaway: accrual (1) decouples earnings from cash, (2) matches benefit (revenue) with effort (expenses), (3) gives a more realistic picture. Note total cash over 3 years (86.9) = total net income (86.9)!</span></div>
+        </div></details>
+
+        <details id="c2-art"><summary><span class="ar">الترابط بين قائمة الدخل والميزانية (Articulation)</span><span class="en">Articulation of income statement & balance sheet</span><span class="tag">L4</span></summary><div class="dc">
+          <div class="f">ASSETS − LIABILITIES = OWNERS' EQUITY</div>
+          <ul class="ar"><li>لما الدخل يتسجل بيحصل حاجتين: (1) <b>حقوق الملكية</b> تزيد بقيمة الدخل، (2) <b>صافي الأصول</b> (Assets − Liabilities) يزيد بنفس القيمة بالظبط.</li><li>يعني قياس صافي الأصول وتحديد الدخل <b>مرتبطين ببعض</b>.</li></ul>
+          <ul class="en"><li>When income is recognized: (1) <b>owners' equity</b> increases by the income, (2) <b>net assets</b> increase by the identical amount.</li><li>Net asset valuation and income determination are interrelated.</li></ul>
+          <div class="ex"><span class="ar">مثال: بيع بضاعة تكلفتها 100 بـ 130 كاش ← Cash +130 و Inventory −100 ⇒ صافي الأصول +30 = الربح 30 = زيادة حقوق الملكية 30.</span><span class="en">Example: inventory costing 100 sold for 130 cash → Cash +130, Inventory −100 ⇒ net assets +30 = income 30 = equity +30.</span></div>
+        </div></details>
+
+        <details id="c2-is"><summary><span class="ar">شكل قائمة الدخل + البنود غير العادية</span><span class="en">Income statement format + unusual items</span><span class="tag">L4 · L10</span></summary><div class="dc">
+          <ul class="ar"><li>كل نماذج التمويل قايمة على <b>التدفقات النقدية المستقبلية</b>، فقائمة الدخل بتفصل الأرباح لـ:</li></ul>
+          <ul class="en"><li>Finance models rely on <b>expected future cash flows</b>, so the income statement separates earnings into:</li></ul>
+          <div class="grid2">
+            <div class="mini"><h4>Continuing operations</h4><p class="ar">النشاط الأساسي المستمر — <b>Sustainable</b> (متوقع يتكرر).</p><p class="en">Core ongoing activities — <b>sustainable</b>, likely repeated.</p></div>
+            <div class="mini"><h4>Discontinued operations</h4><p class="ar">أنشطة الشركة ناوية تقفلها أو قفلتها — <b>Transitory</b> (مؤقتة).</p><p class="en">Operations discontinued/to be discontinued — <b>transitory</b>.</p></div>
+          </div>
+          <h4>Unusual or Infrequently Occurring Items</h4>
+          <ul class="ar"><li>أحداث <b>جوهرية</b> طالعة من النشاط المستمر لكنها غير عادية في طبيعتها <b>أو</b> نادرة الحدوث.</li><li><b>العرض:</b> سطر منفصل <b>جوه Continuing operations</b> (قبل الضريبة).</li></ul>
+          <ul class="en"><li><b>Material</b> events from continuing operations that are unusual in nature <b>or</b> infrequent.</li><li><b>Presentation:</b> separate line item <b>within continuing operations</b> (pre-tax).</li></ul>
+          <div class="grid2"><div class="mini"><h4>Examples</h4><p>• Write-downs/offs of receivables & inventory<br>• Foreign currency gains/losses<br>• Gain/loss on sale of PP&E<br>• Restructuring charges</p></div><div class="mini"><h4>&nbsp;</h4><p>• Gain/loss on sale of investments<br>• Losses from floods, fires, disasters<br>• Losses related to labor strikes</p></div></div>
+          <h4><span class="ar">هيكل قائمة الدخل متعددة المراحل (احفظه!)</span><span class="en">Multiple-step skeleton (memorize!)</span></h4>
+          <div class="f">  Sales revenue
+− Cost of goods sold
+= Gross profit
+− Operating expenses (Selling, G&A, R&D)
+= Operating income
+± Non-operating items (interest, dividend income, gains/losses on investments/equipment)
+± Unusual / infrequent items
+= Income before income tax
+− Income tax expense
+= Income from continuing operations
+± Discontinued operations (net of tax)
+= Net income
+− Net income attributable to NCI
+= Net income attributable to parent
+  EPS</div>
+        </div></details>
+
+        <details id="c2-disc"><summary><span class="ar">العمليات غير المستمرة (Discontinued Operations)</span><span class="en">Discontinued Operations</span><span class="tag">L5</span></summary><div class="dc">
+          <ul class="ar">
+            <li>المكوّن لازم يكون له <b>عمليات وتدفقات نقدية</b> تتفصل بوضوح عن باقي الشركة.</li>
+            <li><b>لو اتباع فعلًا:</b> يتعامل كـ Discontinued لو البيع يمثل <b>Strategic shift</b> له أثر كبير على عمليات ونتايج الشركة.</li>
+            <li><b>لو لسه ما اتباعش:</b> يتصنف <b>Held for sale</b>، ولازم كمان يحقق شرط الـ Strategic shift.</li>
+            <li>النتايج بتتشال من Continuing operations في <b>الفترة اللي اتاخد فيها قرار الإيقاف</b>.</li>
+          </ul>
+          <ul class="en">
+            <li>The component must have operations & cash flows <b>clearly distinguishable</b> from the rest of the entity.</li>
+            <li><b>Disposed of:</b> discontinued if it represents a <b>strategic shift</b> with a major effect.</li>
+            <li><b>Not yet disposed:</b> classified as <b>held for sale</b> and must also meet the strategic-shift criterion.</li>
+            <li>Results are excluded from continuing ops in the period the decision was made.</li>
+          </ul>
+          <div class="grid2">
+            <div class="mini"><h4>✅ Sold before period end</h4><p>① Operating income/loss (start of period → disposal date), <b>net of tax</b><br>② <b>Gain/loss on disposal</b> = Net sale price − Book value of net assets, net of tax</p></div>
+            <div class="mini"><h4>⏳ Held for sale at period end</h4><p>① Operating income/loss, <b>net of tax</b><br>② <b>Impairment loss</b> (net of tax) only if BV of net assets &gt; (Fair value − Cost to sell)</p></div>
+          </div>
+          <div class="trap"><span class="ar">⚠️ أهم فخ: الـ <b>مكسب المتوقع</b> من البيع أو الأرباح المتوقعة في السنة الجاية <b>ما بتتسجلش</b> قبل ما تتحقق. الخساير بس هي اللي بتتسجل بدري (impairment).</span><span class="en">⚠️ Top trap: <b>expected gains</b> on a future sale and expected future profits are <b>NOT recognized</b> until realized. Only losses (impairment) are recognized early.</span></div>
+        </div></details>
+
+        <details id="c2-eps"><summary><span class="ar">ربحية السهم (EPS) + حقوق الأقلية (NCI)</span><span class="en">EPS + Non-controlling interests</span><span class="tag">L5</span></summary><div class="dc">
+          <ul class="ar">
+            <li>EPS من أشهر مقاييس الأداء، وكل الشركات المتداولة <b>لازم</b> تعرضه على وش قائمة الدخل.</li>
+            <li><b>Basic EPS:</b> بيستخدم <b>المتوسط المرجح</b> لعدد الأسهم العادية القائمة.</li>
+            <li><b>Diluted EPS:</b> الـ EPS لو كل الأسهم المحتملة اتحولت لأسهم فعلية (Stock options · Convertible bonds · Convertible preferred).</li>
+          </ul>
+          <ul class="en">
+            <li>EPS is one of the most reported performance measures; publicly traded firms <b>must</b> show it on the face of the income statement.</li>
+            <li><b>Basic EPS:</b> uses the <b>weighted-average</b> common shares outstanding.</li>
+            <li><b>Diluted EPS:</b> as if all potential shares were converted (stock options, convertible bonds, convertible preferred).</li>
+          </ul>
+          <div class="f">Basic EPS = Net income (to common) ÷ Weighted-average common shares</div>
+          <h4>Non-controlling Interest (NCI)</h4>
+          <ul class="ar"><li>لو الأم مالكة جزء من التابعة (مثلًا 80%)، القوائم المجمعة بتاخد <b>100%</b> من إيرادات ومصروفات التابعة، وبعدين <b>نطرح نصيب الأقلية</b> من صافي الدخل في سطر منفصل.</li></ul>
+          <ul class="en"><li>Consolidated statements include <b>100%</b> of the subsidiary's revenues & expenses, then <b>subtract the NCI share</b> of net income as a separate line.</li></ul>
+          <div class="ex"><span class="ar">مثال المحاضرة (Preston تملك 90% من Stone):</span><span class="en">Lecture example (Preston owns 90% of Stone):</span>
+          <div class="tw"><table><tr><td>Revenues (both companies)</td><td class="n">$240.0</td></tr><tr><td>Expenses (both companies)</td><td class="n">(175.0)</td></tr><tr class="sub"><td>Net income</td><td class="n">65.0</td></tr><tr><td>Less: NCI (10% of Stone's income)</td><td class="n">(1.5)</td></tr><tr class="tot"><td>Net income attributable to Preston</td><td class="n">$63.5</td></tr></table></div></div>
+        </div></details>
+
+        <details id="c2-oci"><summary><span class="ar">Comprehensive Income و OCI + إدارة الأرباح</span><span class="en">Comprehensive income, OCI + Earnings management</span><span class="tag">L6</span></summary><div class="dc">
+          <div class="f">Comprehensive income = Net income + Other comprehensive income (OCI)</div>
+          <ul class="ar"><li><b>Comprehensive income</b> = التغير في حقوق الملكية من معاملات مع <b>غير الملاك</b>.</li><li>أي مكسب/خسارة بيدخل OCI <b>ما بيدخلش</b> صافي الدخل.</li></ul>
+          <ul class="en"><li><b>Comprehensive income</b> = change in equity from transactions with <b>non-owners</b>.</li><li>A gain/loss included in OCI is <b>not</b> reported in net income.</li></ul>
+          <div class="mini"><h4><span class="ar">مصادر الـ OCI (احفظهم 5)</span><span class="en">OCI sources (memorize 5)</span></h4><p>1. Certain foreign currency gains/losses<br>2. Gains/losses on <b>available-for-sale</b> debt securities<br>3. Certain gains/losses on retirement (pension) plans<br>4. Fair value adjustments on a firm's <b>own debt</b><br>5. Revaluation surplus</p></div>
+          <div class="grid2" style="margin-top:12px">
+            <div class="mini"><h4>Single-statement format</h4><p class="ar">NI و OCI في قائمة واحدة والسطر الأخير Comprehensive income.</p><p class="en">NI and OCI together; bottom line = comprehensive income.</p></div>
+            <div class="mini"><h4>Two-statement format</h4><p class="ar">قائمة دخل عادية، وبعدها على طول قائمة Comprehensive income تبدأ بـ NI.</p><p class="en">Traditional income statement, immediately followed by a statement starting with NI.</p></div>
+          </div>
+          <div class="ex">Meta 2022 ($M): Net income 23,200 − FX translation 1,184 − unrealized AFS loss 1,653 = <b>Comprehensive income 20,363</b></div>
+          <h4>Earnings Management</h4>
+          <ul class="ar"><li>استخدام <b>مرونة المعايير</b> عشان "تدير" الربح المعلن وتوصل لنتيجة معينة.</li><li><b>الدوافع:</b> تحقيق توقعات المحللين والسوق · زيادة مكافآت الإدارة المربوطة بأهداف ربح.</li><li><b>الأساليب:</b> تقديرات شخصية مبالغ فيها (ديون معدومة، ضمانات) · أخطاء صغيرة مقصودة مجموعها يبقى جوهري.</li></ul>
+          <ul class="en"><li>Using <b>flexibility in accounting rules</b> to intentionally manage reported profits.</li><li><b>Motives:</b> meet analysts' forecasts & market expectations · increase bonuses tied to profit targets.</li><li><b>Techniques:</b> subjective over-estimates (bad debts, warranties) · many small intentional errors that are material in aggregate.</li></ul>
+        </div></details>
+      </div>
+    </div>
+
+    <!-- CH3 -->
+    <div class="chapter">
+      <div class="chhead c3"><small>CHAPTER 3 · Lectures 7–9</small><h3>Structure of the Balance Sheet</h3></div>
+      <div class="chbody">
+
+        <details id="c3-el" open><summary><span class="ar">عناصر الميزانية والتصنيف</span><span class="en">Balance sheet elements & classification</span><span class="tag">L7</span></summary><div class="dc">
+          <div class="grid3">
+            <div class="mini"><h4>Assets</h4><p class="ar">حق حالي للمنشأة في منفعة اقتصادية.</p><p class="en">A present right to an economic benefit.</p></div>
+            <div class="mini"><h4>Liabilities</h4><p class="ar">التزام حالي بتحويل منفعة اقتصادية.</p><p class="en">A present obligation to transfer an economic benefit.</p></div>
+            <div class="mini"><h4>Equity</h4><p class="ar">الباقي من الأصول بعد طرح الالتزامات.</p><p class="en">Residual interest after deducting liabilities.</p></div>
+          </div>
+          <div class="f">ASSETS = LIABILITIES + EQUITY</div>
+          <ul class="ar"><li><b>Current</b> = يتحول لكاش / يتسدد خلال <b>12 شهر أو الدورة التشغيلية أيهما أطول</b>. أي حاجة تانية = <b>Noncurrent</b>.</li><li><b>Equity:</b> Common stock (القيمة الاسمية) + APIC (الزيادة عن القيمة الاسمية) + Retained earnings (الأرباح المتراكمة − التوزيعات المتراكمة).</li></ul>
+          <ul class="en"><li><b>Current</b> = converted to cash / settled within <b>12 months or the operating cycle, if longer</b>. All else = <b>noncurrent</b>.</li><li><b>Equity:</b> common stock (par) + APIC (excess over par) + retained earnings (cumulative earnings − cumulative dividends).</li></ul>
+        </div></details>
+
+        <details id="c3-meas"><summary><span class="ar">أسس القياس الخمسة (Measurement bases)</span><span class="en">The 5 measurement bases</span><span class="tag">L7</span></summary><div class="dc">
+          <div class="grid2">
+            <div class="mini"><h4>1. Historical Cost</h4><p class="ar">سعر الشراء الأصلي — موضوعي وقابل للتحقق. مثال: الأرض، المعدات (شامل مصاريف التركيب).</p><p class="en">Original acquisition price — objective & verifiable. E.g., land, equipment (incl. installation).</p></div>
+            <div class="mini"><h4>2. Current Replacement Cost</h4><p class="ar">المبلغ اللازم لاستبدال الأصل بأسعار النهارده، ناقص مجمع الإهلاك.</p><p class="en">Amount to replace the asset at current prices, less accumulated depreciation.</p></div>
+            <div class="mini"><h4>3. Net Realizable Value (NRV)</h4><p class="ar">سعر البيع المتوقع − تكاليف الإكمال والتخلص والنقل. مثال: مخزون تالف أو متقادم.</p><p class="en">Expected selling price − costs of completion, disposal, transport. E.g., damaged inventory.</p></div>
+            <div class="mini"><h4>4. Present Value (PV)</h4><p class="ar">القيمة الحالية للتدفقات المستقبلية المخصومة. مثال: السندات، التزامات المعاشات.</p><p class="en">Discounted future cash flows. E.g., bonds payable, pension obligations.</p></div>
+            <div class="mini"><h4>5. Fair Value</h4><p class="ar">سعر <b>الخروج (Exit price)</b>: اللي هتاخده لو بعت الأصل أو تدفعه لنقل الالتزام في معاملة منظمة. مثال: الأسهم والسندات والمشتقات.</p><p class="en"><b>Exit price</b> received to sell an asset / paid to transfer a liability in an orderly transaction. E.g., stocks, bonds, derivatives.</p></div>
+          </div>
+        </div></details>
+
+        <details id="c3-ca"><summary><span class="ar">الأصول — كل بند بيتقاس بإيه</span><span class="en">Assets — how each item is measured</span><span class="tag">L8</span></summary><div class="dc">
+          <div class="tw" id="valtable"><table>
+            <tr><th>Item</th><th>Presented at</th><th>Note</th></tr>
+            <tr class="sub"><td colspan="3">Current assets</td></tr>
+            <tr><td>Cash & cash equivalents</td><td>Face value</td><td>Equivalents: savings accounts, CDs (highly liquid)</td></tr>
+            <tr><td>Short-term investments</td><td><b>Fair value</b></td><td>Treasury bills, notes</td></tr>
+            <tr><td>Accounts receivable</td><td><b>Net realizable value</b></td><td>After allowance for doubtful accounts</td></tr>
+            <tr><td>Inventory</td><td><b>Lower of cost or NRV</b></td><td>Mfg: raw materials, WIP, finished goods; retail: merchandise</td></tr>
+            <tr class="sub"><td colspan="3">Noncurrent assets</td></tr>
+            <tr><td>PP&E</td><td><b>Historical cost − accumulated depreciation</b></td><td>Impairment → lower fair value, loss on I/S</td></tr>
+            <tr><td>Operating lease (ROU) assets</td><td><b>PV of lease payments</b> + initial direct costs + prepayments</td><td>Depreciated over lease term</td></tr>
+            <tr><td>Long-term investments</td><td><b>Fair value</b></td><td>Shares/bonds held &gt; 1 year</td></tr>
+            <tr><td>Deferred tax asset</td><td>—</td><td>Reduces future taxable income (e.g., doubtful-debt provision not yet deductible)</td></tr>
+            <tr><td>Goodwill</td><td>Cost (<b>no amortization</b>)</td><td>Only from acquisition price &gt; net fair value</td></tr>
+            <tr><td>Intangible assets</td><td><b>Net of accumulated amortization</b></td><td>Copyrights, patents, trademarks</td></tr>
+          </table></div>
+          <div class="trap"><span class="ar">⚠️ Impairment = انخفاض <b>غير متوقع ودائم</b> في قيمة الأصل الثابت تحت قيمته الدفترية (تلف، تقادم، ظروف سوق) والخسارة بتروح <b>قائمة الدخل</b>.</span><span class="en">⚠️ Impairment = an <b>unexpected and permanent</b> drop below book value (damage, obsolescence, market) — loss goes to the <b>income statement</b>.</span></div>
+        </div></details>
+
+        <details id="c3-li"><summary><span class="ar">الالتزامات</span><span class="en">Liabilities</span><span class="tag">L9</span></summary><div class="dc">
+          <div class="tw"><table>
+            <tr><th>Item</th><th>Presented at</th><th>Note</th></tr>
+            <tr class="sub"><td colspan="3">Current liabilities (due within 1 year)</td></tr>
+            <tr><td>Accounts payable</td><td>Historical cost</td><td>Owed to suppliers (30–90 days)</td></tr>
+            <tr><td>Current portion of LTD</td><td>—</td><td>Part of long-term debt due within 1 year</td></tr>
+            <tr><td>Accrued liabilities</td><td>Historical cost</td><td>Incurred not yet paid: wages, interest</td></tr>
+            <tr class="sub"><td colspan="3">Noncurrent liabilities (due after 1 year)</td></tr>
+            <tr><td>Long-term debt</td><td>Amount (proceeds) received at issue</td><td>Notes, bonds, bank loans</td></tr>
+            <tr><td>Operating lease liabilities</td><td><b>PV of remaining payments</b></td><td>e.g., 3 × $10,000 = $30,000 → shown at PV ≈ $27,000</td></tr>
+            <tr><td>Deferred tax liabilities</td><td>—</td><td>Taxes owed later; from temporary (timing) differences</td></tr>
+            <tr><td>Other</td><td>—</td><td>Defined benefit pension, postretirement health care</td></tr>
+          </table></div>
+          <div class="ex"><span class="ar">مثال القرض $500,000 على 5 سنين بالتساوي:</span><span class="en">$500,000 loan amortized equally over 5 years:</span>
+          <div class="tw"><table><tr><th></th><th class="n">Y1</th><th class="n">Y2</th><th class="n">Y3</th><th class="n">Y4</th><th class="n">Y5</th></tr>
+          <tr><td>Current portion of LTD</td><td class="n">100,000</td><td class="n">100,000</td><td class="n">100,000</td><td class="n">100,000</td><td class="n">100,000</td></tr>
+          <tr><td>Long-term debt (noncurrent)</td><td class="n">400,000</td><td class="n">300,000</td><td class="n">200,000</td><td class="n">100,000</td><td class="n">0</td></tr></table></div></div>
+        </div></details>
+
+        <details id="c3-eq"><summary><span class="ar">حقوق الملكية</span><span class="en">Stockholders' equity</span><span class="tag">L9</span></summary><div class="dc">
+          <ul class="ar">
+            <li><b>Authorization:</b> ممكن الشركة يبقى مسموح لها تصدر أسهم (زي preferred) وما تصدرش — بتظهر برصيد صفر للعلم.</li>
+            <li><b>Common stock:</b> القيمة الاسمية (<b>Par value</b>) للأسهم المصدرة والقائمة. الـ Par قيمة رمزية في عقد التأسيس، أصلها كان لحماية الدائنين، ومالهاش أهمية اقتصادية النهارده.</li>
+            <li><b>APIC:</b> اللي دفعه المستثمرين <b>فوق</b> القيمة الاسمية. مثال Motorola: par $0.01 ← APIC $987M مقابل Common stock $2M.</li>
+            <li><b>No-par stock:</b> كل المتحصلات تروح Common stock ومفيش APIC.</li>
+            <li><b>Treasury stock:</b> أسهم الشركة اشترتها تاني من السوق — <b>Contra-equity</b> (بتقلل حقوق الملكية) وبتقلل عدد الأسهم القائمة.</li>
+            <li><b>Retained earnings:</b> بيزيد بصافي الربح، ويقل بصافي الخسارة و<b>التوزيعات المعلنة</b>.</li>
+          </ul>
+          <ul class="en">
+            <li><b>Authorization:</b> firms may be authorized to issue stock (e.g., preferred) but don't — shown at zero.</li>
+            <li><b>Common stock:</b> <b>par value</b> of shares issued & outstanding. Par is nominal, historically to protect creditors; little economic meaning today.</li>
+            <li><b>APIC:</b> amount paid <b>in excess</b> of par. Motorola: par $0.01 → APIC $987M vs common stock $2M.</li>
+            <li><b>No-par stock:</b> all proceeds go to common stock; no APIC.</li>
+            <li><b>Treasury stock:</b> repurchased shares — <b>contra-equity</b>; reduces outstanding shares.</li>
+            <li><b>Retained earnings:</b> + net income, − net loss, − <b>dividends declared</b>.</li>
+          </ul>
+          <div class="f">Ending RE = Beginning RE + Net income − Dividends declared</div>
+        </div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTIONS SOLVED -->
+<section id="sections">
+  <div class="wrap">
+    <div class="sh"><div class="ic">✍️</div><div><h2><span class="ar">السكاشن + تمارين المحاضرات — محلولة خطوة بخطوة</span><span class="en">Sections + lecture exercises — solved step by step</span></h2><p><span class="ar">حاول تحل الأول، وبعدين دوس "اظهر الحل".</span><span class="en">Try first, then press "Show solution".</span></p></div></div>
+
+    <!-- Section 1 MCQ -->
+    <h3 class="sub" id="s1">Section 1 — Chapter 1 MCQ <span class="score" id="score">0 / 10</span></h3>
+    <div id="mcqs"></div>
+
+    <!-- Section 2 -->
+    <h3 class="sub" id="s2">Section 2 — Decoding the Annual Report</h3>
+    <div class="q">
+      <div class="qh"><span class="qn">S2</span><h4><span class="ar">نشاط: مكونات التقرير السنوي لشركة مصرية</span><span class="en">Activity: components of an Egyptian annual report</span></h4></div>
+      <p class="ar">الهدف: تلاقي مكونات تقرير سنوي حقيقي (زي Telecom Egypt) وتربطها بشابتر 1.</p><p class="en">Goal: identify the components of a real annual report (e.g., Telecom Egypt) and link them to Ch.1.</p>
+      <button class="showbtn"><span class="ar">اظهر الحل</span><span class="en">Show solution</span></button>
+      <div class="sol"><div class="tw"><table>
+        <tr><th>Component</th><th>What to look for</th><th>Ch.1 link</th></tr>
+        <tr><td>Financial statements</td><td>Balance sheet, income statement, cash flows, equity statement</td><td>Wealth & changes in wealth</td></tr>
+        <tr><td>Notes</td><td>Accounting policies + line-item details</td><td>Faithful representation, understandability</td></tr>
+        <tr><td>Auditor's opinion</td><td>Independent firm's report</td><td>Verifiability, reduces information asymmetry</td></tr>
+        <tr><td>MD&A</td><td>Management's letter on results</td><td>Voluntary disclosure, predictive value</td></tr>
+      </table></div></div>
+    </div>
+
+    <!-- Section 3 -->
+    <h3 class="sub" id="s3">Section 3 — Cash vs Accrual</h3>
+
+    <div class="q">
+      <div class="qh"><span class="qn">S3-1</span><h4>Gee Company</h4><span class="src">Section 3</span></div>
+      <div class="qtext">Nov–Dec 2021: received $36,000 for 1,000 three-year subscriptions at $12/year, starting with the <b>January 2022</b> issue. (a) Subscription revenue in 2021 (accrual)? (b) Cash receipts in 2021?</div>
+      <button class="showbtn"><span class="ar">اظهر الحل</span><span class="en">Show solution</span></button>
+      <div class="sol"><ol class="steps">
+        <li><span class="ar">على الـ Accrual الإيراد بيتسجل لما الخدمة تتقدم. أول عدد هيتبعت يناير 2022 ← مفيش خدمة اتقدمت في 2021.</span><span class="en">Under accrual, revenue is recognized when the service is delivered. First issue is Jan 2022 → nothing delivered in 2021.</span></li>
+        <li><span class="ar">الـ 36,000 كلها تتسجل <b>Unearned revenue</b> (التزام).</span><span class="en">All $36,000 is recorded as <b>unearned revenue</b> (liability).</span></li>
+      </ol><span class="ans">(a) Revenue 2021 = $0 · (b) Cash receipts = $36,000</span></div>
+    </div>
+
+    <div class="q">
+      <div class="qh"><span class="qn">S3-2</span><h4>Dr. Hamilton</h4><span class="src">Section 3</span></div>
+      <div class="qtext">Cash basis; collected $200,000 in 2021. AR: 12/31/2020 = $18,000; 12/31/2021 = $25,000. Unearned revenue: 0 at start; $8,000 at end. Accrual-basis revenue for 2021?</div>
+      <button class="showbtn"><span class="ar">اظهر الحل</span><span class="en">Show solution</span></button>
+      <div class="sol"><ol class="steps">
+        <li><span class="ar">ابدأ بالكاش المحصّل: 200,000.</span><span class="en">Start with cash collected: 200,000.</span></li>
+        <li><span class="ar">زيادة الـ AR (25,000 − 18,000 = 7,000) = إيراد اتكسب ولسه ما اتحصلش ← <b>نزوده</b>.</span><span class="en">Increase in AR (7,000) = earned but not collected → <b>add</b>.</span></li>
+        <li><span class="ar">زيادة الـ Unearned (8,000) = كاش اتقبض لخدمة لسه ما اتقدمتش ← <b>نطرحه</b>.</span><span class="en">Increase in unearned revenue (8,000) = cash received, not yet earned → <b>subtract</b>.</span></li>
+      </ol>
+      <div class="f">Revenue = 200,000 + (25,000 − 18,000) − (8,000 − 0) = 199,000</div>
+      <span class="ans">Accrual revenue = $199,000</span></div>
+    </div>
+
+    <div class="q">
+      <div class="qh"><span class="qn">S3-3</span><h4>Hart Company — Insurance</h4><span class="src">Section 3</span></div>
+      <div class="qtext">Prepaid insurance 12/31/20X0 = $210,000 · Insurance expense 20X1 = $875,000 · Prepaid insurance 12/31/20X1 = $245,000. Total premiums paid in 20X1?</div>
+      <button class="showbtn"><span class="ar">اظهر الحل</span><span class="en">Show solution</span></button>
+      <div class="sol"><ol class="steps">
+        <li><span class="ar">ارسم حساب T للـ Prepaid: رصيد أول + المدفوع − المصروف = رصيد آخر.</span><span class="en">T-account for prepaid: beginning + paid − expense = ending.</span></li>
+        <li><span class="ar">يبقى المدفوع = رصيد آخر + المصروف − رصيد أول.</span><span class="en">So paid = ending + expense − beginning.</span></li>
+      </ol>
+      <div class="f">Paid = 245,000 + 875,000 − 210,000 = 910,000</div>
+      <span class="ans">Premiums paid = $910,000</span></div>
+    </div>
+
+    <div class="q">
+      <div class="qh"><span class="qn">S3-4</span><h4>Kelly Plumbing Supply</h4><span class="src">Section 3 · Lecture 10</span></div>
+      <div class="qtext">December 20X1: cash received from customers $387,000 (includes all $139,000 AR at Nov 30); AR at Dec 31 = $141,000. Cash paid to suppliers $131,000. AP decreased by $19,000; inventory decreased by $39,000. Gross profit for December (accrual)?</div>
+      <button class="showbtn"><span class="ar">اظهر الحل</span><span class="en">Show solution</span></button>
+      <div class="sol"><ol class="steps">
+        <li><b>Sales</b> = Cash collected + Ending AR − Beginning AR = 387,000 + 141,000 − 139,000 = <b>389,000</b></li>
+        <li><b>Purchases</b> = Cash paid − decrease in AP = 131,000 − 19,000 = <b>112,000</b> <span class="ar">(جزء من الكاش راح يسدد ديون قديمة)</span><span class="en">(part of the cash paid old payables)</span></li>
+        <li><b>COGS</b> = Purchases + decrease in inventory = 112,000 + 39,000 = <b>151,000</b></li>
+        <li><b>Gross profit</b> = 389,000 − 151,000</li>
+      </ol><span class="ans">Gross profit = $238,000</span></div>
+    </div>
+
+    <!-- Section 4 -->
+    <h3 class="sub" id="s4">Section 4 — Income Statement Presentation</h3>
+
+    <div class="q">
+      <div class="qh"><span class="qn">S4-1</span><h4>Krewatch, Inc. — classify each event</h4><span class="src">Section 4</span></div>
+      <div class="qtext">1) Sold the accessories manufacturing plant. 2) Restructuring costs $12,562,990 (eliminated middle management). 3) Extinguished $200M bonds — recognized a gain. 4) Wrote off unsalable inventory. 5) Equipment sold at a loss. For each: (a) reporting treatment, (b) in or below income from continuing operations?</div>
+      <button class="showbtn"><span class="ar">اظهر الحل</span><span class="en">Show solution</span></button>
+      <div class="sol"><div class="tw"><table>
+        <tr><th>#</th><th>(a) Treatment</th><th>(b) Where</th></tr>
+        <tr><td>1</td><td><b>Discontinued operations</b> (separate component + strategic shift): operating results + gain/loss on disposal, net of tax</td><td><b>Below</b> continuing ops</td></tr>
+        <tr><td>2</td><td>Unusual/infrequent item — separate line, pre-tax</td><td>Within continuing ops</td></tr>
+        <tr><td>3</td><td>Gain on debt extinguishment — separate line (unusual/infrequent), pre-tax</td><td>Within continuing ops</td></tr>
+        <tr><td>4</td><td>Inventory write-off — separate line (or in COGS), pre-tax</td><td>Within continuing ops</td></tr>
+        <tr><td>5</td><td>Loss on sale of equipment — other gains/losses</td><td>Within continuing ops</td></tr>
+      </table></div>
+      <div class="tip"><span class="ar">💡 القاعدة: الحاجة الوحيدة اللي بتنزل <b>تحت</b> Income from continuing operations هي Discontinued operations. كل الباقي (حتى لو غريب ونادر) جوه.</span><span class="en">💡 Rule: only discontinued operations go <b>below</b> income from continuing operations. Everything else — even unusual — stays inside.</span></div></div>
+    </div>
+
+    <div class="q">
+      <div class="qh"><span class="qn">S4-2</span><h4>Revsine Co. — Discontinued operations</h4><span class="src">Section 4</span></div>
+      <div class="qtext">Plan approved 9/1/20X1; sale expected 3/31/20X2 at an estimated pre-tax <b>gain</b> of $375,000. Loss 1/1–8/31/20X1: $(300,000); loss 9/1–12/31/20X1: $(200,000); expected profit 1/1–3/31/20X2: $400,000. Tax rate 21%. What is reported in 20X1 as discontinued operations (net of tax)?</div>
+      <button class="showbtn"><span class="ar">اظهر الحل</span><span class="en">Show solution</span></button>
+      <div class="sol"><ol class="steps">
+        <li><span class="ar">القرار اتاخد في 20X1 ← نتايج السنة <b>كلها</b> للقطاع (من 1/1) تروح Discontinued: (300,000) + (200,000) = (500,000).</span><span class="en">Decision made in 20X1 → the segment's results for the <b>whole year</b> go to discontinued ops: (300,000) + (200,000) = (500,000).</span></li>
+        <li><span class="ar">المكسب المتوقع 375,000 والربح المتوقع 400,000 في 20X2 <b>ما يتسجلوش</b> (لسه ما اتحققوش). ومفيش impairment لأن المتوقع مكسب.</span><span class="en">Expected gain (375,000) and expected 20X2 profit (400,000) are <b>not recognized</b>. No impairment since a gain is expected.</span></li>
+        <li><span class="ar">بعد الضريبة:</span><span class="en">Net of tax:</span> (500,000) × (1 − 0.21)</li>
+      </ol><span class="ans">Loss from discontinued operations = $(395,000)</span></div>
+    </div>
+
+    <div class="q">
+      <div class="qh"><span class="qn">S4-3</span><h4>Hardrock Mining — recast to multiple-step ($000)</h4><span class="src">Section 4</span></div>
+      <div class="qtext">Single-step: Net sales 5,281,954; COGS 4,765,505; Marketing, admin & other 193,147; Interest 17,143; Other, net 54,529; Taxes 52,842; NI 198,788; RE 1/1 3,046,660; Dividends 100,000. Notes: Other, net includes restructuring charge 8,777 and <b>pre-tax profit 12,000 on discontinued ops</b>; remainder = investment losses. FX loss 55 (immaterial) in marketing. Tax 21%. 10,000,000 shares. Recast as multiple-step with EPS.</div>
+      <button class="showbtn"><span class="ar">اظهر الحل</span><span class="en">Show solution</span></button>
+      <div class="sol"><ol class="steps">
+        <li><span class="ar">فك الـ Other, net: هو مصروف صافي 54,529 = Restructuring 8,777 − ربح discontinued 12,000 + خسائر استثمار X ← X = 57,752.</span><span class="en">Unpack Other, net: net expense 54,529 = restructuring 8,777 − disc. profit 12,000 + investment losses X → X = 57,752.</span></li>
+        <li><span class="ar">ضريبة الـ continuing = 21% من 239,630 = 50,322، وضريبة الـ discontinued = 21% × 12,000 = 2,520 (المجموع 52,842 ✓).</span><span class="en">Tax on continuing = 21% × 239,630 = 50,322; on discontinued = 2,520 (total 52,842 ✓).</span></li>
+        <li><span class="ar">الـ FX loss 55 غير جوهري ← يفضل جوه Marketing. والأرباح المحتجزة تتعرض في قائمة منفصلة.</span><span class="en">FX loss 55 is immaterial → stays in marketing. Retained earnings go to a separate statement.</span></li>
+      </ol>
+      <div class="tw"><table>
+        <tr><td>Net sales</td><td class="n">5,281,954</td></tr>
+        <tr><td>Cost of products sold</td><td class="n">(4,765,505)</td></tr>
+        <tr class="sub"><td>Gross profit</td><td class="n">516,449</td></tr>
+        <tr><td>Marketing, administrative & other</td><td class="n">(193,147)</td></tr>
+        <tr class="sub"><td>Operating income</td><td class="n">323,302</td></tr>
+        <tr><td>Restructuring charge (unusual)</td><td class="n">(8,777)</td></tr>
+        <tr><td>Interest expense</td><td class="n">(17,143)</td></tr>
+        <tr><td>Investment losses</td><td class="n">(57,752)</td></tr>
+        <tr class="sub"><td>Income from continuing ops before tax</td><td class="n">239,630</td></tr>
+        <tr><td>Income tax (21%)</td><td class="n">(50,322)</td></tr>
+        <tr class="sub"><td>Income from continuing operations</td><td class="n">189,308</td></tr>
+        <tr><td>Discontinued ops: 12,000 − 2,520 tax</td><td class="n">9,480</td></tr>
+        <tr class="tot"><td>Net income</td><td class="n">198,788</td></tr>
+        <tr><td class="ind">EPS — continuing (189,308 ÷ 10,000)</td><td class="n">$18.93</td></tr>
+        <tr><td class="ind">EPS — discontinued</td><td class="n">$0.95</td></tr>
+        <tr class="tot"><td>EPS — net income</td><td class="n">$19.88</td></tr>
+      </table></div>
+      <div class="f">Retained earnings 12/31/20X1 = 3,046,660 + 198,788 − 100,000 = 3,145,448</div></div>
+    </div>
+
+    <div class="q">
+      <div class="qh"><span class="qn">S4-4</span><h4>Amiel Company — consolidated (NCI)</h4><span class="src">Section 4</span></div>
+      <div class="qtext">Amiel: sales $20.3M, expenses $11.1M (excluding subsidiary). 80%-owned Talia: sales $7.0M, expenses $3.0M. Ignore taxes. Prepare consolidated income statement.</div>
+      <button class="showbtn"><span class="ar">اظهر الحل</span><span class="en">Show solution</span></button>
+      <div class="sol"><ol class="steps">
+        <li><span class="ar">اجمع 100% من الشركتين (حتى لو مالك 80% بس).</span><span class="en">Combine 100% of both companies (even though only 80% owned).</span></li>
+        <li><span class="ar">نصيب الأقلية = 20% × صافي دخل Talia (7.0 − 3.0 = 4.0) = 0.8.</span><span class="en">NCI = 20% × Talia's NI (4.0) = 0.8.</span></li>
+      </ol>
+      <div class="tw"><table>
+        <tr><td>Sales revenue (20.3 + 7.0)</td><td class="n">$27.3M</td></tr>
+        <tr><td>Expenses (11.1 + 3.0)</td><td class="n">(14.1)</td></tr>
+        <tr class="sub"><td>Consolidated net income</td><td class="n">13.2</td></tr>
+        <tr><td>Less: NI attributable to NCI (20% × 4.0)</td><td class="n">(0.8)</td></tr>
+        <tr class="tot"><td>Net income attributable to Amiel shareholders</td><td class="n">$12.4M</td></tr>
+      </table></div></div>
+    </div>
+
+    <!-- Section 5 -->
+    <h3 class="sub" id="s5">Section 5 — Adjustments & Discontinued Ops</h3>
+
+    <div class="q">
+      <div class="qh"><span class="qn">S5-1</span><h4>Preclosing trial balance → Income statement 20X1</h4><span class="src">Section 5</span></div>
+      <div class="qtext">Sales 425,000 · COGS 276,250 · Salaries 60,000 · Bad debt 18,300 · Rent 40,000 · Insurance 15,000 · Depr. building 6,000 · Depr. equipment 3,000 · Dividends 23,500.<br>a) $5,000 salary advance for 20X2 was debited to salaries expense. b) $15,000 insurance on 1/1/20X1 for 18 months, debited to expense. c) Bad debts = 5% of sales. d) $20,000 dividend declared 12/31, not recorded. Ignore taxes.</div>
+      <button class="showbtn"><span class="ar">اظهر الحل</span><span class="en">Show solution</span></button>
+      <div class="sol"><ol class="steps">
+        <li><b>a)</b> <span class="ar">السلفة مش مصروف (أصل): مرتبات = 60,000 − 5,000 = 55,000.</span><span class="en">Advance is an asset, not expense: salaries = 60,000 − 5,000 = 55,000.</span></li>
+        <li><b>b)</b> <span class="ar">12 شهر من 18 تخص 20X1: 15,000 × 12/18 = 10,000 مصروف، والباقي 5,000 Prepaid.</span><span class="en">12 of 18 months used: 15,000 × 12/18 = 10,000 expense; 5,000 prepaid.</span></li>
+        <li><b>c)</b> <span class="ar">الديون المعدومة = 5% × 425,000 = 21,250 (يعني نزود 2,950).</span><span class="en">Bad debt = 5% × 425,000 = 21,250 (adjust +2,950).</span></li>
+        <li><b>d)</b> <span class="ar">التوزيعات <b>مش مصروف</b> ← ما تدخلش قائمة الدخل (تقلل RE وتعمل Dividends payable).</span><span class="en">Dividends are <b>not an expense</b> → not on the income statement (reduce RE, create dividends payable).</span></li>
+      </ol>
+      <div class="tw"><table>
+        <tr><td>Sales revenue</td><td class="n">425,000</td></tr>
+        <tr><td>Cost of goods sold</td><td class="n">(276,250)</td></tr>
+        <tr class="sub"><td>Gross profit</td><td class="n">148,750</td></tr>
+        <tr><td class="ind">Salaries expense</td><td class="n">55,000</td></tr>
+        <tr><td class="ind">Bad debt expense</td><td class="n">21,250</td></tr>
+        <tr><td class="ind">Rent expense</td><td class="n">40,000</td></tr>
+        <tr><td class="ind">Insurance expense</td><td class="n">10,000</td></tr>
+        <tr><td class="ind">Depreciation — building</td><td class="n">6,000</td></tr>
+        <tr><td class="ind">Depreciation — equipment</td><td class="n">3,000</td></tr>
+        <tr><td>Total operating expenses</td><td class="n">(135,250)</td></tr>
+        <tr class="tot"><td>Net income</td><td class="n">13,500</td></tr>
+      </table></div></div>
+    </div>
+
+    <div class="q">
+      <div class="qh"><span class="qn">S5-2</span><h4>Helen Corporation (AICPA adapted)</h4><span class="src">Section 5</span></div>
+      <div class="qtext">Income before taxes: 20X1 = 2,500,000 (includes gain on sale of division 900,000); 20X0 = 1,200,000. The sold division's contribution to pre-tax income: 20X1 = $640,000 <b>loss</b>; 20X0 = $500,000 <b>loss</b>. Tax 21%. (1) Income from continuing ops after tax for each year? (2) Revised comparative statements.</div>
+      <button class="showbtn"><span class="ar">اظهر الحل</span><span class="en">Show solution</span></button>
+      <div class="sol"><ol class="steps">
+        <li><span class="ar">شيل أثر القسم المباع من الدخل قبل الضريبة: اطرح المكسب، و<b>رجّع</b> الخسارة (لأنها كانت مطروحة).</span><span class="en">Remove the division: subtract the gain and <b>add back</b> its loss.</span></li>
+      </ol>
+      <div class="f">20X1: 2,500,000 − 900,000 + 640,000 = 2,240,000 → × 0.79 = 1,769,600
+20X0: 1,200,000 + 500,000           = 1,700,000 → × 0.79 = 1,343,000</div>
+      <span class="ans">(1) 20X1 = $1,769,600 · 20X0 = $1,343,000</span>
+      <div class="tw"><table>
+        <tr><th></th><th class="n">20X1</th><th class="n">20X0</th></tr>
+        <tr><td>Income from continuing ops before tax</td><td class="n">2,240,000</td><td class="n">1,700,000</td></tr>
+        <tr><td>Income tax (21%)</td><td class="n">(470,400)</td><td class="n">(357,000)</td></tr>
+        <tr class="sub"><td>Income from continuing operations</td><td class="n">1,769,600</td><td class="n">1,343,000</td></tr>
+        <tr><td colspan="3"><b>Discontinued operations:</b></td></tr>
+        <tr><td class="ind">Loss from operations, net of tax (640k × .79 / 500k × .79)</td><td class="n">(505,600)</td><td class="n">(395,000)</td></tr>
+        <tr><td class="ind">Gain on disposal, net of tax (900k × .79)</td><td class="n">711,000</td><td class="n">—</td></tr>
+        <tr><td>Total discontinued operations</td><td class="n">205,400</td><td class="n">(395,000)</td></tr>
+        <tr class="tot"><td>Net income</td><td class="n">1,975,000</td><td class="n">948,000</td></tr>
+      </table></div>
+      <div class="tip"><span class="ar">✅ تشييك: صافي الدخل نفس الرقم الأصلي (1,975,000 و 948,000). إعادة التبويب بتغير <b>العرض</b> بس مش الصافي.</span><span class="en">✅ Check: net income equals the original (1,975,000 & 948,000). Reclassification changes <b>presentation</b>, not the bottom line.</span></div></div>
+    </div>
+
+    <!-- Section 6 -->
+    <h3 class="sub" id="s6">Section 6 — Classified Balance Sheet</h3>
+    <div class="q">
+      <div class="qh"><span class="qn">S6</span><h4>Reagan Company (amounts omitted)</h4><span class="src">Section 6</span></div>
+      <div class="qtext">Accounts payable · Accrued expenses · Acc. depreciation—buildings · Acc. depreciation—machinery & equipment · Bonds payable · Buildings · Cash · Common stock · Contributed capital in excess of par · Current portion of LTD · Deferred tax liability · Finished products inventory · Goodwill · Income taxes payable · Land · Machinery & equipment · Notes payable to banks (short term) · Preferred stock · Prepaid expenses · Raw materials · Retained earnings · Short-term investments · Trade accounts receivable · Trademarks · Work-in-process inventory. Prepare a classified balance sheet.</div>
+      <button class="showbtn"><span class="ar">اظهر الحل</span><span class="en">Show solution</span></button>
+      <div class="sol">
+        <p class="ar">رتّب الأصول المتداولة حسب <b>السيولة</b> (الأسيل الأول)، والمخزون بأنواعه التلاتة تحت عنوان واحد، ومجمع الإهلاك بيتطرح من أصله.</p>
+        <p class="en">Order current assets by <b>liquidity</b>; group the three inventories; deduct accumulated depreciation from its asset.</p>
+        <div class="grid2">
+        <div class="tw"><table>
+          <tr><th colspan="2">ASSETS</th></tr>
+          <tr class="sub"><td colspan="2">Current assets</td></tr>
+          <tr><td class="ind">Cash</td><td class="n">xxx</td></tr>
+          <tr><td class="ind">Short-term investments</td><td class="n">xxx</td></tr>
+          <tr><td class="ind">Trade accounts receivable</td><td class="n">xxx</td></tr>
+          <tr><td class="ind">Inventories: Raw materials · WIP · Finished products</td><td class="n">xxx</td></tr>
+          <tr><td class="ind">Prepaid expenses</td><td class="n">xxx</td></tr>
+          <tr class="sub"><td colspan="2">Property, plant & equipment</td></tr>
+          <tr><td class="ind">Land</td><td class="n">xxx</td></tr>
+          <tr><td class="ind">Buildings − Acc. depreciation</td><td class="n">xxx</td></tr>
+          <tr><td class="ind">Machinery & equip. − Acc. depreciation</td><td class="n">xxx</td></tr>
+          <tr class="sub"><td colspan="2">Intangible assets</td></tr>
+          <tr><td class="ind">Goodwill</td><td class="n">xxx</td></tr>
+          <tr><td class="ind">Trademarks</td><td class="n">xxx</td></tr>
+          <tr class="tot"><td>Total assets</td><td class="n">xxx</td></tr>
+        </table></div>
+        <div class="tw"><table>
+          <tr><th colspan="2">LIABILITIES & EQUITY</th></tr>
+          <tr class="sub"><td colspan="2">Current liabilities</td></tr>
+          <tr><td class="ind">Accounts payable</td><td class="n">xxx</td></tr>
+          <tr><td class="ind">Notes payable to banks (short term)</td><td class="n">xxx</td></tr>
+          <tr><td class="ind">Accrued expenses</td><td class="n">xxx</td></tr>
+          <tr><td class="ind">Income taxes payable</td><td class="n">xxx</td></tr>
+          <tr><td class="ind">Current portion of LTD</td><td class="n">xxx</td></tr>
+          <tr class="sub"><td colspan="2">Noncurrent liabilities</td></tr>
+          <tr><td class="ind">Bonds payable</td><td class="n">xxx</td></tr>
+          <tr><td class="ind">Deferred tax liability</td><td class="n">xxx</td></tr>
+          <tr class="sub"><td colspan="2">Stockholders' equity</td></tr>
+          <tr><td class="ind">Preferred stock</td><td class="n">xxx</td></tr>
+          <tr><td class="ind">Common stock</td><td class="n">xxx</td></tr>
+          <tr><td class="ind">Contributed capital in excess of par</td><td class="n">xxx</td></tr>
+          <tr><td class="ind">Retained earnings</td><td class="n">xxx</td></tr>
+          <tr class="tot"><td>Total liabilities & equity</td><td class="n">xxx</td></tr>
+        </table></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lecture exercises -->
+    <h3 class="sub" id="lx">Lecture Exercises (L6 · L9 · L10)</h3>
+
+    <div class="q">
+      <div class="qh"><span class="qn">L6</span><h4>Operating profit</h4><span class="src">Lecture 6</span></div>
+      <div class="qtext">Sales 12,500,000 · Interest revenue 50,000 · Loss on sale of investments 100,000 · COGS 6,200,000 · Selling 620,000 · G&A 1,520,000 · Interest expense 40,000 · R&D 1,200,000 · Income tax 900,000. Calculate operating profit.</div>
+      <button class="showbtn"><span class="ar">اظهر الحل</span><span class="en">Show solution</span></button>
+      <div class="sol">
+      <div class="f">Operating expenses = 6,200,000 + 620,000 + 1,520,000 + 1,200,000 = 9,540,000
+Operating profit   = 12,500,000 − 9,540,000 = 2,960,000</div>
+      <span class="ans">Operating profit = $2,960,000</span>
+      <div class="trap"><span class="ar">⚠️ Interest revenue و Loss on investments و Interest expense = بنود <b>غير تشغيلية</b> (Other income/expense تحت الـ operating profit)، والضريبة بعدهم.</span><span class="en">⚠️ Interest revenue, loss on investments and interest expense are <b>non-operating</b> (below operating profit); tax comes after them.</span></div></div>
+    </div>
+
+    <div class="q">
+      <div class="qh"><span class="qn">L10-A</span><h4>Delta Manufacturing — multiple-step income statement (EGP)</h4><span class="src">Lecture 10 (mid review)</span></div>
+      <div class="qtext">Sales 1,850,000 · COGS 1,120,000 · Selling 180,000 · Admin 130,000 · Interest exp. 25,000 · Dividend income 8,000 · Gain on sale of equipment 12,000 · Loss on fire (unusual) 20,000 · Income tax 82,000 · Loss from discontinued ops (net) 15,000 · NCI 10,000 · OCI (unrealized gain) 6,000 · 100,000 shares.</div>
+      <button class="showbtn"><span class="ar">اظهر الحل</span><span class="en">Show solution</span></button>
+      <div class="sol"><div class="tw"><table>
+        <tr><td>Sales revenue</td><td class="n">1,850,000</td></tr>
+        <tr><td>Cost of goods sold</td><td class="n">(1,120,000)</td></tr>
+        <tr class="sub"><td>Gross profit</td><td class="n">730,000</td></tr>
+        <tr><td class="ind">Selling expenses</td><td class="n">(180,000)</td></tr>
+        <tr><td class="ind">Administrative expenses</td><td class="n">(130,000)</td></tr>
+        <tr class="sub"><td>Operating income</td><td class="n">420,000</td></tr>
+        <tr><td class="ind">Dividend income</td><td class="n">8,000</td></tr>
+        <tr><td class="ind">Gain on sale of equipment</td><td class="n">12,000</td></tr>
+        <tr><td class="ind">Interest expense</td><td class="n">(25,000)</td></tr>
+        <tr><td class="ind">Loss on fire (unusual)</td><td class="n">(20,000)</td></tr>
+        <tr class="sub"><td>Income before income tax</td><td class="n">395,000</td></tr>
+        <tr><td>Income tax expense</td><td class="n">(82,000)</td></tr>
+        <tr class="sub"><td>Income from continuing operations</td><td class="n">313,000</td></tr>
+        <tr><td>Discontinued operations, net of tax</td><td class="n">(15,000)</td></tr>
+        <tr class="tot"><td>Net income</td><td class="n">298,000</td></tr>
+        <tr><td>Less: NI attributable to NCI</td><td class="n">(10,000)</td></tr>
+        <tr class="tot"><td>Net income attributable to parent</td><td class="n">288,000</td></tr>
+        <tr><td class="ind">EPS (288,000 ÷ 100,000)*</td><td class="n">2.88</td></tr>
+        <tr><td class="ind">Comprehensive income (298,000 + OCI 6,000)*</td><td class="n">304,000</td></tr>
+      </table></div>
+      <p style="font-size:.85rem;color:var(--muted)"><span class="ar">* الدكتور وقف عند 288,000. الـ EPS والـ Comprehensive income حسبتهم زيادة لو اتسألوا — والـ OCI <b>مش</b> بيدخل صافي الدخل.</span><span class="en">* The doctor's slide stops at 288,000. EPS and comprehensive income are extras in case they're asked — OCI is <b>not</b> part of net income.</span></p></div>
+    </div>
+
+    <div class="q">
+      <div class="qh"><span class="qn">L10-B</span><h4>Sky Electronics — classified balance sheet (EGP)</h4><span class="src">Lecture 10 (mid review)</span></div>
+      <div class="qtext">Cash 155,000 · AR 185,000 · Allowance 5,000 · Inventory 240,000 · ST investments 60,000 · Prepaid insurance 10,000 · Land 120,000 · Buildings 600,000 · AD–Bldg 150,000 · Equipment 350,000 · AD–Equip 100,000 · Intangibles (net) 40,000 · AP 115,000 · Accrued 25,000 · Notes payable LT 200,000 · Current portion NP 30,000 · DTL 20,000 · Common stock 300,000 · APIC 50,000 · RE 285,000.</div>
+      <button class="showbtn"><span class="ar">اظهر الحل</span><span class="en">Show solution</span></button>
+      <div class="sol"><div class="grid2">
+        <div class="tw"><table>
+          <tr class="sub"><td colspan="2">Current assets</td></tr>
+          <tr><td class="ind">Cash & equivalents</td><td class="n">155,000</td></tr>
+          <tr><td class="ind">Short-term investments</td><td class="n">60,000</td></tr>
+          <tr><td class="ind">AR 185,000 − allowance 5,000</td><td class="n">180,000</td></tr>
+          <tr><td class="ind">Inventory</td><td class="n">240,000</td></tr>
+          <tr><td class="ind">Prepaid insurance</td><td class="n">10,000</td></tr>
+          <tr><td>Total current assets</td><td class="n">645,000</td></tr>
+          <tr class="sub"><td colspan="2">Noncurrent assets</td></tr>
+          <tr><td class="ind">Land</td><td class="n">120,000</td></tr>
+          <tr><td class="ind">Buildings 600,000 − 150,000</td><td class="n">450,000</td></tr>
+          <tr><td class="ind">Equipment 350,000 − 100,000</td><td class="n">250,000</td></tr>
+          <tr><td class="ind">Intangible assets (net)</td><td class="n">40,000</td></tr>
+          <tr><td>Total noncurrent assets</td><td class="n">860,000</td></tr>
+          <tr class="tot"><td>Total assets</td><td class="n">1,505,000</td></tr>
+        </table></div>
+        <div class="tw"><table>
+          <tr class="sub"><td colspan="2">Current liabilities</td></tr>
+          <tr><td class="ind">Accounts payable</td><td class="n">115,000</td></tr>
+          <tr><td class="ind">Accrued liabilities</td><td class="n">25,000</td></tr>
+          <tr><td class="ind">Current portion of notes payable</td><td class="n">30,000</td></tr>
+          <tr><td>Total current liabilities</td><td class="n">170,000</td></tr>
+          <tr class="sub"><td colspan="2">Noncurrent liabilities</td></tr>
+          <tr><td class="ind">Notes payable – long term</td><td class="n">200,000</td></tr>
+          <tr><td class="ind">Deferred tax liability</td><td class="n">20,000</td></tr>
+          <tr><td>Total liabilities</td><td class="n">390,000</td></tr>
+          <tr class="sub"><td colspan="2">Stockholders' equity</td></tr>
+          <tr><td class="ind">Common stock, EGP 10 par</td><td class="n">300,000</td></tr>
+          <tr><td class="ind">Additional paid-in capital</td><td class="n">50,000</td></tr>
+          <tr><td class="ind">Retained earnings</td><td class="n">285,000</td></tr>
+          <tr><td>Total equity</td><td class="n">635,000</td></tr>
+          <tr class="tot"><td>Total liabilities & equity</td><td class="n">1,505,000</td></tr>
+        </table></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEAT SHEET -->
+<section id="cheat">
+  <div class="wrap">
+    <div class="sh"><div class="ic">⚡</div><div><h2><span class="ar">ملخص كل القوانين</span><span class="en">All formulas — cheat sheet</span></h2><p><span class="ar">ده اللي تبص عليه آخر نص ساعة قبل الامتحان.</span><span class="en">What to look at in the last 30 minutes before the exam.</span></p></div></div>
+    <div class="cheat">
+      <div class="fc"><h4>① Accounting equation</h4><div class="f">Assets = Liabilities + Equity
+Net assets = Assets − Liabilities</div><p class="ar">الدخل بيزود صافي الأصول وحقوق الملكية بنفس القيمة.</p><p class="en">Income raises net assets and equity by the same amount.</p></div>
+      <div class="fc"><h4>② Accrual sales from cash</h4><div class="f">Sales = Cash collected
+      + Ending AR − Beginning AR</div><p class="ar">وفي الخدمات: اطرح الزيادة في الـ Unearned revenue.</p><p class="en">For services: subtract the increase in unearned revenue.</p></div>
+      <div class="fc"><h4>③ Purchases from cash</h4><div class="f">Purchases = Cash paid to suppliers
+          + Ending AP − Beginning AP</div><p class="ar">لو الـ AP قل ← اطرح النقص.</p><p class="en">If AP decreased → subtract the decrease.</p></div>
+      <div class="fc"><h4>④ Cost of goods sold</h4><div class="f">COGS = Beginning Inv + Purchases − Ending Inv
+     = Purchases + decrease in inventory</div></div>
+      <div class="fc"><h4>⑤ Gross profit</h4><div class="f">Gross profit = Sales − COGS</div></div>
+      <div class="fc"><h4>⑥ Operating profit</h4><div class="f">Operating profit = Sales − COGS
+  − Selling − G&A − R&D</div><p class="ar">الفوايد ومكاسب/خساير الاستثمار <b>برا</b> التشغيل.</p><p class="en">Interest and investment gains/losses are <b>outside</b> operations.</p></div>
+      <div class="fc"><h4>⑦ Prepaid ↔ expense ↔ cash</h4><div class="f">Cash paid = Ending prepaid + Expense
+          − Beginning prepaid</div><p class="ar">نفس الفكرة لأي حساب T.</p><p class="en">Same T-account logic for any account.</p></div>
+      <div class="fc"><h4>⑧ Time-based allocation</h4><div class="f">Expense = Total × (months used ÷ total months)
+Revenue = Total × (periods delivered ÷ total)</div></div>
+      <div class="fc"><h4>⑨ Interest payable at maturity</h4><div class="f">Interest(t) = (Principal + accrued interest) × r</div><p>Canterbury: 10,000 → 11,000 → 12,100</p></div>
+      <div class="fc"><h4>⑩ After-tax amount</h4><div class="f">After-tax = Pre-tax × (1 − tax rate)</div><p class="ar">لكل بنود Discontinued operations.</p><p class="en">For all discontinued operations items.</p></div>
+      <div class="fc"><h4>⑪ Gain/loss on disposal</h4><div class="f">Gain (loss) = Net sale price − BV of net assets</div></div>
+      <div class="fc"><h4>⑫ Impairment (held for sale)</h4><div class="f">If BV > (FV − Cost to sell):
+Impairment = BV − (FV − Cost to sell)</div><p class="ar">المكسب المتوقع ما يتسجلش.</p><p class="en">Expected gains are never recognized early.</p></div>
+      <div class="fc"><h4>⑬ Continuing ops (remove division)</h4><div class="f">Cont. pre-tax = Reported pre-tax
+  − division gain + division loss</div></div>
+      <div class="fc"><h4>⑭ Basic EPS</h4><div class="f">EPS = Net income ÷ Weighted-avg common shares</div><p class="ar">Diluted = لو كل الأسهم المحتملة اتحولت.</p><p class="en">Diluted = as if all potential shares converted.</p></div>
+      <div class="fc"><h4>⑮ Non-controlling interest</h4><div class="f">NCI share = NCI % × Subsidiary NI
+NI to parent = Consolidated NI − NCI share</div></div>
+      <div class="fc"><h4>⑯ Comprehensive income</h4><div class="f">Comprehensive income = Net income + OCI</div></div>
+      <div class="fc"><h4>⑰ Retained earnings</h4><div class="f">Ending RE = Beginning RE + NI − Dividends</div><p class="ar">التوزيعات مش مصروف.</p><p class="en">Dividends are not an expense.</p></div>
+      <div class="fc"><h4>⑱ Stock issuance</h4><div class="f">Common stock = Par × shares issued
+APIC = (Issue price − Par) × shares</div></div>
+      <div class="fc"><h4>⑲ Net carrying amounts</h4><div class="f">Net AR  = AR − Allowance (NRV)
+Net PP&E = Cost − Accumulated depreciation
+Current portion LTD = principal due in next 12 months</div></div>
+    </div>
+
+    <h3 class="sub" id="checklist"><span class="ar">Checklist — علّم على اللي فاهمه ✔</span><span class="en">Checklist — tick what you've got ✔</span></h3>
+    <ul class="check" id="checkList">
+      <li><span class="box"></span><span class="t"><span class="ar">5 استخدامات للقوائم (Analytical tool, report card, early warning, prediction, accountability)</span><span class="en">5 uses of FS (analytical tool, report card, early warning, prediction, accountability)</span></span></li>
+      <li><span class="box"></span><span class="t"><span class="ar">Information asymmetry و Contract efficiency</span><span class="en">Information asymmetry & contract efficiency</span></span></li>
+      <li><span class="box"></span><span class="t"><span class="ar">مستخدمي القوائم وكل واحد بيستخدمها في إيه</span><span class="en">Users of FS and what each uses them for</span></span></li>
+      <li><span class="box"></span><span class="t"><span class="ar">فوايد وتكاليف الإفصاح (capital, suppliers / litigation, political, competitive)</span><span class="en">Disclosure benefits & costs</span></span></li>
+      <li><span class="box"></span><span class="t"><span class="ar">Relevance (Predictive, Confirmatory, Materiality)</span><span class="en">Relevance (predictive, confirmatory, materiality)</span></span></li>
+      <li><span class="box"></span><span class="t"><span class="ar">Faithful Rep. (Complete, Neutral, Free from error) + الـ 4 enhancing</span><span class="en">Faithful rep. (complete, neutral, error-free) + 4 enhancing</span></span></li>
+      <li><span class="box"></span><span class="t"><span class="ar">SEC vs FASB vs IASB + IFRS (principles) vs GAAP (rules)</span><span class="en">SEC vs FASB vs IASB + IFRS (principles) vs GAAP (rules)</span></span></li>
+      <li><span class="box"></span><span class="t"><span class="ar">مصر: EAS · FRA 2009 · ESAA 1946 · EGX</span><span class="en">Egypt: EAS · FRA 2009 · ESAA 1946 · EGX</span></span></li>
+      <li><span class="box"></span><span class="t"><span class="ar">مكونات التقرير السنوي الـ 4 + نوعين الـ Notes</span><span class="en">4 annual report components + 2 types of notes</span></span></li>
+      <li><span class="box"></span><span class="t"><span class="ar">Cash vs Accrual + Traceable vs Period costs</span><span class="en">Cash vs accrual + traceable vs period costs</span></span></li>
+      <li><span class="box"></span><span class="t"><span class="ar">مثال Canterbury (الإيراد 100/سنة والفوايد المركبة)</span><span class="en">Canterbury (100/yr revenue, compounding interest)</span></span></li>
+      <li><span class="box"></span><span class="t"><span class="ar">هيكل Multiple-step income statement</span><span class="en">Multiple-step income statement skeleton</span></span></li>
+      <li><span class="box"></span><span class="t"><span class="ar">Unusual items جوه continuing ops</span><span class="en">Unusual items inside continuing ops</span></span></li>
+      <li><span class="box"></span><span class="t"><span class="ar">Discontinued ops: شروط + Sold vs Held for sale</span><span class="en">Discontinued ops: criteria + sold vs held for sale</span></span></li>
+      <li><span class="box"></span><span class="t"><span class="ar">Basic vs Diluted EPS + NCI</span><span class="en">Basic vs diluted EPS + NCI</span></span></li>
+      <li><span class="box"></span><span class="t"><span class="ar">5 مصادر للـ OCI + single vs two-statement</span><span class="en">5 OCI sources + single vs two-statement</span></span></li>
+      <li><span class="box"></span><span class="t"><span class="ar">Earnings management: دوافع وأساليب</span><span class="en">Earnings management: motives & techniques</span></span></li>
+      <li><span class="box"></span><span class="t"><span class="ar">5 أسس قياس (HC, Replacement, NRV, PV, Fair value)</span><span class="en">5 measurement bases (HC, replacement, NRV, PV, FV)</span></span></li>
+      <li><span class="box"></span><span class="t"><span class="ar">كل أصل بيتقاس بإيه (AR=NRV, Inventory=LCNRV, PP&E=HC−AD...)</span><span class="en">Asset measurement (AR=NRV, inventory=LCNRV, PP&E=HC−AD…)</span></span></li>
+      <li><span class="box"></span><span class="t"><span class="ar">Goodwill (مفيش amortization) + Impairment</span><span class="en">Goodwill (no amortization) + impairment</span></span></li>
+      <li><span class="box"></span><span class="t"><span class="ar">الالتزامات + Current portion of LTD + Lease liabilities (PV)</span><span class="en">Liabilities + current portion of LTD + lease liabilities (PV)</span></span></li>
+      <li><span class="box"></span><span class="t"><span class="ar">حقوق الملكية: Par, APIC, Treasury (contra), RE</span><span class="en">Equity: par, APIC, treasury (contra), RE</span></span></li>
+      <li><span class="box"></span><span class="t"><span class="ar">حليت كل تمارين السكاشن من غير ما أبص</span><span class="en">Solved all section problems without peeking</span></span></li>
+      <li><span class="box"></span><span class="t"><span class="ar">حليت Delta و Sky (مراجعة الدكتور)</span><span class="en">Solved Delta & Sky (doctor's review)</span></span></li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><span class="ar">بالتوفيق في الميد بكره 💪 — ركز في شابتر 2، هو اللي فيه أغلب المسائل.</span><span class="en">Good luck on the mid tomorrow 💪 — focus on Ch.2, where most problems are.</span><br>ACC402 · Financial Reporting · Dr. Mohamed Mahmoud</div>
+</footer>
+<button class="totop" onclick="scrollTo({top:0,behavior:'smooth'})" aria-label="top">↑</button>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v);}catch(e){return null}}
+  // theme
+  function setTheme(t){root.setAttribute('data-theme',t);document.getElementById('themeIc').textContent=t==='dark'?'☀️':'🌙';store('acc402-theme',t);}
+  setTheme(store('acc402-theme')||((window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light'));
+  document.getElementById('themeBtn').onclick=function(){setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark')};
+  // lang
+  function setLang(l){root.lang=l;root.dir=l==='ar'?'rtl':'ltr';store('acc402-lang',l);}
+  setLang(store('acc402-lang')||'ar');
+  document.getElementById('langBtn').onclick=function(){setLang(root.lang==='ar'?'en':'ar')};
+  // solutions
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('.showbtn'); if(!b)return;
+    var s=b.parentElement.querySelector('.sol'); var on=s.classList.toggle('on'); b.classList.toggle('on',on);
+    b.innerHTML=on?'<span class="ar">اخفي الحل</span><span class="en">Hide solution</span>':'<span class="ar">اظهر الحل</span><span class="en">Show solution</span>';
+  });
+  // MCQ
+  var Q=[
+   ["Why are financial statements considered a valuable source of information for investors?",["They guarantee future profits.","They help judge the opportunities and risks of investment alternatives.","They provide exact predictions of market trends.","They eliminate all risks associated with investing."],1,"Without adequate information investors can't judge opportunities and risks. Nothing in accounting guarantees or eliminates risk."],
+   ["Which of the following is NOT listed as a purpose or use of financial statements?",["Analytical tool","Early warning signal","Guaranteed return predictor","Management report card"],2,"The 5 uses: analytical tool, management report card, early warning signal, basis for prediction, measure of accountability."],
+   ["What are the two key economic functions of financial statements?",["Tax evasion and market manipulation","Information Asymmetry and Contract Efficiency","Cost reduction and profit maximization","Regulatory enforcement and auditing"],1,"Lecture 1: information asymmetry + contract efficiency."],
+   ["How do financial statements help reduce \"Information Asymmetry\"?",["By guaranteeing stock price increases.","By transferring business activity information from management to outsiders.","By concealing confidential management decisions.","By allowing managers to alter accounting numbers freely."],1,"Management knows more; FS transfer that information to outsiders."],
+   ["Demand for financial statements exists primarily because of their value in:",["Ensuring companies never go bankrupt.","Providing information on company performance, financial condition","Setting tax rates for all corporate entities.","Eliminating market competition."],1,"Demand = value as information about performance, financial condition and resource stewardship."],
+   ["The supply of financial information is guided and constrained by:",["Government quotas only.","The costs of producing/disseminating it versus the benefits provided.","Stock exchange mandates only.","Unlimited budget allocations."],1,"Supply = cost vs benefit."],
+   ["Which group of users relies on financial statements for investment decisions and proxy contests?",["Lenders and Suppliers","Customers","Shareholders and Investors","Government Regulators"],2,"Proxy contests → shareholders & investors."],
+   ["Managers and employees use financial statements for:",["Lending decisions and covenant compliance.","Performance assessment, compensation contracts, and pension plans.","Mandatory regulatory filings.","Evaluating product warranties"],1,"Lending/covenants = lenders; warranties = customers; mandatory filings = government."],
+   ["Lenders and suppliers primarily examine financial statements to evaluate:",["Corporate voting results.","Lending decisions and debt covenant compliance.","Customer satisfaction rates.","Sustainability reports only."],1,"Lenders & suppliers → lending decisions + covenant compliance."],
+   ["Government and regulatory bodies require financial reporting for:",["Proxy contests and stock trading.","Mandatory reporting, taxing authorities, and regulated industry oversight.","Assessing supplier credit risk.","Internal performance bonuses."],1,"Government → mandatory reporting, taxing authorities, regulated industries."]
+  ];
+  var box=document.getElementById('mcqs'),score=0,answered=0,L='ABCD';
+  Q.forEach(function(q,i){
+    var d=document.createElement('div');d.className='mcq';
+    d.innerHTML='<div class="qq">'+(i+1)+'. '+q[0]+'</div><div class="opts">'+q[1].map(function(o,j){return '<button class="opt" data-j="'+j+'">'+L[j]+') '+o+'</button>'}).join('')+'</div><div class="why">💡 '+q[3]+'</div>';
+    d.querySelectorAll('.opt').forEach(function(b){b.onclick=function(){
+      if(d.classList.contains('done'))return; d.classList.add('done'); answered++;
+      var j=+b.dataset.j; if(j===q[2])score++; else b.classList.add('wrong');
+      d.querySelectorAll('.opt')[q[2]].classList.add('right');
+      document.getElementById('score').textContent=score+' / '+Q.length+(answered===Q.length?(score>=8?' 🔥':' 💪'):'');
+    }});
+    box.appendChild(d);
+  });
+  // checklist
+  var items=[].slice.call(document.querySelectorAll('#checkList li')),saved=(store('acc402-check')||'').split(',');
+  function upd(){var n=items.filter(function(x){return x.classList.contains('done')}).length,p=Math.round(n/items.length*100);
+    document.getElementById('pct').textContent=p+'%';document.getElementById('barFill').style.width=p+'%';
+    store('acc402-check',items.map(function(x,i){return x.classList.contains('done')?i:''}).filter(String).join(','));}
+  items.forEach(function(li,i){if(saved.indexOf(String(i))>-1)li.classList.add('done');li.onclick=function(){li.classList.toggle('done');upd()}});
+  upd();
+})();
+</script>
+</body>
+</html>
