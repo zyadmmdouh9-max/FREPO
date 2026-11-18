@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Feasibility Study Review</title>
+<title>Financial Statements Analysis Review</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -12,7 +12,7 @@
   --ink:#16182b; --ink2:#4a4e68; --muted:#80849c;
   --brand:#2a2f8f; --brand2:#4b52d6; --accent:#f2a516; --accent2:#ffcf5a;
   --ok:#119a62; --ok-bg:#e3f6ec; --bad:#d63a4a; --bad-bg:#fde7e9;
-  --s1:#4b52d6; --s2:#0e9f9a; --s4:#e08a00; --s5:#2f9e44; --sx:#c2417a;
+  --s1:#4b52d6; --s2:#0e9f9a; --s3:#8a3fd1; --s4:#e08a00; --s5:#2f9e44; --sx:#c2417a;
   --shadow:0 1px 2px rgba(22,24,43,.06),0 8px 24px -12px rgba(22,24,43,.18);
   --shadow-lg:0 30px 60px -30px rgba(22,24,43,.35);
   --r:18px; --r-sm:12px;
@@ -23,7 +23,7 @@
   --ink:#eef0ff; --ink2:#b8bce0; --muted:#7f85b3;
   --brand:#9aa1ff; --brand2:#7c84ff; --accent:#ffbe3b; --accent2:#ffd86b;
   --ok:#37d38c; --ok-bg:rgba(55,211,140,.12); --bad:#ff6577; --bad-bg:rgba(255,101,119,.12);
-  --s1:#8b91ff; --s2:#2fd3cc; --s4:#ffb02e; --s5:#5fd36f; --sx:#ff7ab3;
+  --s1:#8b91ff; --s2:#2fd3cc; --s3:#c08bff; --s4:#ffb02e; --s5:#5fd36f; --sx:#ff7ab3;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -14px rgba(0,0,0,.7);
   --shadow-lg:0 30px 70px -30px rgba(0,0,0,.8);
   --grid:rgba(154,161,255,.05);
@@ -315,6 +315,9 @@ footer{padding:30px 0 40px;text-align:center;color:var(--muted);font-size:13px;b
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
+/* formula box */
+.fm{direction:ltr;unicode-bidi:isolate;text-align:left;font-family:"Plus Jakarta Sans","Cairo",sans-serif;font-weight:800;font-size:15.5px;background:var(--surface2);border:1px solid var(--line);border-left:4px solid var(--c);border-radius:12px;padding:11px 16px;margin:8px 0}
+table.cmp.en th,table.cmp.en td{text-align:left}
 ul.ck.no li::before{background:var(--bad);-webkit-mask:none;mask:none;content:"✕";color:var(--bad);background:none;font-size:13px;font-weight:800;top:.1em;width:auto;height:auto}
 
 </style>
@@ -326,754 +329,793 @@ const TF=(q,a,ar,en)=>({t:'tf',q,a:a?0:1,ex:{ar,en}});
 const MC=(q,o,a,ar,en)=>({t:'mc',q,o,a,ex:{ar,en}});
 
 const QUESTIONS = {
-/* ======================= SECTION 1 ======================= */
+/* ======================= SECTION 1 — Introduction ======================= */
 s1:[
-TF("The terms feasibility study and visibility study mean exactly the same thing.",false,
- "لأ خالص. Feasibility = هل المشروع ينفع يتنفذ؟ أما Visibility = الشركة أو المنتج معروف قد إيه في السوق.",
- "No. Feasibility = can the project be done? Visibility = how well-known the business is."),
-TF("Many people mistakenly use the term visibility study when they actually mean feasibility study.",true,
- "صح، ناس كتير بتخلط وتقول visibility وهي قصدها feasibility.",
- "Correct — the two terms are commonly confused."),
-TF("The feasibility study has little impact on determining the success or failure of a project.",false,
- "بالعكس، دراسة الجدوى هي اللي بتحدد المشروع هينجح ولا هيفشل.",
- "Opposite: it determines the project's success or failure."),
-TF("Both national and corporate projects may require feasibility studies.",true,
- "صح، أي مشروع سواء قومي (دولة) أو تبع شركة محتاج دراسة جدوى.",
- "Any project, national or corporate, may need one."),
-TF("A feasibility study can help modify a project to make it more achievable.",true,
- "صح، مش بس بتقول ينفع/مينفعش — ممكن كمان تعدّل المشروع عشان يبقى قابل للتنفيذ.",
- "It can also modify the project so it becomes realizable."),
-TF("In some cases, visibility refers to market visibility — how well-known a product or service is.",true,
- "صح، Market visibility = المنتج أو الخدمة معروفة قد إيه.",
- "Market visibility = how well-known a product/service is."),
-TF("The concept of visibility study focuses on evaluating whether a project can be done effectively.",false,
- "غلط — ده تعريف الـ Feasibility study مش الـ Visibility.",
- "That's the feasibility study, not visibility."),
-TF("The main goal of a visibility study is to calculate project costs.",false,
- "غلط — حساب التكاليف ده شغل الـ Feasibility (الجدوى الاقتصادية).",
- "Costs belong to the feasibility study (economic feasibility)."),
-TF("The main purpose of a visibility study is to determine if a project is possible to implement.",false,
- "غلط — \"هل ممكن يتنفذ\" ده سؤال الـ Feasibility.",
- "'Is it possible to implement' is the feasibility question."),
-TF("A visibility study helps identify a company’s strengths and weaknesses.",true,
- "صح، أول فايدة من فوايد الـ Visibility study.",
- "First benefit of a visibility study."),
-TF("A visibility study can help a company understand its target market better.",true,
- "صح — Understand the target market من فوايدها.",
- "Understanding the target market is a listed benefit."),
-TF("A visibility study has no impact on marketing strategies.",false,
- "غلط — هي بتساعد في Optimize marketing efforts.",
- "It helps optimize marketing efforts."),
-TF("One goal of a visibility study is to improve brand perception.",true,
- "صح — Enhance brand perception.",
- "Enhance brand perception is a goal."),
-TF("Customer engagement is not affected by the visibility of a brand.",false,
- "غلط — كل ما البراند يبان أكتر، تفاعل العملاء بيزيد (Increase customer engagement).",
- "Visibility increases customer engagement."),
-TF("Enhancing brand perception is one of the outcomes of a visibility study.",true,
+MC("Which of the following is NOT listed as a type of financial ratio in the lecture outline?",["Liquidity Ratios","Solvency Ratios","Historical Cost Ratios","Valuation Ratios"],2,
+ "الأنواع الخمسة: Liquidity, Solvency, Profitability, Efficiency, Valuation. مفيش حاجة اسمها Historical Cost Ratios.","The five types are Liquidity, Solvency, Profitability, Efficiency and Valuation."),
+MC("What is the starting point for financial analysis?",["Industry research","The company's financial reports","Economic forecasts","Competitor analysis"],1,
+ "التحليل بيبدأ من التقارير المالية بتاعة الشركة نفسها، وبعدين تكمّلها ببحث عن الصناعة.","It begins with the company's own financial reports."),
+MC("Which group of investors is primarily interested in a company's profitability and share value?",["Debt investors","Equity investors","Regulators","Auditors"],1,
+ "Equity investors (المساهمين) = الربحية وقيمة السهم. Debt investors = قدرة الشركة تسدد الفوايد وأصل الدين.","Equity investors care about profitability & share value."),
+MC("What is the primary role of financial statement analysis?",["To calculate taxes owed by the company","To prepare the company's annual budget","To form predictions about a company's future performance, financial position, and risk factors","To ensure the company follows marketing trends"],2,
+ "الدور الأساسي: نتوقع أداء الشركة ومركزها المالي ومخاطرها في المستقبل — مش حساب الضرايب.","To predict future performance, position and risk."),
+MC("To complement their analysis of a company's financial statements, what should analysts use?",["Only the audited financial statements","Industry and company research","Unaudited management commentary only","Social media trends"],1,
+ "لازم المحلل يكمّل البيانات الداخلية ببحث عن الصناعة والشركة عشان يفهم البيئة الاقتصادية ونموذج البزنس.","Complement with industry & company research."),
+MC("Financial analysis is best defined as the process of:",["Recording the company's daily transactions","Critically examining accounting information in financial statements","Preparing the company's tax returns","Auditing the company's internal controls"],1,
+ "التعريف: فحص نقدي للمعلومات المحاسبية في القوايم المالية، وتقييم العلاقات بين مكوناتها.","Critically examining accounting information in the statements."),
+MC("Debt investors are primarily interested in:",["Profitability and share value","The company's ability to repay interest and principal","The company's marketing strategy","The number of employees"],1,
+ "Debt investors = الأمان المالي: هل الشركة هتقدر تسدد الفوايد وأصل القرض؟","Ability to repay interest and principal (financial safety)."),
+MC("Liquidity ratios measure:",["Long-term debt","Short-term solvency","Market value","Earning ability"],1,
+ "Liquidity = القدرة على سداد الالتزامات قصيرة الأجل (short-term solvency).","Short-term solvency."),
+MC("Solvency ratios focus on:",["Short-term obligations","Long-term debt","Asset utilization","Market value"],1,
+ "Solvency = الديون طويلة الأجل.","Long-term debt."),
+MC("Efficiency ratios are concerned with:",["Asset utilization","Market value","Earning ability","Short-term solvency"],0,
+ "Efficiency = الشركة بتستغل أصولها كويس قد إيه (asset utilization).","Asset utilization."),
+MC("Valuation ratios measure:",["Market value","Asset utilization","Long-term debt","Short-term solvency"],0,
+ "Valuation = القيمة السوقية.","Market value."),
+MC("Which of the following is NOT a primary focus of financial analysis?",["Generating a return on capital at least equal to the cost of capital","Growing operations profitably","Generating sufficient cash flow to meet obligations","Maximizing the number of employees"],3,
+ "التركيز على 3 حاجات: عائد ≥ تكلفة رأس المال، نمو مربح، تدفق نقدي كافي. عدد الموظفين مالوش علاقة.","The 3 focuses are return ≥ cost of capital, profitable growth, enough cash flow."),
+MC("Which of the following is NOT one of the sources of information for financial analysis?",["Audited financial statements","Additional regulatory disclosures","Accompanying management commentary","A competitor's confidential internal budget"],3,
+ "المصادر: القوايم المراجَعة، الإفصاحات التنظيمية، وتعليق الإدارة (غير مراجَع).","Sources: audited statements, regulatory disclosures, management commentary."),
+MC("Vertical analysis is also known as:",["Trend analysis","Common-size analysis","Ratio analysis","Inter-company analysis"],1,
+ "Vertical = Common-size. أما Horizontal = Trend.","Vertical = common-size."),
+TF("Financial analysis is solely a mathematical process of examining numbers in financial statements without considering the external economic environment.",false,
+ "غلط — التحليل بيقيّم أداء الشركة في سياق البيئة الاقتصادية اللي حواليها.","It is done within the context of the economic environment."),
+TF("Equity investors are primarily interested in a company's ability to repay interest and principal.",false,
+ "غلط — ده اهتمام Debt investors. الـ Equity investors يهمهم الربحية وقيمة السهم.","That's debt investors; equity investors care about profit & share value."),
+TF("The primary focus of financial analysis is to assess a company's ability to generate a return on capital that is at least equal to its cost of capital.",true,
+ "صح — دي أول نقطة من نقط التركيز الأساسية.","Correct — the first primary focus."),
+TF("Financial analysis begins with the economic forecasts of the industry rather than the company's own financial reports.",false,
+ "غلط — بيبدأ بالتقارير المالية بتاعة الشركة.","It begins with the company's financial reports."),
+TF("Answers to analytical questions depend solely on numerical results, and the analyst's interpretation is not required.",false,
+ "غلط — الإجابة بتعتمد على الأرقام + تفسير المحلل مع بعض.","They depend on both numbers AND interpretation."),
+TF("Financial analysis involves evaluating the relationships between different components of the financial statements.",true,
+ "صح — جزء من التعريف.","Part of the definition."),
+TF("Debt investors focus on financial safety — the company's ability to repay interest and principal.",true,
  "صح.","Correct."),
-TF("Conducting a visibility study has no effect on a company’s growth.",false,
- "غلط — بتبني أساس قوي للنمو (Strong foundation for growth).",
- "It builds a strong foundation for growth."),
-TF("Understanding the target market is not important for improving visibility.",false,
- "غلط — لازم تفهم جمهورك عشان تعرف تظهر قدامه.",
- "You must understand your market to improve visibility."),
-TF("Competitor analysis helps businesses find market gaps and opportunities.",true,
- "صح — تحليل المنافسين بيكشف الفجوات والفرص في السوق.",
- "It reveals market gaps and opportunities."),
-TF("A SWOT analysis helps identify a business’s internal strengths and weaknesses.",true,
- "صح — S و W داخليين (Internal)، و O و T خارجيين.",
- "S & W are internal; O & T are external."),
-TF("Evaluating current marketing strategies is unnecessary in a visibility study.",false,
- "غلط — تقييم التسويق الحالي جزء أساسي منها.",
- "Evaluating current marketing is essential."),
-TF("Data analysis and reporting help identify trends and insights from the collected data.",true,
- "صح — التحليل بيطلّع الاتجاهات (trends) والأفكار (insights).",
- "Analysis reveals trends and insights."),
-TF("The feasibility study ignores the economic aspects of the project.",false,
- "غلط — فيه Economic feasibility بتدرس التكاليف والفلوس.",
- "Economic feasibility is a core part."),
-TF("Identifying project requirements and success factors is part of a feasibility study.",true,
- "صح.","Correct."),
-TF("A feasibility study does not evaluate whether the project can achieve its objectives.",false,
- "غلط — ده بالظبط شغلها: هل المشروع هيحقق أهدافه؟",
- "That is exactly what it evaluates."),
-TF("The feasibility study cannot identify risks or challenges that may occur.",false,
- "غلط — من أهم أدوارها إنها تكشف المخاطر والتحديات.",
- "Identifying risks is a key role."),
-TF("Conducting a feasibility study increases the chances of project success.",true,
- "صح — بتزوّد فرص النجاح (بس مش بتضمنه 100%).",
- "Increases chances (doesn't guarantee)."),
-TF("A feasibility study should be based only on assumptions without real data.",false,
- "غلط — لازم تعتمد على بيانات حقيقية مش افتراضات وبس.",
- "It must rely on real data."),
-TF("Involving stakeholders like investors, employees, and partners is part of an effective feasibility study.",true,
- "صح — إشراك أصحاب المصلحة بيحسّن جودة الدراسة.",
- "Stakeholders improve study quality."),
-TF("A strong feasibility study analyzes different scenarios and possible outcomes.",true,
- "صح — Scenario analysis علامة الدراسة القوية.",
- "Scenario analysis = strong study."),
-TF("A feasibility study should remain fixed and cannot adapt to changes.",false,
- "غلط — لازم تكون مرنة وتتغير مع الظروف.",
- "It should be flexible and adapt."),
-TF("One goal of a feasibility study is to assess if the project can achieve financial returns.",true,
- "صح — هل المشروع هيكسب فلوس؟",
- "Assessing financial returns is a main goal."),
-TF("The financial results or profits are not considered in a feasibility study.",false,
- "غلط — الأرباح من أهم حاجة بتدرسها.",
- "Profits are central to it."),
-TF("Conducting a visibility study helps businesses understand and improve their market visibility.",true,
- "صح — ده تعريفها ببساطة.","That's its definition."),
-TF("A visibility study should be done randomly without following any structured steps.",false,
- "غلط — ليها 10 خطوات منظمة.","It follows 10 structured steps."),
-TF("Identifying the target audience is not necessary in a visibility study.",false,
- "غلط — دي الخطوة رقم 2.","It's Step 2."),
-TF("Determining the key metrics and indicators helps measure visibility accurately.",true,
- "صح — الخطوة 3: المقاييس بتخليك تقيس بدقة.","Step 3 — accurate measurement."),
-TF("Data collection is not part of the visibility study process.",false,
- "غلط — دي الخطوة رقم 4.","It's Step 4."),
-TF("Analyzing data helps identify patterns, opportunities, and challenges.",true,
- "صح — الخطوة 5 و 6.","Steps 5 & 6."),
-TF("Developing an action plan is unnecessary after identifying challenges.",false,
- "غلط — بعد ما تعرف التحديات لازم تعمل خطة عمل (الخطوة 7).","Step 7 is the action plan."),
-TF("Monitoring, evaluating, and improving are essential to ensure continued visibility success.",true,
- "صح — الخطوات 8 و 9 و 10.","Steps 8–10."),
-TF("A project cannot fail even if it is not completed on time.",false,
- "غلط — التأخير ممكن يفشّل المشروع، وعشان كده فيه Scheduling feasibility.",
- "Delays can fail a project → scheduling feasibility."),
-TF("Technical feasibility focuses on the technological aspects of a project.",true,
- "صح — Technical = التكنولوجيا.","Technical = technology."),
-TF("Technical feasibility is usually conducted by financial analysts.",false,
- "غلط — بيعملها خبراء تقنيين/مهندسين، مش محللين ماليين.",
- "Done by technical experts, not financial analysts."),
-TF("Economic feasibility examines the project’s costs, expenditures, and financial reliability.",true,
- "صح — Economic = فلوس وتكاليف.","Economic = money & costs."),
-TF("Legal feasibility is not concerned with protection acts or regulations.",false,
- "غلط — Legal = القوانين واللوائح وقوانين الحماية.","Legal = laws & regulations."),
-TF("Scheduling feasibility is not an important part of the feasibility study.",false,
- "غلط — الوقت مهم جدًا، المشروع ممكن يفشل لو اتأخر.","Time matters a lot."),
-TF("Operational feasibility evaluates whether the proposed methods meet business requirements.",true,
- "صح — Operational = هل طريقة التشغيل المقترحة تلبي احتياجات البزنس؟","Correct."),
-MC("The main goal of a feasibility study is to:",["Promote the project","Determine whether the project is viable","Ignore project risks","Compare different companies"],1,
- "الهدف الأساسي: نعرف المشروع viable (قابل للتنفيذ والنجاح) ولا لأ.","To determine viability."),
-MC("A feasibility study evaluates:",["Only marketing aspects","Only technical factors","All relevant areas of a proposed project","Employee performance"],2,
- "بتبص على المشروع من كل النواحي مش ناحية واحدة.","It covers all relevant areas."),
-MC("The role of a feasibility study is important because it:",["Ensures publicity","Determines project success or failure","Design","Measures customer satisfaction"],1,
- "أهميتها إنها بتحدد نجاح أو فشل المشروع.","It determines success or failure."),
-MC("A feasibility study is usually conducted:",["After project completion","Before starting a project","During marketing","Only during emergencies"],1,
- "قبل ما تبدأ — قبل ما تصرف فلوس.","Before starting the project."),
-MC("A visibility study means:",["Ability to see or be seen","Measuring financial performance","Calculating project risks","Determining legal issues"],0,
- "Visibility = القدرة إنك تشوف أو تتشاف.","Visibility = ability to see or be seen."),
-MC("Market visibility refers to:",["Legal awareness","How well-known a product or service is","Employee productivity","Internal project audits"],1,
- "المنتج أو الخدمة معروفة قد إيه.","How well-known a product/service is."),
-MC("Conducting a visibility study helps businesses:",["Identify strengths and weaknesses","Avoid customer feedback","Decrease marketing efforts","Increase project cost"],0,
- "بتساعد تعرف نقاط القوة والضعف.","Identify strengths & weaknesses."),
-MC("A visibility study assists in:",["Guiding decision-making","Replacing financial analysis","Reducing data analysis","Hiding weaknesses"],0,
- "بتوجّه اتخاذ القرار.","It guides decision-making."),
-MC("The visibility study builds a:",["Temporary project plan","Strong foundation for growth","Legal document","Human resources policy"],1,
- "بتبني أساس قوي للنمو.","A strong foundation for growth."),
-MC("Competitor analysis allows a business to:",["Copy other companies","Identify market gaps and opportunities","Avoid competition","Stop promotions"],1,
- "مش عشان تقلّد — عشان تلاقي الفجوات والفرص.","Find gaps and opportunities."),
-MC("SWOT analysis stands for:",["Strength, Weakness, Opportunity, Threat","Strategy, Work, Output, Time","Sales, Workforce, Outlook, Target","Skill, Worth, Offer, Target"],0,
- "S = Strength، W = Weakness، O = Opportunity، T = Threat.","Strength, Weakness, Opportunity, Threat."),
-MC("Online visibility assessment includes:",["Website and social media evaluation","Factory inspection","Employee evaluation","Equipment testing"],0,
- "Online = الموقع والسوشيال ميديا.","Online = website & social media."),
-MC("Offline visibility assessment focuses on:",["Traditional advertising and PR","Internet campaigns","Software updates","Digital reviews"],0,
- "Offline = الإعلانات التقليدية والعلاقات العامة (PR).","Offline = traditional ads & PR."),
-MC("The feasibility study helps:",["Avoid project failure","Increase taxes","Promote a single product","Delay decisions"],0,
- "بتساعد تتجنب فشل المشروع.","Avoid project failure."),
-MC("Stakeholders’ participation helps:",["Improve study quality","Reduce accuracy","Create bias","Waste time"],0,
- "مشاركة أصحاب المصلحة بتحسّن جودة الدراسة.","Improves study quality."),
-MC("A strong feasibility study includes:",["Scenario analysis","No future prediction","Ignoring uncertainty","Avoiding comparisons"],0,
- "الدراسة القوية بتحلل سيناريوهات مختلفة.","Scenario analysis."),
-MC("The main goal of a feasibility study is to assess:",["Financial returns","Staff behavior","Legal fines","Social trends"],0,
- "هل المشروع هيجيب عائد مالي؟","Financial returns."),
-MC("A serious feasibility study helps:",["Achieve project success","Delay implementation","Avoid investors","Ignore competitors"],0,
- "الدراسة الجادة بتساعد المشروع ينجح.","Achieve project success."),
-MC("Key metrics and indicators are determined to:",["Measure visibility accurately","Ignore market data","Track finances","Replace SWOT analysis"],0,
- "عشان نقيس الـ visibility بدقة.","To measure visibility accurately."),
-MC("Identifying opportunities and challenges helps:",["Develop an action plan","Delay decision-making","End the study early","Avoid market research"],0,
- "بعد ما تعرف الفرص والتحديات → تعمل خطة عمل.","Leads to an action plan."),
+TF("The commentary from management that accompanies the financial reports is always audited.",false,
+ "غلط — تعليق الإدارة غير مراجَع (unaudited).","Management commentary is unaudited."),
+TF("Analysts should rely only on the company's internal data and ignore industry research.",false,
+ "غلط — لازم يكمّلوا ببحث عن الصناعة والشركة.","They must complement it with industry research."),
+TF("Generating sufficient cash flow to meet obligations and seize opportunities is one of the focuses of financial analysis.",true,
+ "صح — النقطة التالتة من التركيز الأساسي.","Correct — third primary focus."),
+TF("Liquidity ratios measure a company's long-term debt-paying ability.",false,
+ "غلط — Liquidity = قصير الأجل. طويل الأجل ده Solvency.","Liquidity is short-term; long-term is solvency."),
+TF("Profitability ratios measure a company's earning ability.",true,
+ "صح — Profitability = earning ability.","Correct."),
+TF("Horizontal analysis compares historical financial data over time.",true,
+ "صح — Horizontal = عبر الزمن.","Horizontal = over time."),
+TF("Financial statement analysis is mainly used to prepare the company's tax returns.",false,
+ "غلط — هدفه التوقع بالأداء والمخاطر، مش الضرايب.","Its role is prediction, not taxes."),
 ],
 
-/* ======================= SECTION 2 ======================= */
+/* ======================= SECTION 2 — Levels & Horizontal ======================= */
 s2:[
-TF("A feasibility study ensures a project’s guaranteed success.",false,
- "غلط — بتقلل المخاطر وتزود الفرص، لكن مفيش ضمان 100%.","It reduces risk; it doesn't guarantee success."),
-TF("Financial viability is part of the study’s key reasons.",true,
- "صح — السبب رقم 4 من الـ 9 أسباب.","Reason #4 of 9."),
-TF("The study helps reduce failure risks.",true,
- "صح — Risk Mitigation.","Risk mitigation."),
-TF("Market feasibility examines employee performance.",false,
- "غلط — Market بتدرس الطلب والمنافسين والاتجاهات، مش أداء الموظفين.","Market = demand, competition, trends."),
-TF("A business plan comes before a feasibility study.",false,
- "غلط — الجدوى الأول، وبعدين الـ Business plan.","Feasibility comes first."),
-TF("Technical feasibility checks if technology requirements can be met.",true,
- "صح — هل عندنا التكنولوجيا والموارد المطلوبة؟","Technology & resource capability."),
-TF("Investors conduct feasibility studies for low-risk ventures.",false,
- "غلط — بيعملوها في الاستثمارات الكبيرة/عالية المخاطر (High-stakes).","Used for high-stakes/uncertain investments."),
-TF("Legal feasibility includes assessing regulatory approvals.",true,
- "صح — Legal = الامتثال للقوانين والموافقات.","Legal = compliance & approvals."),
-TF("Risk analysis identifies potential challenges.",true,
+MC("What does horizontal analysis compare?",["A company's financials to its competitors","Historical financial information over a series of reporting periods","A company's financials to industry averages","The relationship between different items on the same financial statement"],1,
+ "Horizontal = مقارنة بيانات تاريخية على كذا فترة. (العلاقة بين بنود نفس القايمة = Vertical)","Historical info over several periods."),
+MC("In horizontal analysis, each item is expressed as a percentage of the:",["Net income amount","Stockholders' equity amount","Total assets amount","Base-year amount"],3,
+ "في الأفقي، كل بند بيتنسب لسنة الأساس (base year = 100%).","The base-year amount."),
+MC("Which of the following is a DISADVANTAGE of horizontal analysis?",["It tracks trends over time","It reveals seasonality","It can be distorted by irregular events","It supports forecasting"],2,
+ "العيب: ممكن الأرقام تتشوّه بسبب أحداث غير عادية (irregular events). الباقي مزايا.","It can be distorted by irregular events."),
+MC("Why is horizontal analysis useful for forecasting?",["It automatically predicts the exact future numbers","It calculates annual or quarterly growth rates that can be used to make assumptions about future growth","It eliminates the need for external industry research","It guarantees a company will not breach loan covenants"],1,
+ "بيحسب معدلات النمو السنوية أو الربع سنوية، ونبني عليها افتراضات للمستقبل — مش بيتوقع رقم بالظبط.","It gives growth rates to base assumptions on."),
+MC("What should an analyst monitor regarding loan covenants?",["Only the final year's numbers","Trends in measurements that could lead to a covenant breach","The company's marketing expenses","The competitor's debt-to-equity ratio"],1,
+ "Covenants = شروط القرض. نراقب اتجاه المقاييس اللي ممكن توصلنا لمخالفة الشرط.","Trends that could lead to a covenant breach."),
+MC("Horizontal analysis identifies:",["The relationship of each item to a base amount within the same financial statement","Changes in financial statement items over time","The liquidity of a company","The solvency of a company"],1,
+ "التغير في البنود عبر الزمن. (الاختيار الأول ده تعريف Vertical)","Changes over time."),
+MC("If a company's revenue increased from $400,000 to $500,000 over one year, what is the percentage increase in revenue?",["20%","25%","22%","30%"],1,
+ "(500,000 − 400,000) ÷ 400,000 = 25%. خلي بالك: بنقسم على سنة الأساس مش السنة الحالية (لو قسمت على 500 هيطلع 20% غلط).","(500k − 400k) / 400k = 25%."),
+MC("Comparing the current year's data with the previous year's data for the same organization is called:",["Intra-company analysis","Inter-company analysis","Industry average analysis","Vertical analysis"],0,
+ "Intra = جوه نفس الشركة، سنة بسنة.","Intra-company = same company, year vs year."),
+MC("Comparing an organization's data with other organizations belonging to the same parent corporate group is called:",["Intra-company analysis","Inter-company analysis","Industry average analysis","Common-size analysis"],1,
+ "Inter = بين شركات نفس المجموعة الأم.","Inter-company = same corporate group."),
+MC("Comparing a company's data with the averages published by information statistics companies is called:",["Intra-company analysis","Inter-company analysis","Industry average analysis","Trend analysis"],2,
+ "Industry average = مقارنة بمتوسط الصناعة.","Industry average analysis."),
+MC("The three tools and techniques of financial statement analysis are:",["Horizontal, vertical and ratio analysis","Intra, inter and industry analysis","Liquidity, solvency and profitability","Budgeting, auditing and forecasting"],0,
+ "الأدوات: أفقي، رأسي، ونسب. (Intra/Inter/Industry دي المستويات مش الأدوات)","Horizontal, vertical, ratio."),
+MC("Percentage change in horizontal analysis is calculated as:",["Amount change ÷ base-year amount","Amount change ÷ current-year amount","Current-year amount ÷ total assets","Base-year amount ÷ current-year amount"],0,
+ "النسبة = مقدار التغير ÷ سنة الأساس.","Amount change / base-year amount."),
+MC("Current assets increased from $945,000 (2017) to $1,020,000 (2018). Using 2017 as the base year, the percentage change is:",["7.9%","7.4%","8.5%","75%"],0,
+ "75,000 ÷ 945,000 = 7.9%.","75,000 / 945,000 = 7.9%."),
+MC("Intangible assets decreased from $17,500 (2017) to $15,000 (2018). The percentage change is:",["(14.3)%","(16.7)%","14.3%","(2.5)%"],0,
+ "(2,500) ÷ 17,500 = (14.3)% — النقص بيتكتب بين قوسين.","(2,500) / 17,500 = (14.3)%."),
+MC("Revenues grew by 20% while cost of goods sold grew by 30%, and net income stayed the same. This most likely signals:",["Reduced efficiency or weaker cost management","Improved cost control","Higher liquidity","Lower financial leverage"],0,
+ "التكلفة بتزيد أسرع من الإيرادات → الهوامش بتتضغط → كفاءة أقل في إدارة التكاليف.","Costs outgrowing revenue → squeezed margins."),
+MC("Horizontal analysis is also known as:",["Common-size analysis","Trend analysis","Ratio analysis","Vertical analysis"],1,
+ "Horizontal = Trend analysis.","Trend analysis."),
+TF("The primary role of financial statement analysis is to prepare the company's tax returns and ensure compliance with securities laws.",false,
+ "غلط.","False."),
+TF("In horizontal analysis, the baseline year is typically listed as 0%.",false,
+ "غلط — سنة الأساس بتتكتب 100%.","The baseline year is listed as 100%."),
+TF("When conducting a horizontal analysis, it is best to analyze each financial statement in isolation to avoid confusion.",false,
+ "غلط — الأفضل نحلل كل القوايم مع بعض عشان نشوف الصورة كاملة.","Analyze all statements together."),
+TF("Horizontal analysis can be used to project the amounts of various line items into the future.",true,
+ "صح — Trend projection من مزاياه.","Trend projection is an advantage."),
+TF("A key advantage of horizontal analysis is that it requires extensive experience to discern whether the numbers indicate problems.",false,
+ "غلط — بالعكس، ميزته إنه محتاج خبرة قليلة (Minimal experience requirement).","Its advantage is that little skill is required."),
+TF("Horizontal analysis considers external factors such as changes in the economic environment and industry trends.",false,
+ "غلط — الأفقي بيبص على أرقام الشركة بس، مش بياخد العوامل الخارجية في اعتباره.","It does not consider external factors."),
+TF("If a company has an excellent income statement but a declining cash balance and increasing debt on the balance sheet, it may indicate trouble funding growth.",true,
+ "صح — ده مثال السكشن على أهمية تحليل القوايم مع بعض.","That's the section's example."),
+TF("Intra-company analysis compares a company's current-year data with its own previous-year data.",true,
  "صح.","Correct."),
-TF("Socioeconomic feasibility looks at community impact.",true,
- "صح — تأثير المشروع على المجتمع.","Impact on the community."),
-TF("A feasibility study is identical to a business plan.",false,
- "غلط — الجدوى بتسأل Can we? والبزنس بلان بتسأل How will we?","Different: 'Can we?' vs 'How will we?'"),
-TF("The high-speed rail study included Microsoft’s contribution.",true,
- "صح (حسب السكشن) — دراسة قطار واشنطن السريع كان فيها مساهمة من Microsoft.","True per the section slides."),
-TF("Executive summaries belong to the concluding section.",false,
- "غلط — الـ Executive Summary في القسم التمهيدي (Introductory).","It's in the Introductory section."),
-TF("Market analysis is part of the analysis section.",true,
- "صح — Market Feasibility أول حاجة في الـ Analysis section.","Yes, in the Analysis section."),
-TF("Business plans ask “How will we do this?”",true,
- "صح — Business plan = How؟ / Feasibility = Can؟","Business plan = 'How?'"),
-TF("Feasibility studies provide go/no-go decisions.",true,
- "صح — النتيجة: نكمل ولا نوقف (Go / No-Go).","Outcome = go/no-go."),
-TF("A feasibility study cannot be used to attract investors.",false,
- "غلط — Attracting Investors من الأسباب التسعة.","Attracting investors is a key reason."),
-TF("Financial projections estimate future costs and benefits.",true,
- "صح — توقعات التكاليف والمكاسب المستقبلية.","Correct."),
-MC("The main purpose of a feasibility study is to:",["Design a marketing plan","Determine project viability","Secure immediate funding","Recruit employees"],1,
- "نحدد هل المشروع viable.","Determine viability."),
-MC("A feasibility study helps in:",["Avoiding competition","Mitigating risks","Eliminating regulations","Increasing costs"],1,
- "تقليل المخاطر (Risk Mitigation).","Mitigating risks."),
-MC("Financial feasibility focuses on:",["Market demand","Environmental impact","Cost-benefit analysis","Technical limitations"],2,
- "Financial = التكلفة مقابل المكسب (Cost-benefit).","Cost-benefit analysis."),
-MC("Market feasibility examines:",["Organizational structure","Customer demand and competition","Financial statements","Legal compliance"],1,
- "Market = طلب العملاء والمنافسين.","Customer demand & competition."),
-MC("Which section contains the executive summary?",["Analysis","Concluding","Introductory","Risk analysis"],2,
- "الـ Executive Summary في القسم التمهيدي.","Introductory section."),
-MC("The key question of a feasibility study is:",["How to market a product","Can we do this?","How to manage employees","When to launch"],1,
- "Can we do this? = سؤال الجدوى.","'Can we do this?'"),
-MC("A business plan is prepared:",["Before a feasibility study","After confirming feasibility","During brainstorming","Only for nonprofits"],1,
- "بعد ما الجدوى تأكد إن الفكرة تنفع.","After feasibility is confirmed."),
-MC("Investors use feasibility studies to:",["Replace annual reports","Make informed decisions","Increase risk exposure","Reduce workforce"],1,
- "عشان ياخدوا قرار مبني على معلومات.","Make informed decisions."),
-MC("Legal feasibility checks:",["Environmental impacts","Compliance and approvals","Sales forecasts","Design models"],1,
- "Legal = الامتثال والموافقات.","Compliance & approvals."),
-MC("The Washington State feasibility study involved:",["Electric cars","High-speed rail","Airport expansion","Housing projects"],1,
- "مثال واشنطن = قطار سريع (Vancouver–Seattle–Portland).","High-speed rail."),
-MC("Operational feasibility assesses:",["Financial statements","Organizational capacity and structure","Legal documents","Environmental reports"],1,
- "Operational = قدرة وهيكل المنظمة على التشغيل.","Organizational capacity & structure."),
-MC("In the Washington high-speed rail feasibility study, the project’s main goal was to:",["Build new airports","Improve regional transportation and economic growth","Develop new software","Increase fuel consumption"],1,
- "تحسين المواصلات في المنطقة والنمو الاقتصادي.","Regional transport & economic growth."),
-MC("The conclusion section provides:",["Raw data","Recommendations and summaries","Budget requests","Advertisements"],1,
- "القسم الختامي = استنتاجات وتوصيات.","Recommendations & summaries."),
-MC("Which of the following is NOT a key reason for conducting a feasibility study?",["Risk Mitigation","Informed Decision-Making","Resource Optimization","Product Advertising"],3,
- "الإعلان عن المنتج مش من الأسباب التسعة.","Advertising is not one of the 9 reasons."),
-MC("Which section of a feasibility study analyzes demand, competition, and market trends?",["Technical Feasibility","Market Feasibility","Legal Feasibility","Financial Feasibility"],1,
- "طلب + منافسين + اتجاهات = Market.","Market feasibility."),
-MC("The main objective of a feasibility study is to:",["Develop a marketing campaign","Determine whether a project will likely succeed","Replace a business plan","Manage daily operations"],1,
- "نعرف هل المشروع غالبًا هينجح.","Will the project likely succeed?"),
-MC("Which of the following statements best describes a business plan?",["A document that determines if a project is possible","A detailed roadmap for how to execute an approved idea","A simple summary of feasibility","A list of investor names"],1,
- "Business plan = خريطة طريق تفصيلية لتنفيذ فكرة اتوافق عليها.","A detailed roadmap to execute an approved idea."),
-MC("When do investors most commonly require a feasibility study?",["After the project has started","Before committing financial resources","After hiring staff","During marketing campaigns"],1,
- "قبل ما يحطوا فلوسهم.","Before committing money."),
-MC("Technical feasibility focuses primarily on:",["Funding sources","Technology and resource capability","Market competitors","Social benefits"],1,
- "Technical = التكنولوجيا والموارد.","Technology & resources."),
-MC("Which of the following is included in the concluding section of a feasibility study?",["Market research","Executive summary","Conclusions and recommendations","Risk analysis"],2,
- "الختامي = Conclusions + Recommendations + Appendices.","Conclusions & recommendations."),
-MC("A feasibility study can help attract investors because:",["It hides financial risks","It provides data proving project potential","It guarantees profit","It replaces funding contracts"],1,
- "بتقدم بيانات بتثبت إن المشروع له مستقبل.","It provides data proving potential."),
-MC("Which of the following types of feasibility includes compliance and environmental factors?",["Operational Feasibility","Legal and Environmental Feasibility","Market Feasibility","Technical Feasibility"],1,
- "امتثال + بيئة = Legal & Environmental.","Legal & Environmental."),
+TF("Inter-company analysis compares a company's data with the industry average published by statistics companies.",false,
+ "غلط — ده Industry average. الـ Inter = شركات نفس المجموعة الأم.","That's industry average analysis."),
+TF("Amount change equals the current-year amount minus the base-year amount.",true,
+ "صح.","Correct."),
+TF("Percentage change equals the amount change divided by the current-year amount.",false,
+ "غلط — بنقسم على سنة الأساس.","Divide by the base-year amount."),
+TF("Horizontal analysis can also be applied to ratios derived from financial information.",true,
+ "صح — حسب التعريف ينفع يتطبق على النسب كمان.","Yes, per the definition."),
+TF("Little skill is required to spot anomalies in a trend using horizontal analysis.",true,
+ "صح — Minimal experience requirement.","Correct."),
+TF("Monitoring trends in measurements included in loan covenants helps anticipate a possible covenant breach.",true,
+ "صح.","Correct."),
+TF("Horizontal analysis is particularly useful when calculating key ratios or margins such as the current ratio and gross margin.",true,
+ "صح — Illuminating calculations.","Correct."),
 ],
 
-/* ======================= SECTION 4 ======================= */
+/* ======================= SECTION 3 — Vertical ======================= */
+s3:[
+MC("A schedule shows: Current assets $200,000 (25%), Property, plant & equipment $600,000 (75%), Total assets $800,000 (100%). What type of analysis is this?",["Horizontal analysis","Vertical analysis","Differential analysis","Ratio analysis"],1,
+ "كل بند متنسب للإجمالي (Total assets = 100%) في سنة واحدة → Vertical.","Each item as % of total → vertical."),
+MC("In vertical analysis, the base amount for depreciation expense is generally:",["Net sales","Depreciation expense in a previous year","Gross profit","Fixed assets"],0,
+ "الإهلاك مصروف في قايمة الدخل → الأساس Net sales.","An income statement item → net sales."),
+MC("In vertical analysis, the base amount for current assets is generally:",["Net sales","Depreciation expense in a previous year","Total assets","Fixed assets"],2,
+ "بند في الميزانية → الأساس Total assets.","A balance sheet item → total assets."),
+MC("In vertical analysis, the base amount for current liabilities is generally:",["Total liabilities","Total equity","Total assets","Fixed assets"],2,
+ "في الميزانية الأساس Total assets (= Total liabilities & equity). مش Total liabilities.","Total assets (= total L&E)."),
+MC("In vertical analysis, the base amount for inventory is generally:",["Total liabilities and equity","Total current assets","Net sales","Fixed assets"],0,
+ "Total liabilities & equity = Total assets، فهو الأساس. (مش Total current assets)","Total L&E equals total assets."),
+MC("In vertical analysis of an income statement, each item is typically expressed as a percentage of:",["Net income","Total assets","Total equity","Sales revenue"],3,
+ "قايمة الدخل → الإيرادات/المبيعات = 100%.","Sales revenue."),
+MC("Comparing items with items from earlier periods is a type of:",["Vertical analysis","Horizontal analysis","Common-size analysis","Ratio analysis"],1,
+ "مقارنة بفترات سابقة = Horizontal.","Horizontal analysis."),
+MC("If a company has Cash of $50,000 and Total Assets of $1,000,000, what is the vertical analysis percentage for Cash?",["5%","25%","50%","10%"],0,
+ "50,000 ÷ 1,000,000 = 5%.","50k / 1,000k = 5%."),
+MC("What is the base figure used for vertical analysis of a Balance Sheet?",["Total Revenue","Total Assets","Net Income","Gross Profit"],1,
+ "الميزانية → Total assets.","Total assets."),
+MC("What is the primary purpose of a common-size statement?",["To calculate tax liabilities","To show the relationship of each component to the total within a single statement","To track a company's cash flow over 5 years","To determine the exact dollar amount of future sales"],1,
+ "يوضح علاقة كل بند بالإجمالي جوه قايمة واحدة.","Relationship of each component to the total."),
+MC("Revenue is $1,200,000 and cost of goods sold is $780,000. In vertical analysis, COGS equals:",["65%","60%","35%","30%"],0,
+ "780,000 ÷ 1,200,000 = 65%.","780k / 1,200k = 65%."),
+MC("Revenue is $1,200,000 and operating expenses are $220,000. In vertical analysis, operating expenses equal:",["18.3%","20%","22%","10%"],0,
+ "220,000 ÷ 1,200,000 = 18.3%.","220k / 1,200k = 18.3%."),
+MC("Revenue is $1,200,000 and net income is $200,000. In vertical analysis, net income equals:",["16.7%","20%","25%","12%"],0,
+ "200,000 ÷ 1,200,000 = 16.7%.","200k / 1,200k = 16.7%."),
+MC("Pixar's total revenue rose from $262.5M (2003) to $273.5M (2004). The percentage change is:",["4.19%","11%","4.02%","6.4%"],0,
+ "(273.5 − 262.5) ÷ 262.5 = 4.19% (ده حساب أفقي).","(273.5 − 262.5)/262.5 = 4.19%."),
+MC("Pixar's R&D rose from $15.3M to $17.4M, while revenue rose 4.19%. As a percentage of revenue, R&D:",["Increased from 5.8% to 6.4%","Decreased from 6.4% to 5.8%","Stayed the same","Decreased because revenue grew"],0,
+ "R&D زاد 13.7% وهو أسرع من نمو الإيرادات (4.19%)، فنسبته الرأسية زادت.","R&D grew faster than revenue → its % rose."),
+MC("Vertical analysis is especially useful for comparing:",["Companies of different sizes","Only companies of exactly the same size","Only the tax figures of a company","Only cash flows over 10 years"],0,
+ "لأن كل حاجة بتبقى نسب مئوية، فالحجم مبقاش فارق.","Percentages remove size differences."),
+MC("Statements prepared using vertical analysis, where all items are percentages, are called:",["Trend statements","Common-size statements","Consolidated statements","Pro forma statements"],1,
+ "Common-size statements.","Common-size statements."),
+TF("Horizontal analysis helps identify trends and growth patterns over time.",true,
+ "صح.","Correct."),
+TF("In vertical analysis, each balance sheet item is expressed as a percentage of revenue.",false,
+ "غلط — بنود الميزانية بتتنسب لـ Total assets.","Balance sheet items are % of total assets."),
+TF("Vertical analysis makes it easier to compare companies of different sizes.",true,
+ "صح.","Correct."),
+TF("A horizontal analysis always shows favorable performance when numbers increase year over year.",false,
+ "غلط — مش كل زيادة كويسة؛ زيادة المصروفات مثلًا وحشة. (كلمة always فخ)","Not all increases are favorable, e.g. rising expenses."),
+TF("Vertical analysis compares financial data of a single company over multiple years to identify trends.",false,
+ "غلط — ده Horizontal. الرأسي بيبص على فترة واحدة.","That's horizontal; vertical looks at a single period."),
+TF("In a common-size income statement, each line item is expressed as a percentage of total assets.",false,
+ "غلط — قايمة الدخل → Total revenue. (الميزانية → Total assets)","Income statement items are % of total revenue."),
+TF("Vertical analysis is useful for comparing companies of different sizes within the same industry.",true,
+ "صح — دي ميزة الـ common-size الأساسية.","Key benefit of common-size statements."),
+TF("The “Blockbuster Strategy” involves low up-front costs and high additional costs after the product is launched.",false,
+ "غلط — العكس: تكاليف كبيرة في الأول، وتكاليف إضافية قليلة بعد الإطلاق.","Large up-front costs and fewer costs after launch."),
+TF("Vertical analysis is also called common-size analysis.",true,
+ "صح.","Correct."),
+TF("On the income statement, net sales is the base amount and takes 100%.",true,
+ "صح.","Correct."),
+TF("On the balance sheet, liability and equity items can be expressed as a percentage of total liabilities and equity.",true,
+ "صح — وده نفس رقم Total assets.","Correct — same as total assets."),
+TF("If an expense grows faster than revenue, its vertical analysis percentage decreases.",false,
+ "غلط — بتزيد. زي الـ R&D في بيكسار.","It increases (like Pixar's R&D)."),
+TF("Pixar's gross profit margin declined from 85.5% in 2003 to 89.1% in 2004.",false,
+ "غلط — الهامش اتحسن (زاد) من 85.5% لـ 89.1% — إشارة إيجابية.","It improved from 85.5% to 89.1%."),
+TF("In the example, COGS rose from 60% to 65% of revenue, meaning direct costs took a larger share of each sales dollar.",true,
+ "صح — وعشان كده صافي الربح نزل من 20% لـ 16.7%.","Correct — net income fell from 20% to 16.7%."),
+],
+
+/* ======================= SECTION 4 — Ratio analysis & profitability ======================= */
 s4:[
-MC("What is the primary purpose of conducting a market trend analysis?",["To determine the company’s internal financial structure.","To identify patterns in consumer behavior and anticipate future market changes.","To calculate the organization’s total operating expenses.","To evaluate employee productivity."],1,
- "تحليل الاتجاهات = نكتشف أنماط سلوك المستهلك ونتوقع التغيرات الجاية.","Spot consumer patterns & anticipate change."),
-MC("Which of the following represents a technological factor affecting market trends?",["Changes in consumer income.","Shifts in cultural values.","The emergence of artificial intelligence and automation.","Changes in government taxation policies."],2,
- "AI والأتمتة = عامل تكنولوجي. (الدخل = اقتصادي، القيم = اجتماعي، الضرايب = سياسي)","AI & automation = technological."),
-MC("Which of the following is considered a key component of market analysis?",["Employee motivation.","Customer segmentation.","Organizational hierarchy.","Internal communication."],1,
- "تقسيم العملاء من المكونات الأربعة للتحليل.","Customer segmentation is one of the 4 components."),
-MC("What does market segmentation primarily involve?",["Dividing competitors according to their financial performance.","Classifying customers based on demographics, interests, and behaviors.","Dividing organizational resources among departments.","Classifying products according to production costs."],1,
- "تقسيم العملاء حسب الديموجرافيا والاهتمامات والسلوك.","Classifying customers by demographics, interests, behaviors."),
-MC("Which of the following is an example of an economic barrier to market entry?",["Obtaining a required operating license.","Changes in consumer preferences.","High initial capital investment.","The emergence of new technologies."],2,
- "رأس مال كبير = عائق اقتصادي. (الترخيص = عائق تنظيمي Regulatory)","High capital = economic barrier."),
-MC("When market demand exceeds market supply, the situation generally indicates:",["A potential opportunity for new products or market entrants.","A complete absence of market competition.","A decline in consumer purchasing power.","An immediate reduction in market opportunities."],0,
- "Demand > Supply = فرصة.","Demand > Supply = opportunity."),
-MC("Which of the following is the most appropriate method for identifying and monitoring emerging market trends?",["Depending exclusively on managerial intuition.","Ignoring historical consumer behavior.","Monitoring Google Trends and industry newsletters.","Focusing only on internal organizational reports."],2,
- "أدوات المتابعة: Google Trends ونشرات الصناعة.","Google Trends & industry newsletters."),
-MC("In developing a sales forecast, businesses should primarily consider:",["Historical sales data and external market influences.","Employee attendance and organizational structure.","Internal communication and leadership styles.","Production facilities without considering market demand."],0,
- "التوقع = بيانات المبيعات القديمة + تأثيرات السوق الخارجية.","Historical data + external influences."),
-MC("Which of the following best describes competitive analysis?",["Evaluating employees’ individual performance.","Identifying competitors’ strategies, strengths, weaknesses, and market positioning.","Measuring the organization’s internal administrative efficiency.","Estimating the company’s annual tax obligations."],1,
- "تحليل المنافسين: استراتيجياتهم + قوتهم + ضعفهم + مكانتهم.","Competitors' strategies, strengths, weaknesses, positioning."),
-MC("Within the PEST framework, changes in consumer spending and inflation are classified as:",["Political factors.","Social factors.","Economic factors.","Technological factors."],2,
- "تضخم وإنفاق = E = Economic.","Inflation & spending = Economic."),
-MC("A company observes that consumer purchasing preferences have changed significantly due to new cultural values. Which analytical approach would be most appropriate?",["Analyzing social factors within the PEST framework.","Evaluating internal production efficiency.","Analyzing organizational hierarchy.","Assessing employee compensation policies."],0,
- "قيم ثقافية = S = Social في PEST.","Cultural values = Social."),
-MC("A new business intends to enter a market dominated by well-established companies with strong customer loyalty. What would be the most appropriate strategic response?",["Compete directly without conducting further analysis.","Focus on an underserved market niche to build customer loyalty.","Ignore existing competitors and their market positions.","Increase initial investment without evaluating potential risks."],1,
- "لو السوق مقفول على الكبار → دوّر على شريحة مهملة (Niche).","Target an underserved niche."),
-MC("Why is collecting consistent consumer data over time essential for effective market trend analysis?",["It eliminates the need for market segmentation.","It enables businesses to identify changes and measure how quickly trends evolve.","It guarantees that all identified trends will continue indefinitely.","It replaces the need for competitive analysis."],1,
- "البيانات على فترة بتوضح التغيير وسرعته.","Shows change and its speed."),
-MC("A business identifies a sudden increase in demand for a specific product following a social media post. What should the business examine before classifying this change as a market trend?",["Whether the change is recurring and reflects broader market developments.","Whether the post received a large number of comments only.","Whether competitors have stopped their operations.","Whether the company can immediately increase its prices."],0,
- "قبل ما تقول ترند: اتأكد إنه متكرر ومش حدث مرة واحدة.","Check if it's recurring, not one-time."),
-MC("Why should a business develop optimistic, realistic, and conservative sales forecasting scenarios?",["To eliminate uncertainty from the business environment.","To prepare for different possible market conditions and demand outcomes.","To ensure that actual sales will match projected sales.","To avoid collecting historical sales information."],1,
- "الـ 3 سيناريوهات عشان تبقى جاهز لأي ظرف — مش بتلغي عدم اليقين.","To prepare for different conditions."),
-MC("A company compares consumer behavior across different geographical markets to determine whether an emerging trend is global, regional, or local. This process is known as:",["Internal resource allocation.","Cross-market comparison.","Operational cost analysis.","Organizational benchmarking."],1,
- "مقارنة الأسواق = Cross-market comparison.","Cross-market comparison."),
-MC("Which of the following best explains the relationship between customer segmentation and purchasing patterns?",["Segmentation enables businesses to understand different customer groups and tailor their marketing approaches accordingly.","Segmentation eliminates differences in consumer purchasing decisions.","Purchasing patterns are independent of customer characteristics.","Segmentation is primarily concerned with identifying competitors’ weaknesses."],0,
- "التقسيم بيخليك تفهم كل مجموعة وتفصّل التسويق ليها.","Understand groups → tailor marketing."),
-MC("A company discovers that its market is experiencing oversupply. At the same time, several competitors offer similar products. Based on market analysis principles, which strategy would be most appropriate?",["Enter the market without developing a differentiation strategy.","Focus on differentiation to establish a distinctive competitive position.","Ignore competitors’ strengths and weaknesses.","Discontinue all market research activities."],1,
- "عرض كتير + منتجات شبه بعض → لازم تتميز (Differentiation).","Oversupply → differentiate."),
-MC("A business identifies a new technological innovation that may significantly change consumer purchasing behavior. However, the available evidence is based on a single short-term observation. What is the most academically appropriate decision?",["Immediately redesign the entire business strategy.","Reject the observation because technological changes are unpredictable.","Collect reliable data over time and examine the broader context before making strategic decisions.","Assume that the observed change represents a permanent market trend."],2,
- "ملاحظة واحدة قصيرة مش كفاية → اجمع بيانات أكتر وافهم السياق.","Collect more data & context first."),
-MC("A company is conducting a comprehensive market analysis before entering a new industry. It identifies regulatory restrictions, high capital requirements, strong competitors, and changing consumer preferences. Which approach would provide the most comprehensive basis for its entry decision?",["Evaluating only the financial resources required for entry.","Examining market trends, external factors, competitive conditions, and barriers to entry collectively.","Focusing exclusively on potential customer demand.","Relying primarily on the company’s previous operational experience."],1,
- "الكلمة السحرية: comprehensive → ادرس كل حاجة مع بعض.","Comprehensive = examine everything together."),
-TF("Market trend analysis focuses on identifying patterns in consumer behavior and anticipating future market changes.",true,
- "صح — ده تعريفها.","That's its definition."),
-TF("Demographic segmentation is concerned exclusively with analyzing competitors’ financial performance.",false,
- "غلط — Demographic = تقسيم العملاء (سن، نوع، دخل...) مش المنافسين.","Demographic = customer traits, not competitors."),
-TF("Technological innovations can influence market conditions and create new business opportunities.",true,
+MC("Which of the following is a profitability ratio used to evaluate how effectively a company uses its assets to generate income?",["Return on Equity (ROE)","Return on Assets (ROA)","Asset Turnover","Working Capital"],1,
+ "ROA = صافي الربح ÷ الأصول → كفاءة استخدام الأصول في تحقيق ربح.","ROA."),
+MC("The DuPont Analysis breaks down Return on Equity (ROE) into all of the following EXCEPT:",["Asset Turnover","Current Ratio","Equity Multiplier","Net Profit Margin"],1,
+ "مكونات دوبونت: Net Profit Margin × Asset Turnover × Equity Multiplier. الـ Current Ratio نسبة سيولة.","Current ratio is not part of DuPont."),
+MC("In the comprehensive ratio formula (ROE = ROA × Leverage), how is Leverage calculated?",["Net Income / Average Total Assets","Net Sales / Average Total Assets","Average Total Assets / Average Stockholders' Equity","Average Stockholders' Equity / Average Total Assets"],2,
+ "Leverage (Equity Multiplier) = متوسط الأصول ÷ متوسط حقوق الملكية.","Avg total assets / avg equity."),
+MC("If a company has a Net Income of $100,000, Net Sales of $500,000, and Average Total Assets of $250,000, what is its Profit Margin?",["20%","40%","50%","10%"],0,
+ "Profit margin = 100,000 ÷ 500,000 = 20%. (الأصول هنا رقم مشتّت)","100k / 500k = 20%."),
+MC("The DuPont formula (ROA = Profit Margin × Assets Turnover) is useful because it:",["Calculates the exact market price of the stock","Shows how debt affects the balance sheet","Breaks down ROA into profitability and asset-efficiency components","Determines the number of days' sales in inventory"],2,
+ "بيقسم الـ ROA لجزء ربحية (Margin) وجزء كفاءة (Turnover).","Splits ROA into profitability & efficiency."),
+MC("Nike had current assets of $13,626M and current liabilities of $3,926M. Expressed as a rate, the relationship is:",["3.47 times","347 times","0.29 times","34.7 times"],0,
+ "13,626 ÷ 3,926 = 3.47 مرة. (كنسبة مئوية 347%، وكتناسب 3.47:1)","3.47 times (= 347% = 3.47:1)."),
+MC("Return on Equity (ROE) is calculated as:",["Net Income / Shareholders' Equity","Net Income / Total Assets","Net Income / Revenues","Gross Profit / Revenues"],0,
+ "ROE = صافي الربح ÷ حقوق الملكية.","Net income / equity."),
+MC("Which ratio shows the percentage of revenue that remains as profit after ALL expenses, including interest and taxes?",["Gross Profit Margin","Operating Profit Margin","Net Profit Margin","Return on Assets"],2,
+ "Net Profit Margin = المقياس النهائي للربحية بعد كل المصاريف.","Net profit margin."),
+MC("Which ratio measures the percentage of revenue left after covering operating expenses, excluding interest and taxes?",["Operating Profit Margin","Net Profit Margin","Gross Profit Margin","ROE"],0,
+ "Operating margin = الربح قبل الفوايد والضرايب ÷ المبيعات.","Operating profit margin."),
+MC("Gross Profit Margin mainly indicates:",["Production efficiency and pricing strategy","Financial leverage","Short-term liquidity","Market value of shares"],0,
+ "بعد خصم تكلفة البضاعة → بيوضح كفاءة الإنتاج وسياسة التسعير.","Production efficiency & pricing."),
+MC("According to DuPont, ROE equals:",["Net Profit Margin × Asset Turnover × Equity Multiplier","Net Profit Margin + Asset Turnover + Equity Multiplier","ROA ÷ Equity Multiplier","Asset Turnover × Current Ratio"],0,
+ "ROE = NPM × AT × EM (ضرب مش جمع).","NPM × AT × EM."),
+MC("Beginning total assets are $1,200,000, ending are $1,800,000, and net income is $150,000. ROA (using average assets) is:",["10%","8.3%","12.5%","18.75%"],0,
+ "متوسط الأصول = 1,500,000 → 150,000 ÷ 1,500,000 = 10%.","Avg assets 1.5M → 10%."),
+MC("Beginning equity is $600,000, ending equity is $1,000,000, and net income is $150,000. ROE (using average equity) is:",["18.75%","15%","25%","10%"],0,
+ "متوسط حقوق الملكية = 800,000 → 150,000 ÷ 800,000 = 18.75%.","Avg equity 800k → 18.75%."),
+MC("Assets Turnover is calculated as:",["Net Sales / Average Total Assets","Net Income / Average Total Assets","Average Total Assets / Equity","Net Sales / Net Income"],0,
+ "Asset turnover = المبيعات ÷ متوسط الأصول.","Net sales / avg total assets."),
+MC("Company A (no debt) has ROE of 10.5%; Company B (same operations, financed with debt) has ROE of 17.85%. The difference is mainly due to:",["Positive financial leverage","Higher net income for Company B","Lower assets for Company B","Higher tax rate for Company A"],0,
+ "B صافي ربحه أقل، بس حقوق ملكيته أقل بكتير → الدين كبّر العائد للمساهمين (Positive leverage) — مع مخاطرة أعلى.","Debt magnified returns to shareholders."),
+MC("Retail Corp has a 4% net margin and 2.5 asset turnover; Tech Innovators has an 8% margin and 2.0 turnover. Retail Corp's model is best described as:",["Low margin, high volume","High margin, low volume","High leverage, low turnover","No leverage, high margin"],0,
+ "هامش قليل + دوران عالي = تجزئة (يبيع كتير بربح قليل في كل وحدة).","Low margin, high volume (retail)."),
+MC("A company has Net Income $150,000, Revenues $1,000,000, Total Assets $750,000 and Equity $500,000. Its ROE is:",["30%","20%","15%","13.3%"],0,
+ "150,000 ÷ 500,000 = 30%. وبدوبونت: 15% × 1.33 × 1.5 ≈ 30%.","150k / 500k = 30%."),
+MC("Firm X and Firm Y both have a 6% net margin and an equity multiplier of 2, but Firm X has a higher ROE. The key driver is:",["Higher asset turnover (2 vs 1.25)","Higher net profit margin","Higher leverage","Lower revenues"],0,
+ "الهامش والرافعة زي بعض، فالفرق جاي من دوران الأصول: X بيعمل مبيعات أكتر لكل جنيه أصول.","Higher asset turnover."),
+MC("An ROA above 20% is most common in:",["Asset-light businesses such as software and consulting","Utilities","Heavy manufacturing","Asset-intensive industries"],0,
+ "أقل من 5% = صناعات كثيفة الأصول، 5–20% = متوسط لقوي، فوق 20% = شركات خفيفة الأصول (سوفتوير، استشارات).","Asset-light businesses."),
+TF("A higher Return on Equity (ROE) indicates greater efficiency in using capital to generate profits.",true,
  "صح.","Correct."),
-TF("Demand exceeding supply may indicate an opportunity for new market entrants.",true,
- "صح — Demand > Supply = فرصة.","Demand > Supply = opportunity."),
-TF("The PEST framework consists of Political, Economic, Social, and Technological factors.",true,
- "صح — P E S T.","P-E-S-T."),
-TF("Historical sales data can be used as a foundation for developing sales forecasts.",true,
+TF("Average Stockholders' Equity is calculated by adding the beginning and ending balances and dividing by two.",true,
+ "صح — (أول المدة + آخر المدة) ÷ 2.","(Beginning + ending) / 2."),
+TF("According to the ROE = ROA × Leverage formula, a company with high leverage will always have a lower ROE.",false,
+ "غلط — الرافعة العالية بتكبّر الـ ROE (لو الـ ROA موجب). وكلمة always فخ.","High leverage magnifies ROE when ROA is positive."),
+TF("The DuPont formula states that Return on Assets is the product of Profit Margin and Asset Turnover.",true,
+ "صح — ROA = PM × AT.","ROA = PM × AT."),
+TF("Return on Equity (ROE) measures profitability relative to the shareholders' investment.",true,
  "صح.","Correct."),
-TF("Market trend analysis should rely primarily on managerial intuition rather than reliable consumer data.",false,
- "غلط — لازم بيانات موثوقة مش إحساس المدير.","Rely on data, not intuition."),
-TF("Regulatory requirements, such as licenses and certifications, may represent barriers to entry.",true,
- "صح — ده العائق التنظيمي (Regulatory).","Regulatory barrier."),
-TF("Competitive analysis is limited to identifying competitors’ strengths without examining their weaknesses.",false,
- "غلط — بتدرس القوة والضعف والاستراتيجيات والمكانة.","Strengths AND weaknesses."),
-TF("Economic conditions, including inflation and changes in consumer spending, may affect market demand.",true,
+TF("It is very useful to compare the ROA of a utility company directly with that of a consulting firm.",false,
+ "غلط — الـ ROA بيختلف حسب الصناعة، فالمقارنة دي مضللة. قارن جوه نفس الصناعة.","ROA is industry-specific; misleading comparison."),
+TF("A declining ROE over time can indicate that management is making poor reinvestment decisions.",true,
  "صح.","Correct."),
-TF("Cross-market comparisons help businesses determine whether a particular trend is global, regional, or specific to a local market.",true,
+TF("The Equity Multiplier in the DuPont formula is a measure of a company's financial leverage.",true,
+ "صح — Equity multiplier = Financial leverage.","Correct."),
+TF("A ratio can be expressed as a percentage, a rate, or a simple proportion.",true,
+ "صح — زي مثال Nike: 347% أو 3.47 مرة أو 3.47:1.","Like Nike: 347%, 3.47 times, 3.47:1."),
+TF("Ratio analysis relies on a single metric to evaluate a company.",false,
+ "غلط — بيحلل مجموعة كبيرة من البيانات مش مقياس واحد.","It analyzes a range of data, not one metric."),
+TF("For profitability ratios, lower ratios generally signal better performance.",false,
+ "غلط — في نسب الربحية: الأعلى أحسن.","Higher is better."),
+TF("Operating profit margin is calculated after deducting interest and taxes.",false,
+ "غلط — بيستبعد الفوايد والضرايب (قبل الفوايد والضرايب).","It excludes interest and taxes."),
+TF("An ROA below 5% is common in asset-intensive industries such as utilities and manufacturing.",true,
  "صح.","Correct."),
-TF("A sudden increase in consumer interest always indicates the existence of a sustainable long-term market trend.",false,
- "غلط — كلمة always فخ! الزيادة المفاجئة ممكن تكون حدث مرة واحدة.","'Always' is the trap — could be one-time."),
-TF("Businesses should consider seasonality, economic conditions, and competitive activity when developing sales forecasts.",true,
- "صح.","Correct."),
-TF("Strong customer loyalty among established competitors may create difficulties for new businesses attempting to enter the market.",true,
- "صح — ده عائق تنافسي (Competitive barrier).","Competitive barrier."),
-TF("Demographic and psychographic segmentation can help businesses understand who drives a market trend and why.",true,
- "صح — Demographic = مين؟ / Psychographic = ليه؟","Who (demographic) & why (psychographic)."),
-TF("When analyzing market trends, businesses should consider whether an observed change is recurring or merely a one-time occurrence.",true,
- "صح.","Correct."),
-TF("An oversupply situation generally reduces the importance of product differentiation because customers have fewer alternatives.",false,
- "غلط — العكس! في الـ oversupply العميل عنده بدائل أكتر، فالتميز أهم.","Opposite: more alternatives → differentiation matters more."),
+TF("Positive financial leverage uses debt to magnify shareholders' returns, but it also increases financial risk.",true,
+ "صح — زي Company B.","Correct, like Company B."),
+TF("Two firms with identical net profit margins must have the same ROE.",false,
+ "غلط — ممكن يختلفوا بسبب دوران الأصول أو الرافعة (Firm X و Y).","They can differ via turnover or leverage."),
+TF("A sustainable and increasing ROE should be compared with the company's cost of equity.",true,
+ "صح — حسب السلايد.","Correct per the slides."),
 ],
 
-/* ======================= SECTION 5 ======================= */
+/* ======================= SECTION 5 — Efficiency, liquidity, solvency ======================= */
 s5:[
-MC("A startup chooses to operate as a sole proprietorship because the owner wants complete control over decisions. However, the owner ignores the possibility of personal liability. Which aspect of legal feasibility has been overlooked?",["Intellectual property protection","Legal structure implications","Environmental impact assessment","Stakeholder communication"],1,
- "الملكية الفردية = مسؤولية شخصية غير محدودة → ده من آثار الشكل القانوني.","Sole proprietorship = unlimited liability → legal structure."),
-MC("A company signs a contract with a supplier without clearly defining delivery deadlines or penalties. Later, a disagreement occurs. What does this situation mainly demonstrate?",["The importance of environmental regulations","The role of contracts in reducing legal risks","The importance of choosing a joint-stock company","The relationship between projects and the environment"],1,
- "العقود الواضحة بتقلل المخاطر والخلافات.","Clear contracts reduce legal risk."),
-MC("A business discovers that another company is using its registered brand name. Which legal feasibility element is most directly involved?",["Labor regulations","Investment regulations","Intellectual property protection","Environmental compliance"],2,
- "اسم البراند = ملكية فكرية.","Brand name = intellectual property."),
-MC("A project is financially attractive, but its required licenses cannot be obtained under existing regulations. What should the feasibility study conclude?",["The project is automatically feasible because it is profitable","Legal feasibility may prevent the project from proceeding","The company should ignore licensing requirements","Environmental assessment can replace legal approval"],1,
- "مربح بس مفيش ترخيص → ممكن يتوقف قانونيًا.","Profitable but unlicensable → legally blocked."),
-MC("Two entrepreneurs want to establish a business together but also want to limit their personal liability. Which consideration should receive the greatest attention?",["Selecting an appropriate legal structure","Reducing the project's environmental impact only","Increasing the number of employees","Expanding the project's geographical area"],0,
- "تحديد المسؤولية = اختيار الشكل القانوني المناسب.","Limit liability → choose legal structure."),
-MC("A factory has limited environmental effects during construction but produces significant pollution during operation. Which conclusion is most appropriate?",["Environmental assessment should focus only on construction","Environmental impacts should be assessed throughout different project stages","The project belongs automatically to the White List","Operational impacts are not relevant to feasibility"],1,
- "التقييم في كل المراحل: قبل وأثناء وبعد.","Assess all stages."),
-MC("A project creates pollution that affects not only the surrounding community but also neighboring regions. Which dimension of environmental assessment is demonstrated?",["Temporal dimension","Spatial dimension","Legal structure dimension","Financial dimension"],1,
- "مكان/مناطق = Spatial (مكاني). زمن = Temporal.","Place/regions = spatial."),
-MC("A proposed project has negative environmental impacts, but these impacts can be reduced through expensive technologies and substantial investment. According to the chapter, how should this project be classified?",["White List","Gray List","Black List","Not subject to environmental assessment"],1,
- "ضرر ينفع يتقلل بس بتكلفة عالية = Gray List.","Mitigable at high cost = Gray."),
-MC("A project causes serious environmental damage that cannot be avoided or adequately mitigated. What is the most likely classification?",["White List","Gray List","Black List","Limited partnership"],2,
- "ضرر خطير مش ممكن يتعالج = Black List.","Unavoidable severe damage = Black."),
-MC("A company studies environmental impacts only after the project starts operating. What is the main weakness of this approach?",["It ignores the importance of early planning and assessment","It gives too much attention to legal contracts","It focuses excessively on intellectual property","It automatically increases stakeholder trust"],0,
- "اتأخرت! لازم التقييم يبدأ من التخطيط.","It skips early planning."),
-TF("A project may be financially profitable but legally infeasible if it cannot comply with the required laws and regulations.",true,
- "صح — الربح لوحده مش كفاية.","Profit alone isn't enough."),
-TF("Choosing a legal structure is only an administrative decision and has no effect on the owner's liability or business operations.",false,
- "غلط — الشكل القانوني بيأثر على مسؤولية المالك وتشغيل البزنس.","It affects liability and operations."),
-TF("Contracts help businesses clarify responsibilities and reduce the possibility of disputes between parties.",true,
+MC("Which of the following formulas correctly calculates the Accounts Receivable Turnover?",["Net Sales / Ending Accounts Receivable","Cost of Goods Sold / Average Accounts Receivable","Net Sales / Average Accounts Receivable","Average Accounts Receivable / Daily Net Sales"],2,
+ "AR turnover = صافي المبيعات ÷ متوسط المدينين. (الاختيار D ده عدد أيام التحصيل)","Net sales / average AR."),
+MC("When calculating the Quick Ratio, which of the following assets is typically excluded?",["Cash","Accounts Receivable","Temporary Investments","Merchandise Inventory"],3,
+ "المخزون بيتشال لأنه مش سهل يتحول لكاش بسرعة.","Inventory is excluded."),
+MC("The Number of Days' Sales in Inventory is calculated as:",["Average Inventory / Cost of Goods Sold","Average Inventory / Daily Cost of Goods Sold","Cost of Goods Sold / Average Inventory","Net Sales / Average Inventory"],1,
+ "متوسط المخزون ÷ تكلفة المبيعات اليومية. (C ده Inventory turnover)","Avg inventory / daily COGS."),
+MC("The Acid-Test (Quick) Ratio is considered a more rigorous test of liquidity than the Current Ratio because it:",["Includes all current assets","Focuses only on long-term investments","Excludes inventory and prepaid expenses","Uses total liabilities in the denominator"],2,
+ "أصرم لأنه بيشيل المخزون والمصروفات المدفوعة مقدمًا.","Excludes inventory & prepaid expenses."),
+MC("Which ratio measures how efficiently a company uses its property, plant, and equipment to generate sales?",["Fixed Assets Turnover","Inventory Turnover","Ratio of Fixed Assets to Long-Term Liabilities","Current Ratio"],0,
+ "Fixed assets turnover = المبيعات ÷ متوسط صافي الأصول الثابتة.","Fixed assets turnover."),
+MC("The “Number of Times Interest Charges Earned” ratio is calculated by dividing:",["Net Income by Interest Expense","Income Before Income Tax by Interest Expense","(Income Before Income Tax + Interest Expense) by Interest Expense","Income Before Income Tax by Long-Term Liabilities"],2,
+ "(الربح قبل الضريبة + الفوايد) ÷ الفوايد. لازم ترجّع الفوايد للبسط.","(Income before tax + interest) / interest."),
+MC("A company has current assets of $800,000 and current liabilities of $400,000. If it uses $100,000 of cash to pay off $100,000 of long-term debt, the new current ratio is:",["1.75","2.0","2.25","2.5"],0,
+ "الأصول المتداولة نزلت لـ 700,000، والخصوم المتداولة زي ما هي (الدين طويل الأجل). 700 ÷ 400 = 1.75.","700k / 400k = 1.75."),
+MC("If a company has a Times Interest Earned (TIE) ratio of 0.8, this indicates that:",["The company is excellent at covering its interest payments","The company's earnings are insufficient to cover its interest expenses","The company has no debt","The company has a very low level of debt"],1,
+ "TIE أقل من 1 = الأرباح قبل الفوايد والضرايب أقل من الفوايد نفسها.","TIE < 1 → earnings don't cover interest."),
+MC("A Debt-to-Asset ratio of 0.75 means that:",["75% of the company's assets are financed by equity","The company has $0.75 in assets for every $1 of debt","75% of the company's assets are financed by debt","The company has a low level of financial risk"],2,
+ "75% من الأصول ممولة بالديون → مخاطرة مالية عالية.","75% of assets financed by debt."),
+MC("Which of the following is a key difference between solvency and liquidity ratios?",["Solvency ratios focus on short-term obligations, while liquidity ratios focus on long-term obligations","Solvency ratios are only used by stockholders, while liquidity ratios are only used by creditors","Solvency ratios focus on long-term financial health, while liquidity ratios focus on short-term debt-paying ability","Solvency ratios measure profitability, while liquidity ratios measure efficiency"],2,
+ "Solvency = طويل الأجل، Liquidity = قصير الأجل. (الاختيار A عكسها — فخ)","Solvency = long-term; liquidity = short-term."),
+MC("A company has an Equity Multiplier of 3.0. This implies that:",["For every $1 of equity, the company has $3 in assets","For every $1 of assets, the company has $3 in equity","The company is entirely funded by equity","The company has a very low level of financial leverage"],0,
+ "Equity multiplier = الأصول ÷ حقوق الملكية = 3 → كل 1 جنيه ملكية قصاده 3 جنيه أصول.","$3 of assets per $1 of equity."),
+MC("Gross sales are $1,250,000 and sales returns and allowances are $50,000. Net sales equal:",["$1,200,000","$1,300,000","$1,250,000","$1,150,000"],0,
+ "1,250,000 − 50,000 = 1,200,000.","1,250k − 50k = 1,200k."),
+MC("Net sales are $1,200,000; AR was $150,000 on Jan. 1 and $250,000 on Dec. 31. The Accounts Receivable Turnover is:",["6 times","4.8 times","8 times","5 times"],0,
+ "متوسط المدينين = 200,000 → 1,200,000 ÷ 200,000 = 6 مرات.","Avg AR 200k → 6 times."),
+MC("Using the same data (net sales $1,200,000; average AR $200,000; 365 days), the number of days' sales in receivables is about:",["61 days","46 days","30 days","73 days"],0,
+ "المبيعات اليومية = 3,287.67 → 200,000 ÷ 3,287.67 ≈ 60.8 ≈ 61 يوم.","≈ 60.8 ≈ 61 days."),
+MC("COGS is $720,000; inventory was $80,000 on Jan. 1 and $100,000 on Dec. 31. The Inventory Turnover is:",["8 times","7.2 times","9 times","6 times"],0,
+ "متوسط المخزون = 90,000 → 720,000 ÷ 90,000 = 8 مرات.","Avg inventory 90k → 8 times."),
+MC("Using the same data (COGS $720,000; average inventory $90,000; 365 days), the number of days' sales in inventory is about:",["46 days","40 days","61 days","8 days"],0,
+ "COGS اليومية = 1,972.60 → 90,000 ÷ 1,972.60 ≈ 45.6 ≈ 46 يوم.","≈ 45.6 ≈ 46 days."),
+MC("Nova Inc.: Cash $40,000, Temporary investments $30,000, AR $110,000, Inventory $150,000, Current liabilities $120,000. Working capital is:",["$210,000","$330,000","$60,000","$180,000"],0,
+ "الأصول المتداولة = 330,000 → 330,000 − 120,000 = 210,000.","330k − 120k = 210k."),
+MC("Using Nova Inc.'s data, the current ratio is:",["2.75","1.5","2.0","3.3"],0,
+ "330,000 ÷ 120,000 = 2.75.","330k / 120k = 2.75."),
+MC("Using Nova Inc.'s data, the quick (acid-test) ratio is:",["1.5","2.75","1.25","0.58"],0,
+ "الأصول السريعة = 40 + 30 + 110 = 180,000 (من غير المخزون) → 180 ÷ 120 = 1.5.","Quick assets 180k / 120k = 1.5."),
+MC("Orion: Income before income tax $200,000 and interest expense $25,000. Number of times interest charges earned is:",["9 times","8 times","7 times","10 times"],0,
+ "(200,000 + 25,000) ÷ 25,000 = 9 مرات. (لو نسيت ترجّع الفوايد هيطلع 8 — ده فخ)","225k / 25k = 9 times."),
+MC("Orion: COGS $730,000, beginning inventory $70,000, ending inventory $90,000. Number of days' sales in inventory is:",["40 days","45 days","36 days","9 days"],0,
+ "متوسط المخزون 80,000، COGS اليومية = 2,000 → 80,000 ÷ 2,000 = 40 يوم.","80k / 2k = 40 days."),
+MC("The Ratio of Liabilities to Stockholders' Equity measures:",["The proportion of debt-to-equity financing","The ability to pay short-term debts","How quickly inventory is sold","The return on shareholders' investment"],0,
+ "نسبة التمويل بالدين مقابل الملكية — نسبة ملاءة (Solvency).","Proportion of debt vs equity financing."),
+TF("The Current Ratio is generally considered a stricter test of liquidity than the Quick Ratio.",false,
+ "غلط — الـ Quick Ratio هو الأصرم لأنه بيشيل المخزون.","The quick ratio is stricter."),
+TF("A high Inventory Turnover ratio generally indicates that the company is selling its inventory quickly.",true,
  "صح.","Correct."),
-TF("Intellectual property protection is relevant only to large corporations and is unnecessary for small businesses.",false,
- "غلط — مهمة للصغير والكبير.","Important for small and large businesses."),
-TF("Environmental feasibility considers the relationship between the project and its surrounding environment, including how each affects the other.",true,
- "صح — العلاقة في الاتجاهين.","Two-way relationship."),
-TF("Environmental impact assessment should consider the project's effects only within the exact location where it is established.",false,
- "غلط — لازم مستويات مختلفة: محلي، مجاور، إقليمي، عالمي.","Local, neighboring, regional, global."),
-TF("The temporal dimension of environmental assessment means examining environmental impacts at different stages of the project's life.",true,
- "صح — Temporal = زمني.","Temporal = time."),
-TF("Projects classified under the White List generally have minimal environmental impacts and may not require detailed environmental studies.",true,
- "صح — White = تأثير بسيط.","White = minimal impact."),
-TF("A project classified under the Gray List has environmental impacts that are impossible to mitigate under any circumstances.",false,
- "غلط — ده وصف الـ Black. الـ Gray ممكن يتعالج بس بتكلفة عالية.","That's Black; Gray is mitigable at high cost."),
-TF("A project classified under the Black List may face rejection because its environmental damage cannot be adequately avoided or mitigated.",true,
- "صح — Black = ممكن يترفض.","Black = may be rejected."),
+TF("Working Capital is calculated by adding Total Current Assets and Total Current Liabilities.",false,
+ "غلط — بالطرح: الأصول المتداولة − الخصوم المتداولة.","It's CA minus CL."),
+TF("Daily Net Sales is calculated by dividing Net Sales by 365 days.",true,
+ "صح.","Correct."),
+TF("The Ratio of Liabilities to Stockholders' Equity measures a company's ability to pay its short-term debts.",false,
+ "غلط — دي نسبة ملاءة طويلة الأجل (Solvency) مش سيولة.","It's a solvency (long-term) ratio."),
+TF("A higher Accounts Receivable Turnover generally means the company collects its receivables faster.",true,
+ "صح.","Correct."),
+TF("The Number of Days' Sales in Receivables is also called Days Sales Outstanding.",true,
+ "صح — DSO.","Correct — DSO."),
+TF("Inventory Turnover is calculated as Net Sales divided by Average Inventory.",false,
+ "غلط — بنستخدم تكلفة البضاعة المباعة (COGS) مش المبيعات.","It uses COGS, not net sales."),
+TF("Quick assets include merchandise inventory and prepaid expenses.",false,
+ "غلط — الاتنين دول بالظبط اللي بيتشالوا.","Those are exactly what's excluded."),
+TF("The Number of Times Interest Charges Earned measures a company's ability to meet its interest payments.",true,
+ "صح.","Correct."),
+TF("The Ratio of Fixed Assets to Long-Term Liabilities is a solvency ratio.",true,
+ "صح — بيوضح الأصول الثابتة ممولة بديون طويلة قد إيه.","Correct."),
+TF("Using cash to pay off long-term debt leaves the current ratio unchanged.",false,
+ "غلط — الأصول المتداولة بتقل والخصوم المتداولة ثابتة، فالنسبة بتتغير (من 2.0 لـ 1.75 في المثال).","CA falls while CL stays → ratio changes (2.0 → 1.75)."),
+TF("Daily Cost of Goods Sold is calculated by dividing COGS by 365 days.",true,
+ "صح.","Correct."),
+TF("Efficiency (activity) ratios measure how effectively a company manages its assets to generate sales.",true,
+ "صح.","Correct."),
+TF("Average Accounts Receivable is calculated as (Beginning AR + Ending AR) ÷ 2.",true,
+ "صح.","Correct."),
 ],
 };
 
 const SECTIONS = [
 { id:'s1', n:'01', c:'var(--s1)',
-  title:{ar:'دراسة الجدوى ودراسة الظهور', en:'Feasibility vs. Visibility'},
-  desc:{ar:'الفرق بين Feasibility و Visibility، خطوات دراسة الظهور العشرة، وأنواع الجدوى.', en:'Feasibility vs visibility, the 10 steps of a visibility study, and feasibility types.'},
-  topics:['Feasibility','Visibility','SWOT','10 Steps','TELOS'],
+  title:{ar:'مقدمة في التحليل المالي', en:'Introduction to Financial Analysis'},
+  desc:{ar:'يعني إيه تحليل مالي، بيركز على إيه، مين بيستخدمه، مصادر المعلومات، وأنواع التحليل والنسب.', en:'What financial analysis is, its focus, its users, sources of information and types of analysis.'},
+  topics:['Definition','Focus','Debt vs Equity','Sources','Ratio types'],
   lesson:(L)=>`
-  <div class="blk"><h2><span class="n">1</span>${L('أهم فرق في السكشن كله','The #1 distinction in this section')}</h2>
-   <p class="sub">${L('الاتنين اسمهم شبه بعض، بس معناهم مختلف تمامًا — وأسئلة كتير بتلعب على الحتة دي.','The names sound alike but mean totally different things — many questions test this.')}</p>
+  <div class="blk"><h2><span class="n">1</span>${L('يعني إيه تحليل مالي؟','What is financial analysis?')}</h2>
+   <p class="sub">${L('أول سؤال في المادة — وأسئلة صح وغلط كتير بتلعب على كلمة <b>solely</b>.','The first idea in the course — many T/F questions play on the word <b>solely</b>.')}</p>
+   <div class="g2">
+    <div class="tile hl"><h4>📖 ${L('التعريف','Definition')}</h4><p>${L('هو <b>فحص نقدي</b> للمعلومات المحاسبية في القوايم المالية، وتقييم <b>العلاقات بين مكوناتها</b> عشان نفهم المركز المالي للشركة وأداءها.','<b>Critically examining</b> accounting information in the statements and evaluating the <b>relationships between components</b> to understand position and performance.')}</p></div>
+    <div class="tile hl"><h4>🌍 ${L('مش في الفراغ','Not in isolation')}</h4><p>${L('التحليل بيتعمل <b>في سياق البيئة الاقتصادية</b> اللي الشركة شغالة فيها — مش أرقام وحسابات وبس.','It is done <b>within the economic environment</b> — not just maths on numbers.')}</p></div>
+   </div>
+   <div class="call warn"><span class="ci">⚠️</span><div>${L('<b>فخ الامتحان:</b> أي جملة بتقول إن التحليل "<b>solely mathematical</b>" أو إن الإجابة بتعتمد على "<b>الأرقام بس</b>" من غير تفسير المحلل → <b>غلط</b>. الإجابة = أرقام + تفسير.','<b>Exam trap:</b> “solely mathematical” or “numbers only, no interpretation” → <b>False</b>. Answer = numbers + interpretation.')}</div></div>
+   <div class="call tip"><span class="ci">🎯</span><div>${L('<b>الدور الأساسي:</b> إننا <b>نتوقع</b> أداء الشركة ومركزها المالي ومخاطرها في المستقبل — مش حساب الضرايب ولا عمل الميزانية التقديرية.','<b>Primary role:</b> to <b>predict</b> future performance, financial position and risk — not taxes or budgeting.')}</div></div>
+  </div>
+
+  <div class="blk"><h2><span class="n">2</span>${L('التحليل بيركز على إيه؟ (3 حاجات)','The primary focus (3 abilities)')}</h2>
+   <div class="g3">
+    <div class="tile"><div class="ic">💹</div><h4>${L('عائد ≥ تكلفة رأس المال','Return ≥ cost of capital')}</h4><p class="en">Generate a return on capital at least equal to its cost of capital</p></div>
+    <div class="tile"><div class="ic">📈</div><h4>${L('نمو مربح','Profitable growth')}</h4><p class="en">Grow its operations profitably</p></div>
+    <div class="tile"><div class="ic">💵</div><h4>${L('تدفق نقدي كافي','Enough cash flow')}</h4><p class="en">Generate sufficient cash flow to meet obligations and seize opportunities</p></div>
+   </div>
+  </div>
+
+  <div class="blk"><h2><span class="n">3</span>${L('مين بيستخدم التحليل؟ وكل واحد عايز إيه؟','Who uses it, and what do they want?')}</h2>
    <div class="vsbox">
-    <div class="side a"><h3 class="en">Feasibility Study</h3><div class="q">${L('دراسة الجدوى: هل المشروع ينفع يتعمل؟','"Can this project be done?"')}</div>
+    <div class="side a"><h3 class="en">Debt Investors</h3><div class="q">${L('المقرضين: هترجّعلي فلوسي؟','Lenders: will I get paid back?')}</div>
      <ul class="ck">
-      <li>${L('بتفحص المشروع من <b>كل النواحي</b> (all relevant areas)','Examines the project in <b>all relevant areas</b>')}</li>
-      <li>${L('بتتوقع هل المشروع هيتنفذ كله بنجاح — أو <b>نعدّله</b> عشان ينفع','Predicts if it can be fully realized — or <b>modifies</b> it so it can')}</li>
-      <li>${L('بتتعمل <b>قبل</b> ما نبدأ المشروع','Done <b>before</b> starting the project')}</li>
-      <li>${L('لأي مشروع: <b>قومي</b> (دولة) أو <b>شركة</b>','For any project: <b>national</b> or <b>corporate</b>')}</li>
-      <li>${L('أهميتها: <b>بتحدد نجاح أو فشل</b> المشروع','Why it matters: it <b>determines success or failure</b>')}</li>
+      <li>${L('قدرة الشركة تسدد <b>الفوايد وأصل الدين</b>','Ability to repay <b>interest & principal</b>')}</li>
+      <li>${L('اهتمامهم: <b>الأمان المالي</b> (financial safety)','Focus: <b>financial safety</b>')}</li>
      </ul></div>
     <div class="vs">VS</div>
-    <div class="side b"><h3 class="en">Visibility Study</h3><div class="q">${L('دراسة الظهور: إحنا معروفين قد إيه؟','"How visible / known are we?"')}</div>
+    <div class="side b"><h3 class="en">Equity Investors</h3><div class="q">${L('المساهمين: هكسب قد إيه؟','Shareholders: how much will I earn?')}</div>
      <ul class="ck">
-      <li>${L('Visibility = <b>القدرة إنك تشوف أو تتشاف</b>','Visibility = <b>ability to see or be seen</b>')}</li>
-      <li>${L('بتقيس <b>وعي ومعرفة</b> الجمهور المستهدف بالشركة','Measures <b>awareness & recognition</b> in the target market')}</li>
-      <li>${L('<b>Market visibility</b> = المنتج أو الخدمة معروفة قد إيه','<b>Market visibility</b> = how well-known a product/service is')}</li>
-      <li>${L('وبتدوّر على <b>فرص للتحسين</b>','And finds <b>opportunities to improve</b>')}</li>
+      <li>${L('<b>الربحية</b> و<b>قيمة السهم</b>','<b>Profitability</b> & <b>share value</b>')}</li>
+      <li>${L('اهتمامهم: <b>النمو والعوائد</b>','Focus: <b>growth & returns</b>')}</li>
      </ul></div>
    </div>
-   <div class="call warn"><span class="ci">⚠️</span><div>${L('<b>فخ الامتحان:</b> ناس كتير بتقول visibility وهي تقصد feasibility. لو السؤال بيتكلم عن <b>التكاليف</b> أو <b>هل المشروع ممكن يتنفذ</b> → دي <b>Feasibility</b> مش Visibility.','<b>Exam trap:</b> people often say visibility when they mean feasibility. If a question mentions <b>costs</b> or <b>whether the project can be implemented</b> → that\'s <b>Feasibility</b>, not visibility.')}</div></div>
+   <div class="call mem"><span class="ci">🧠</span><div>${L('<b>Debt</b> = دين = "رجّعلي فلوسي" · <b>Equity</b> = ملكية = "كبّرلي فلوسي".','<b>Debt</b> = “pay me back” · <b>Equity</b> = “grow my money”.')}</div></div>
   </div>
 
-  <div class="blk"><h2><span class="n">2</span>${L('الـ Visibility Study بتفيد في إيه؟','What does a visibility study give you?')}</h2>
-   <p class="sub">${L('6 فوايد — احفظهم، أغلب أسئلة صح وغلط جاية منهم.','6 benefits — most T/F questions come from these.')}</p>
-   <div class="g3">
-    <div class="tile"><div class="ic">💪</div><h4><span class="en">Identify strengths & weaknesses</span></h4><p>${L('تعرف إنت قوي فين وضعيف فين','Know where you are strong or weak')}</p></div>
-    <div class="tile"><div class="ic">🎯</div><h4><span class="en">Understand the target market</span></h4><p>${L('تفهم جمهورك المستهدف','Understand your audience')}</p></div>
-    <div class="tile"><div class="ic">🏁</div><h4><span class="en">Stay ahead of competitors</span></h4><p>${L('تفضل سابق المنافسين','Stay ahead of rivals')}</p></div>
-    <div class="tile"><div class="ic">📣</div><h4><span class="en">Optimize marketing efforts</span></h4><p>${L('تحسّن التسويق — يعني ليها تأثير على استراتيجيات التسويق','Improve marketing — it affects marketing strategy')}</p></div>
-    <div class="tile"><div class="ic">✨</div><h4><span class="en">Enhance brand perception</span></h4><p>${L('صورة البراند عند الناس تبقى أحسن','Better brand image')}</p></div>
-    <div class="tile"><div class="ic">💬</div><h4><span class="en">Increase customer engagement</span></h4><p>${L('تفاعل العملاء يزيد','More customer engagement')}</p></div>
+  <div class="blk"><h2><span class="n">4</span>${L('مصادر المعلومات','Sources of information')}</h2>
+   <p class="sub">${L('التحليل <b>بيبدأ</b> من التقارير المالية بتاعة الشركة نفسها:','Analysis <b>begins</b> with the company’s own financial reports:')}</p>
+   <div class="flow">
+    <div class="fx"><b>✅ ${L('قوايم مالية مراجَعة','Audited statements')}</b><small class="en">Audited financial statements</small></div>
+    <div class="ar">+</div>
+    <div class="fx"><b>📑 ${L('إفصاحات تنظيمية','Regulatory disclosures')}</b><small class="en">Additional regulatory disclosures</small></div>
+    <div class="ar">+</div>
+    <div class="fx"><b>🗣️ ${L('تعليق الإدارة','Management commentary')}</b><small class="en">Accompanying <b>(unaudited)</b> commentary</small></div>
    </div>
-   <div class="call tip"><span class="ci">💡</span><div>${L('وكمان: بتساعد في <b>توجيه اتخاذ القرار</b> (Guiding decision-making) وبتبني <b>أساس قوي للنمو</b> (Strong foundation for growth).','Also: it <b>guides decision-making</b> and builds a <b>strong foundation for growth</b>.')}</div></div>
+   <div class="call tip"><span class="ci">🔎</span><div>${L('وبعدين المحلل لازم <b>يكمّل</b> البيانات دي ببحث عن <b>الصناعة والشركة</b> (industry & company research) عشان يفهم البيئة الاقتصادية ونموذج البزنس. وخلي بالك: تعليق الإدارة <b>غير مراجَع</b>.','Then <b>complement</b> it with <b>industry & company research</b>. Note: management commentary is <b>unaudited</b>.')}</div></div>
   </div>
 
-  <div class="blk"><h2><span class="n">3</span>${L('الأدوات اللي بنستخدمها','Tools used in the study')}</h2>
+  <div class="blk"><h2><span class="n">5</span>${L('أنواع التحليل المالي','Types of financial analysis')}</h2>
    <div class="g2">
-    <div class="tile hl"><h4><span class="en">SWOT Analysis</span></h4>
-     <div class="mnemo"><span>S<small>Strength</small></span><span>W<small>Weakness</small></span><span>O<small>Opportunity</small></span><span>T<small>Threat</small></span></div>
-     <p>${L('<b>S و W داخليين</b> (جوه الشركة) — <b>O و T خارجيين</b> (في السوق).','<b>S & W are internal</b> — <b>O & T are external</b>.')}</p></div>
-    <div class="tile"><h4><span class="en">Competitor Analysis</span></h4><p>${L('مش عشان تقلّد المنافسين! عشان تلاقي <b>الفجوات والفرص</b> في السوق (market gaps & opportunities).','Not to copy rivals — to find <b>market gaps & opportunities</b>.')}</p></div>
-    <div class="tile"><h4>🌐 <span class="en">Online visibility</span></h4><p>${L('تقييم <b>الموقع والسوشيال ميديا</b>.','Evaluate <b>website & social media</b>.')}</p></div>
-    <div class="tile"><h4>📰 <span class="en">Offline visibility</span></h4><p>${L('<b>الإعلانات التقليدية والعلاقات العامة (PR)</b>.','<b>Traditional advertising & PR</b>.')}</p></div>
+    <div class="tile"><h4>↔️ <span class="en">Horizontal Analysis</span></h4><p>${L('مقارنة البيانات التاريخية <b>عبر الزمن</b> (Trend).','Compare historical data <b>over time</b> (trend).')}</p></div>
+    <div class="tile"><h4>↕️ <span class="en">Vertical Analysis</span></h4><p>${L('<b>Common-size</b> — كل بند نسبة من إجمالي.','<b>Common-size</b> — each item as % of a total.')}</p></div>
    </div>
-   <div class="call mem"><span class="ci">🔎</span><div>${L('<b>Data analysis & reporting</b> = بيطلّع الاتجاهات (trends) والأفكار (insights) من البيانات اللي جمعناها. و<b>تقييم التسويق الحالي</b> جزء ضروري من الدراسة.','<b>Data analysis & reporting</b> reveals trends & insights. <b>Evaluating current marketing</b> is a necessary part of the study.')}</div></div>
-  </div>
-
-  <div class="blk"><h2><span class="n">4</span>${L('خطوات الـ Visibility Study (10 خطوات)','10 steps of a visibility study')}</h2>
-   <p class="sub">${L('الدراسة مش عشوائية — ليها خطوات منظمة بالترتيب ده:','It is structured, not random — in this order:')}</p>
-   <div class="steps">
-    <div class="step"><b><span class="en">Define Purpose & Scope</span></b><span>${L('حدد الهدف والنطاق','Set goal & scope')}</span></div>
-    <div class="step"><b><span class="en">Identify Target Audience</span></b><span>${L('حدد جمهورك','Who is your audience')}</span></div>
-    <div class="step"><b><span class="en">Key Metrics & Indicators</span></b><span>${L('مقاييس عشان تقيس بدقة','To measure accurately')}</span></div>
-    <div class="step"><b><span class="en">Collect Data</span></b><span>${L('اجمع البيانات','Gather data')}</span></div>
-    <div class="step"><b><span class="en">Analyze Data</span></b><span>${L('حلل وطلّع الأنماط','Find patterns')}</span></div>
-    <div class="step"><b><span class="en">Opportunities & Challenges</span></b><span>${L('حدد الفرص والتحديات','Spot both')}</span></div>
-    <div class="step"><b><span class="en">Develop Action Plan</span></b><span>${L('اعمل خطة عمل','Build a plan')}</span></div>
-    <div class="step"><b><span class="en">Implement & Monitor</span></b><span>${L('نفّذ وراقب','Execute & watch')}</span></div>
-    <div class="step"><b><span class="en">Evaluate & Improve</span></b><span>${L('قيّم وحسّن','Assess & refine')}</span></div>
-    <div class="step"><b><span class="en">Repeat the Process</span></b><span>${L('كرر تاني','Do it again')}</span></div>
-   </div>
-   <div class="call mem"><span class="ci">🧠</span><div>${L('<b>احفظها كقصة:</b> حدد هدفك ← اعرف جمهورك ← اختار مقاييسك ← اجمع ← حلل ← شوف الفرص ← خطط ← نفّذ وراقب ← حسّن ← وكرر. 🔁','<b>Story:</b> goal → audience → metrics → collect → analyze → opportunities → plan → do & monitor → improve → repeat. 🔁')}</div></div>
-  </div>
-
-  <div class="blk"><h2><span class="n">5</span>${L('أنواع الجدوى — كلمة السر TELOS','Feasibility types — remember TELOS')}</h2>
-   <div class="mnemo"><span>T</span><span>E</span><span>L</span><span>O</span><span>S</span></div>
-   <div class="g3" style="margin-top:14px">
-    <div class="tile"><h4><span class="en">Technical</span> ⚙️</h4><p>${L('الجانب <b>التكنولوجي</b>. بيعملها <b>خبراء تقنيين</b> — مش محللين ماليين.','<b>Technology</b> side. Done by <b>technical experts</b>, not financial analysts.')}</p></div>
-    <div class="tile"><h4><span class="en">Economic</span> 💰</h4><p>${L('<b>التكاليف والمصاريف</b> والاعتمادية المالية.','<b>Costs, expenditures</b> & financial reliability.')}</p></div>
-    <div class="tile"><h4><span class="en">Legal</span> ⚖️</h4><p>${L('<b>القوانين واللوائح</b> وقوانين الحماية.','<b>Laws, regulations</b> & protection acts.')}</p></div>
-    <div class="tile"><h4><span class="en">Operational</span> 🏭</h4><p>${L('هل <b>طريقة التشغيل</b> المقترحة تلبي احتياجات البزنس؟','Do proposed <b>methods</b> meet business needs?')}</p></div>
-    <div class="tile"><h4><span class="en">Scheduling</span> ⏱️</h4><p>${L('هل هيخلص <b>في معاده</b>؟ المشروع <b>ممكن يفشل</b> لو اتأخر.','Will it finish <b>on time</b>? Delays <b>can fail</b> a project.')}</p></div>
-   </div>
-  </div>
-
-  <div class="blk"><h2><span class="n">6</span>${L('إمتى تبقى دراسة الجدوى قوية؟','What makes a strong feasibility study?')}</h2>
-   <div class="g2">
-    <div class="tile"><h4 style="color:var(--ok)">✔ ${L('صح','Do')}</h4><ul class="ck">
-     <li>${L('مبنية على <b>بيانات حقيقية</b>','Based on <b>real data</b>')}</li>
-     <li>${L('بتشرك <b>أصحاب المصلحة</b> (مستثمرين، موظفين، شركاء) → جودة أعلى','Involves <b>stakeholders</b> → better quality')}</li>
-     <li>${L('بتحلل <b>سيناريوهات</b> مختلفة','Analyzes <b>scenarios</b>')}</li>
-     <li>${L('<b>مرنة</b> وبتتغير مع الظروف','<b>Flexible</b>, adapts to change')}</li>
-     <li>${L('بتقيّم <b>العائد المالي</b> والأرباح','Assesses <b>financial returns</b>')}</li>
-     <li>${L('بتحدد <b>المتطلبات وعوامل النجاح</b> و<b>المخاطر</b>','Identifies <b>requirements, success factors & risks</b>')}</li>
-    </ul></div>
-    <div class="tile"><h4 style="color:var(--bad)">✘ ${L('غلط','Don\'t')}</h4><ul class="ck no">
-     <li>${L('تعتمد على <b>افتراضات بس</b>','Rely only on <b>assumptions</b>')}</li>
-     <li>${L('تفضل <b>ثابتة</b> ومتتغيرش','Stay <b>fixed</b>')}</li>
-     <li>${L('تتجاهل الجانب <b>الاقتصادي</b> أو الأرباح','Ignore <b>economics</b> or profits')}</li>
-     <li>${L('تقول إنها <b>مش بتأثر</b> على النجاح','Claim it has <b>little impact</b> on success')}</li>
-    </ul></div>
-   </div>
+   <h3 style="margin:22px 0 10px;font-size:17px">${L('أنواع النسب المالية (5)','The 5 ratio types')}</h3>
+   <div class="tblwrap"><table class="cmp"><tbody>
+    <tr><td class="en">💧 Liquidity</td><td>${L('السيولة — القدرة على السداد <b>قصير الأجل</b>','<b>Short-term</b> solvency')}</td></tr>
+    <tr><td class="en">🏦 Solvency</td><td>${L('الملاءة — الديون <b>طويلة الأجل</b>','<b>Long-term</b> debt')}</td></tr>
+    <tr><td class="en">💰 Profitability</td><td>${L('الربحية — القدرة على تحقيق أرباح','Earning ability')}</td></tr>
+    <tr><td class="en">⚙️ Efficiency</td><td>${L('الكفاءة — استغلال الأصول','Asset utilization')}</td></tr>
+    <tr><td class="en">🏷️ Valuation</td><td>${L('التقييم — القيمة السوقية','Market value')}</td></tr>
+   </tbody></table></div>
+   <div class="call warn"><span class="ci">🚫</span><div>${L('<b class="en">Historical Cost Ratios</b> <b>مش</b> من الأنواع — سؤال "Which is NOT" مشهور.','<b>Historical Cost Ratios</b> is <b>NOT</b> a type — classic “Which is NOT”.')}</div></div>
   </div>
 
   <div class="blk recap"><h2><span class="n">★</span>${L('الخلاصة في 5 نقط','Recap in 5 points')}</h2><ol>
-   <li>${L('<b>Feasibility</b> = ينفع يتعمل؟ — <b>Visibility</b> = معروفين قد إيه؟','<b>Feasibility</b> = can it be done? — <b>Visibility</b> = how known are we?')}</li>
-   <li>${L('6 فوايد للـ Visibility: قوة/ضعف، جمهور، منافسين، تسويق، براند، تفاعل.','6 visibility benefits: S/W, market, competitors, marketing, brand, engagement.')}</li>
-   <li>${L('SWOT: القوة والضعف داخلي — الفرص والتهديدات خارجي.','SWOT: S/W internal — O/T external.')}</li>
-   <li>${L('10 خطوات منظمة، آخرها "كرر".','10 structured steps ending with "repeat".')}</li>
-   <li>${L('أنواع الجدوى: TELOS.','Feasibility types: TELOS.')}</li></ol></div>`
+   <li>${L('التحليل = فحص نقدي للقوايم + علاقات بين البنود، <b>في سياق البيئة الاقتصادية</b>.','Analysis = critical examination + relationships, <b>in economic context</b>.')}</li>
+   <li>${L('بيركز على: عائد ≥ تكلفة رأس المال، نمو مربح، كاش كفاية.','Focus: return ≥ cost of capital, profitable growth, enough cash.')}</li>
+   <li>${L('Debt = السداد · Equity = الربحية وقيمة السهم.','Debt = repayment · Equity = profit & share value.')}</li>
+   <li>${L('بيبدأ من تقارير الشركة، ويتكمّل ببحث عن الصناعة.','Starts with company reports, complemented by industry research.')}</li>
+   <li>${L('أفقي، رأسي، و5 أنواع نسب — ومفيش Historical Cost Ratios.','Horizontal, vertical, 5 ratio types — no historical cost ratios.')}</li></ol></div>`
 },
 { id:'s2', n:'02', c:'var(--s2)',
-  title:{ar:'أسباب وأقسام دراسة الجدوى', en:'Why & How: Structure of a Study'},
-  desc:{ar:'ليه بنعمل دراسة جدوى، إمتى المستثمر يطلبها، أقسامها، والفرق بينها وبين الـ Business Plan.', en:'Why we do it, when investors need it, its sections, and how it differs from a business plan.'},
-  topics:['9 Reasons','Investors','3 Sections','vs Business Plan','Examples'],
+  title:{ar:'مستويات التحليل والتحليل الأفقي', en:'Levels of Analysis & Horizontal Analysis'},
+  desc:{ar:'مستويات التحليل التلاتة، أدوات التحليل، التحليل الأفقي: المعادلات، الاعتبارات، المزايا، وأمثلة محلولة.', en:'The 3 levels, the 3 tools, and horizontal analysis: formulas, considerations, advantages and solved examples.'},
+  topics:['Intra · Inter · Industry','Amount change','% change','Base year 100%','Covenants'],
   lesson:(L)=>`
-  <div class="blk"><h2><span class="n">1</span>${L('الهدف في جملة واحدة','The purpose in one line')}</h2>
-   <div class="g2">
-    <div class="tile hl"><h4>${L('الغرض','Purpose')}</h4><p>${L('نعرف المشروع <b>viable</b> (ينفع) ولا لأ — <b>قبل</b> ما نصرف فلوس كبيرة.','Find out if the project is <b>viable</b> — <b>before</b> major investment.')}</p></div>
-    <div class="tile hl"><h4>${L('الهدف الأساسي','Main objective')}</h4><p>${L('هل المشروع هينجح <b>ماليًا وتقنيًا وتشغيليًا</b>؟','Will it succeed <b>financially, technically & operationally</b>?')}</p></div>
-   </div>
-   <div class="call tip"><span class="ci">❓</span><div>${L('سؤال الجدوى الأساسي: <b class="en">“Can we do this?”</b> — والنتيجة قرار <b>Go / No-Go</b> (نكمل ولا نوقف). ومتنساش: هي <b>مش بتضمن</b> النجاح، بس بتقلل المخاطر.','Key question: <b class="en">“Can we do this?”</b> — outcome is a <b>Go / No-Go</b> decision. It does <b>not guarantee</b> success.')}</div></div>
-  </div>
-
-  <div class="blk"><h2><span class="n">2</span>${L('ليه بنعمل دراسة جدوى؟ (9 أسباب)','9 key reasons')}</h2>
+  <div class="blk"><h2><span class="n">1</span>${L('مستويات التحليل التلاتة','The 3 levels of analysis')}</h2>
+   <p class="sub">${L('بنقارن الشركة بمين؟ — التلاتة أساميهم قريبة جدًا، ركّز.','Compare the company with whom? — the names are close, focus.')}</p>
    <div class="g3">
-    <div class="tile"><div class="ic">🧭</div><h4><span class="en">Informed Decision-Making</span></h4><p>${L('قرار مبني على معلومات','Decisions based on facts')}</p></div>
-    <div class="tile"><div class="ic">🛡️</div><h4><span class="en">Risk Mitigation</span></h4><p>${L('تقليل المخاطر','Reduce risk')}</p></div>
-    <div class="tile"><div class="ic">⚖️</div><h4><span class="en">Resource Optimization</span></h4><p>${L('استغلال الموارد صح','Use resources well')}</p></div>
-    <div class="tile"><div class="ic">💵</div><h4><span class="en">Financial Viability</span></h4><p>${L('هل هيكسب؟','Will it pay off?')}</p></div>
-    <div class="tile"><div class="ic">📊</div><h4><span class="en">Market Validation</span></h4><p>${L('هل السوق عايز ده؟','Does the market want it?')}</p></div>
-    <div class="tile"><div class="ic">🔧</div><h4><span class="en">Technical & Operational Assessment</span></h4><p>${L('نقدر ننفذ ونشغّل؟','Can we build & run it?')}</p></div>
-    <div class="tile"><div class="ic">🚫</div><h4><span class="en">Avoiding Costly Failures</span></h4><p>${L('نتجنب خساير كبيرة','Avoid expensive failure')}</p></div>
-    <div class="tile"><div class="ic">🔀</div><h4><span class="en">Identifying Alternatives</span></h4><p>${L('نلاقي بدائل','Find alternatives')}</p></div>
-    <div class="tile"><div class="ic">🤝</div><h4><span class="en">Attracting Investors</span></h4><p>${L('بتقدم بيانات بتثبت إن المشروع له مستقبل','Data that proves potential')}</p></div>
+    <div class="tile hl"><div class="ic">🔁</div><h4><span class="en">Intra-company</span></h4><p>${L('<b>نفس الشركة</b>: السنة دي قصاد السنة اللي فاتت.','<b>Same company</b>: this year vs last year.')}</p></div>
+    <div class="tile hl"><div class="ic">🏢</div><h4><span class="en">Inter-company</span></h4><p>${L('الشركة قصاد شركات تانية في <b>نفس المجموعة الأم</b> (corporate group).','Company vs others in the <b>same parent group</b>.')}</p></div>
+    <div class="tile hl"><div class="ic">📊</div><h4><span class="en">Industry average</span></h4><p>${L('الشركة قصاد <b>متوسط الصناعة</b> اللي بتنشره شركات المعلومات والإحصاء.','Company vs the <b>industry average</b> published by statistics companies.')}</p></div>
    </div>
-   <div class="call warn"><span class="ci">🚫</span><div>${L('<b>Product Advertising</b> (الإعلان عن المنتج) <b>مش</b> من الأسباب — سؤال "Which is NOT" مشهور.','<b>Product Advertising</b> is <b>NOT</b> a reason — a classic "Which is NOT" question.')}</div></div>
+   <div class="call mem"><span class="ci">🧠</span><div>${L('<b>Intra</b> = جوه (inside) الشركة · <b>Inter</b> = بين (between) شركات المجموعة · <b>Industry</b> = متوسط القطاع كله.','<b>Intra</b> = inside · <b>Inter</b> = between group companies · <b>Industry</b> = sector average.')}</div></div>
   </div>
 
-  <div class="blk"><h2><span class="n">3</span>${L('إمتى المستثمر بيطلب دراسة جدوى؟','When do investors need one?')}</h2>
-   <p class="sub">${L('دايمًا <b>قبل ما يحط فلوسه</b> (before committing financial resources) — وفي الحالات دي:','Always <b>before committing money</b> — especially in these cases:')}</p>
-   <div class="g3">
-    <div class="tile"><h4><span class="en">High-stakes investments</span></h4><p>${L('استثمار كبير','Big money at stake')}</p></div>
-    <div class="tile"><h4><span class="en">Significant Market Impact</span></h4><p>${L('تأثير كبير على السوق','Big market impact')}</p></div>
-    <div class="tile"><h4><span class="en">Market uncertainty or risk</span></h4><p>${L('سوق مش واضح أو فيه مخاطرة','Uncertain market')}</p></div>
-    <div class="tile"><h4><span class="en">To attract funding</span></h4><p>${L('عشان يجيب تمويل','To raise funds')}</p></div>
-    <div class="tile"><h4><span class="en">Exploring new opportunities</span></h4><p>${L('فرص جديدة','New opportunities')}</p></div>
-    <div class="tile"><h4><span class="en">Mitigating potential failures</span></h4><p>${L('تقليل احتمالات الفشل','Reduce failure')}</p></div>
-   </div>
-   <div class="call tip"><span class="ci">💡</span><div>${L('مش بيعملوها للمشاريع <b>قليلة المخاطر</b> (low-risk) — ده سؤال غلط مشهور.','They do <b>not</b> do it for <b>low-risk</b> ventures — a classic False.')}</div></div>
-  </div>
-
-  <div class="blk"><h2><span class="n">4</span>${L('أقسام دراسة الجدوى (3 أقسام)','The 3 sections of a study')}</h2>
+  <div class="blk"><h2><span class="n">2</span>${L('أدوات التحليل التلاتة','The 3 tools of analysis')}</h2>
    <div class="flow">
-    <div class="fx"><b>① ${L('تمهيدي وإداري','Introductory')}</b><small class="en">Cover Page · Approval Sheet / Acknowledgement · Table of Contents · <b style="color:var(--c)">Executive Summary</b> · Project Description</small></div>
-    <div class="ar">→</div>
-    <div class="fx"><b>② ${L('التحليل','Analysis')}</b><small class="en">Market · Technical · Operational · Financial · Legal & Environmental · Risk · Socioeconomic</small></div>
-    <div class="ar">→</div>
-    <div class="fx"><b>③ ${L('ختامي','Concluding')}</b><small class="en">Conclusions · Recommendations · Appendices</small></div>
+    <div class="fx"><b>① <span class="en">Horizontal</span></b><small>${L('أفقي (Trend) — السكشن ده','Trend — this section')}</small></div><div class="ar">→</div>
+    <div class="fx"><b>② <span class="en">Vertical</span></b><small>${L('رأسي (Common-size) — سكشن 3','Common-size — section 3')}</small></div><div class="ar">→</div>
+    <div class="fx"><b>③ <span class="en">Ratio</span></b><small>${L('النسب — سكشن 4 و 5','Ratios — sections 4 & 5')}</small></div>
    </div>
-   <div class="call warn"><span class="ci">📌</span><div>${L('الـ <b>Executive Summary</b> في القسم <b>التمهيدي</b> مش الختامي! والـ <b>Conclusions & Recommendations</b> في الختامي.','<b>Executive Summary</b> is in the <b>Introductory</b> section, not the concluding one!')}</div></div>
-   <h3 style="margin:22px 0 10px;font-size:17px">${L('أنواع التحليل — كل نوع بيدرس إيه؟','Analysis types — what each one checks')}</h3>
-   <div class="tblwrap"><table class="cmp"><tbody>
-    <tr><td class="en">Market</td><td>${L('الطلب + المنافسين + اتجاهات السوق','Demand, competition, market trends')}</td></tr>
-    <tr><td class="en">Technical</td><td>${L('التكنولوجيا وقدرة الموارد','Technology & resource capability')}</td></tr>
-    <tr><td class="en">Operational</td><td>${L('قدرة وهيكل المنظمة','Organizational capacity & structure')}</td></tr>
-    <tr><td class="en">Financial</td><td>${L('تحليل التكلفة/المكسب + توقعات مالية (Cost-benefit)','Cost-benefit analysis & financial projections')}</td></tr>
-    <tr><td class="en">Legal & Environmental</td><td>${L('الامتثال للقوانين + الموافقات + العوامل البيئية','Compliance, regulatory approvals, environment')}</td></tr>
-    <tr><td class="en">Risk</td><td>${L('التحديات والمخاطر المحتملة','Potential challenges')}</td></tr>
-    <tr><td class="en">Socioeconomic</td><td>${L('تأثير المشروع على المجتمع','Community impact')}</td></tr>
-   </tbody></table></div>
+   <div class="call warn"><span class="ci">⚠️</span><div>${L('متخلطش: <b>Intra/Inter/Industry</b> = <b>مستويات</b>. <b>Horizontal/Vertical/Ratio</b> = <b>أدوات</b>.','Don’t mix: Intra/Inter/Industry = <b>levels</b>; Horizontal/Vertical/Ratio = <b>tools</b>.')}</div></div>
   </div>
 
-  <div class="blk"><h2><span class="n">5</span><span class="en">Feasibility Study vs. Business Plan</span></h2>
-   <div class="tblwrap"><table class="cmp">
-    <thead><tr><th></th><th class="fs en">Feasibility Study</th><th class="bp en">Business Plan</th></tr></thead><tbody>
-    <tr><td>${L('السؤال','Key question')}</td><td class="en"><b>“Can we do this?”</b></td><td class="en"><b>“How will we do this?”</b></td></tr>
-    <tr><td>${L('الغرض','Purpose')}</td><td>${L('نعرف الفكرة viable وعملية ولا لأ','Determine viability & practicality')}</td><td>${L('خريطة طريق تفصيلية لتحقيق الأهداف + عرضها على المستثمرين','Detailed roadmap + pitch to investors')}</td></tr>
-    <tr><td>${L('التوقيت','Timing')}</td><td>${L('<b>بدري</b> — وقت الـ brainstorming قبل أي فلوس','<b>Early</b> — during brainstorming')}</td><td>${L('<b>بعد</b> ما الجدوى تأكد إن الفكرة تنفع','<b>After</b> feasibility confirms it')}</td></tr>
-    <tr><td>${L('التركيز','Focus')}</td><td>${L('نقاط القوة والضعف والفرص والتهديدات','Strengths, weaknesses, opportunities, threats')}</td><td>${L('الاستراتيجيات والخطوات لتنفيذ فكرة متأكدين منها','Strategies & steps to execute a validated idea')}</td></tr>
-    <tr><td>${L('النطاق','Scope')}</td><td>${L('تقني، تشغيلي، اقتصادي، قانوني، سوق','Technical, operational, economic, legal, market')}</td><td>${L('تسويق، تخطيط مالي، تشغيل، إدارة، مخاطر','Market, finance, operations, management, risk')}</td></tr>
-    <tr><td>${L('النتيجة','Outcome')}</td><td>${L('قرار <b>Go / No-Go</b>','<b>Go / No-Go</b> decision')}</td><td>${L('مستند شامل بيوجّه الإدارة ويجيب تمويل','Comprehensive guiding document')}</td></tr>
-   </tbody></table></div>
-   <div class="call mem"><span class="ci">🧠</span><div>${L('<b>القاعدة:</b> الأول تسأل "<b>أقدر؟</b>" (Feasibility)، ولما الإجابة تبقى آه تسأل "<b>إزاي؟</b>" (Business Plan). ومش زي بعض أبدًا.','<b>Rule:</b> first ask "<b>Can we?</b>" (feasibility); once yes, ask "<b>How?</b>" (business plan). Never identical.')}</div></div>
+  <div class="blk"><h2><span class="n">3</span>${L('التحليل الأفقي (Trend analysis)','Horizontal (trend) analysis')}</h2>
+   <p>${L('بيقيّم سلسلة من بيانات القوايم المالية <b>على مدار فترة زمنية</b>، وهدفه نعرف <b>التغير</b> (زيادة أو نقص). والتغير بيتكتب <b>كمبلغ</b> أو <b>كنسبة</b>. وممكن يتطبق كمان على <b>النسب المالية</b> نفسها.','Evaluates a series of statement data <b>over time</b> to find the <b>change</b>, as an <b>amount</b> or a <b>percentage</b>. It can also apply to <b>ratios</b>.')}</p>
+   <div class="fm">Amount change = Current year − Base year</div>
+   <div class="fm">% change = Amount change ÷ <u>Base year</u></div>
+   <div class="g2" style="margin-top:12px">
+    <div class="tile"><h4>📌 <span class="en">Baseline year = 100%</span></h4><p>${L('سنة الأساس بتتكتب <b>100%</b> (مش 0%)، وكل سنة بعدها بتتنسب ليها.','The base year is <b>100%</b> (not 0%); later years are a % of it.')}</p></div>
+    <div class="tile"><h4>🧮 ${L('مثال سريع','Quick example')}</h4><p>${L('إيرادات من 400,000 لـ 500,000 → (100,000 ÷ <b>400,000</b>) = <b>25%</b>. لو قسمت على 500,000 هيطلع 20% وده <b>غلط</b>.','400k → 500k: 100k ÷ <b>400k</b> = <b>25%</b> (not 20%).')}</p></div>
+   </div>
   </div>
 
-  <div class="blk"><h2><span class="n">6</span>${L('أمثلة من السكشن','Examples')}</h2>
-   <div class="g4">
-    <div class="tile"><div class="ic">🤖</div><h4>${L('منتج جديد','New product')}</h4><p class="en">AI-powered project management tool</p></div>
-    <div class="tile"><div class="ic">🍽️</div><h4>${L('توسع في السوق','Market expansion')}</h4><p>${L('مطعم بيفتح فرع جديد','Restaurant opening a new location')}</p></div>
-    <div class="tile"><div class="ic">🏫</div><h4>${L('بنية تحتية','Infrastructure')}</h4><p>${L('تجديد مبنى علوم في جامعة','University science building renovation')}</p></div>
-    <div class="tile hl"><div class="ic">🚄</div><h4>${L('قطار سريع (واشنطن)','High-speed rail (Washington)')}</h4><p class="en">Vancouver – Seattle – Portland</p></div>
+  <div class="blk"><h2><span class="n">4</span>${L('اعتبارات مهمة في التحليل الأفقي','Key considerations')}</h2>
+   <div class="g3">
+    <div class="tile"><div class="ic">🧩</div><h4><span class="en">Analyze all statements together</span></h4><p>${L('حلل كل القوايم <b>مع بعض</b> مش كل واحدة لوحدها. قايمة دخل ممتازة ممكن تخبّي إن الميزانية فيها مشكلة في تمويل النمو (كاش بيقل، دائنين وديون بتزيد).','Analyze <b>all together</b>. A great income statement can hide balance-sheet trouble funding growth.')}</p></div>
+    <div class="tile"><div class="ic">💡</div><h4><span class="en">Illuminating calculations</span></h4><p>${L('مفيد جدًا مع النسب والهوامش: current ratio، interest coverage، gross margin، net profit margin.','Very useful for ratios & margins.')}</p></div>
+    <div class="tile"><div class="ic">📜</div><h4><span class="en">Covenants</span></h4><p>${L('راقب <b>اتجاه</b> المقاييس اللي في شروط القرض (loan covenants) عشان تلحق قبل ما يحصل <b>covenant breach</b>.','Monitor <b>trends</b> in covenant measures to catch a possible <b>breach</b>.')}</p></div>
    </div>
+  </div>
+
+  <div class="blk"><h2><span class="n">5</span>${L('المزايا والعيوب والتنبؤ','Advantages, limits & forecasting')}</h2>
+   <div class="g2">
+    <div class="tile"><h4 style="color:var(--ok)">✔ ${L('المزايا','Advantages')}</h4><ul class="ck">
+     <li>${L('<b>Trend analysis</b>: تشوف الشذوذ عن الاتجاه بالعين','<b>Trend analysis</b>: spot anomalies visually')}</li>
+     <li>${L('<b>Trend projection</b>: أسهل تمد الاتجاه للمستقبل','<b>Trend projection</b> into the future')}</li>
+     <li>${L('<b>Competitor analysis</b>: تقارن بالمنافسين أو متوسط الصناعة','<b>Competitor analysis</b> vs rivals or industry')}</li>
+     <li>${L('<b>Minimal experience</b>: محتاج خبرة <b>قليلة</b>','<b>Minimal experience</b> required')}</li>
+    </ul></div>
+    <div class="tile"><h4 style="color:var(--bad)">✘ ${L('خلي بالك','Watch out')}</h4><ul class="ck no">
+     <li>${L('ممكن يتشوّه بسبب <b>أحداث غير عادية</b> (irregular events)','Can be <b>distorted by irregular events</b>')}</li>
+     <li>${L('<b>مش</b> بياخد العوامل الخارجية (الاقتصاد، الصناعة) في اعتباره','Does <b>not</b> consider external factors')}</li>
+     <li>${L('<b>مش كل زيادة كويسة</b> — زيادة المصروفات وحشة','<b>Not every increase is good</b> (expenses)')}</li>
+    </ul></div>
+   </div>
+   <div class="call tip"><span class="ci">🔮</span><div>${L('<b>Forecasting:</b> بنحسب معدلات نمو سنوية أو ربع سنوية من البيانات التاريخية، ونبني عليها <b>افتراضات</b> للمستقبل (نمو المبيعات، تكلفة البضاعة…). هو <b>مش</b> بيتوقع الرقم بالظبط.','<b>Forecasting:</b> compute growth rates and build <b>assumptions</b> — it does <b>not</b> predict exact numbers.')}</div></div>
+  </div>
+
+  <div class="blk"><h2><span class="n">6</span>${L('مثال محلول: ميزانية (سنة الأساس 2017)','Solved example: balance sheet (base 2017)')}</h2>
+   <div class="tblwrap"><table class="cmp en">
+    <thead><tr><th>Item</th><th>2018</th><th>2017</th><th>Amount change</th><th>% change</th></tr></thead><tbody>
+    <tr><td>Current assets</td><td>1,020,000</td><td>945,000</td><td>75,000</td><td>7.9%</td></tr>
+    <tr><td>Long-term assets (net)</td><td>800,000</td><td>632,500</td><td>167,500</td><td>26.5%</td></tr>
+    <tr><td>Intangible assets</td><td>15,000</td><td>17,500</td><td>(2,500)</td><td>(14.3)%</td></tr>
+    <tr><td><b>Total assets</b></td><td><b>1,835,000</b></td><td><b>1,595,000</b></td><td><b>240,000</b></td><td><b>15%</b></td></tr>
+    <tr><td>Current liabilities</td><td>344,500</td><td>303,000</td><td>41,500</td><td>13.7%</td></tr>
+    <tr><td>Long-term liabilities</td><td>487,500</td><td>497,000</td><td>(9,500)</td><td>(1.9)%</td></tr>
+    <tr><td><b>Total liabilities</b></td><td><b>832,000</b></td><td><b>800,000</b></td><td><b>32,000</b></td><td><b>4%</b></td></tr>
+    <tr><td>Common stock</td><td>275,400</td><td>270,000</td><td>5,400</td><td>2%</td></tr>
+    <tr><td>Retained earnings</td><td>727,600</td><td>525,000</td><td>202,600</td><td>38.6%</td></tr>
+    <tr><td><b>Total equity</b></td><td><b>1,003,000</b></td><td><b>795,000</b></td><td><b>208,000</b></td><td><b>26.2%</b></td></tr>
+    <tr><td><b>Total L &amp; E</b></td><td><b>1,835,000</b></td><td><b>1,595,000</b></td><td><b>240,000</b></td><td><b>15%</b></td></tr>
+   </tbody></table></div>
+   <div class="call warn"><span class="ci">📝</span><div>${L('<b>تنبيه:</b> السلايد فيه 3 غلطات مطبعية وأنا صححتها هنا: الخصوم طويلة الأجل 487,500 (مش 4,875,000)، تغير الخصوم المتداولة 41,500 (مش 415,000)، وتغير الأرباح المحتجزة 202,600 = 38.6% (مش 207,600 = 38.2%). والنقص بيتكتب <b>بين قوسين</b>.','<b>Note:</b> 3 typos in the slide are corrected here (LTL 487,500; CL change 41,500; RE change 202,600 = 38.6%). Decreases go in <b>parentheses</b>.')}</div></div>
+   <h3 style="margin:22px 0 10px;font-size:17px">${L('مثال قايمة دخل (2024 ← 2025)','Income statement example (2024 → 2025)')}</h3>
    <div class="money">
-    <div><small>${L('التكلفة','Cost')}</small><b>$24–42B</b></div>
-    <div><small>${L('الإيرادات المتوقعة','Projected revenue')}</small><b>$160–250M</b></div>
-    <div><small>${L('فوايد النمو الإقليمي','Regional growth benefits')}</small><b>$355B</b></div>
+    <div><small>${L('الإيرادات','Revenues')}</small><b>+20%</b></div>
+    <div><small>${L('تكلفة البضاعة المباعة','COGS')}</small><b>+30%</b></div>
+    <div><small>${L('صافي الربح','Net income')}</small><b>0%</b></div>
    </div>
-   <div class="call tip"><span class="ci">🚄</span><div>${L('هدف المشروع: <b>تحسين المواصلات في المنطقة والنمو الاقتصادي</b> — وحسب السكشن كان فيه مساهمة من <b>Microsoft</b>.','Goal: <b>improve regional transportation & economic growth</b> — per the slides, <b>Microsoft</b> contributed.')}</div></div>
+   <div class="call mem"><span class="ci">🧠</span><div>${L('<b>التفسير:</b> الإيرادات زادت 20% بس التكلفة زادت <b>أسرع</b> (30%) → الهوامش اتضغطت، والمصروفات التشغيلية زادت 10% بس. صافي الربح ثابت رغم النمو → <b>كفاءة أقل في إدارة التكاليف</b>.','<b>Interpretation:</b> costs grew faster than revenue → squeezed margins → <b>reduced cost efficiency</b>.')}</div></div>
   </div>
 
   <div class="blk recap"><h2><span class="n">★</span>${L('الخلاصة','Recap')}</h2><ol>
-   <li>${L('الجدوى = <b>Can we?</b> → Go/No-Go، ومش بتضمن النجاح.','Feasibility = <b>Can we?</b> → go/no-go; no guarantee.')}</li>
-   <li>${L('9 أسباب — الإعلان مش منهم.','9 reasons — advertising is not one.')}</li>
-   <li>${L('المستثمر بيطلبها قبل ما يدفع، وفي المشاريع الكبيرة/الخطرة.','Investors need it before paying, for high-stakes ventures.')}</li>
-   <li>${L('3 أقسام: تمهيدي (فيه Executive Summary) ← تحليل ← ختامي.','3 sections: intro (Executive Summary) → analysis → conclusion.')}</li>
-   <li>${L('Business plan بييجي <b>بعد</b> الجدوى ويسأل <b>How?</b>','Business plan comes <b>after</b> and asks <b>How?</b>')}</li></ol></div>`
+   <li>${L('المستويات: Intra (نفس الشركة)، Inter (نفس المجموعة)، Industry (متوسط الصناعة).','Levels: intra, inter, industry average.')}</li>
+   <li>${L('الأدوات: أفقي، رأسي، نسب.','Tools: horizontal, vertical, ratio.')}</li>
+   <li>${L('% التغير = مقدار التغير ÷ <b>سنة الأساس</b> — وسنة الأساس = 100%.','% change = amount ÷ <b>base year</b>; base = 100%.')}</li>
+   <li>${L('حلل القوايم مع بعض، وراقب الـ covenants.','Analyze statements together; watch covenants.')}</li>
+   <li>${L('مزاياه: trend، projection، منافسين، خبرة قليلة — وعيبه: الأحداث غير العادية.','Pros: trend, projection, competitors, little skill — con: irregular events.')}</li></ol></div>`
+},
+{ id:'s3', n:'03', c:'var(--s3)',
+  title:{ar:'التحليل الرأسي (Common-size)', en:'Vertical (Common-Size) Analysis'},
+  desc:{ar:'الأساس اللي بننسب ليه في كل قايمة، القوايم ذات الحجم المشترك، الفرق بين الأفقي والرأسي، وحالة Pixar.', en:'Base amounts per statement, common-size statements, horizontal vs vertical, and the Pixar case.'},
+  topics:['Base = 100%','Net sales','Total assets','Common-size','Pixar case'],
+  lesson:(L)=>`
+  <div class="blk"><h2><span class="n">1</span>${L('يعني إيه تحليل رأسي؟','What is vertical analysis?')}</h2>
+   <p>${L('بنعبّر عن كل بند في القايمة <b>كنسبة مئوية من رقم أساس</b> جوه نفس القايمة. اسمه "رأسي" لأنه بيوضح علاقة كل بند بالإجمالي <b>في قايمة واحدة وفترة واحدة</b>.','Each item is a <b>% of a base amount</b> in the same statement — relationships within <b>a single statement and period</b>.')}</p>
+   <div class="vsbox">
+    <div class="side a"><h3 class="en">Income Statement</h3><div class="q">${L('الأساس = صافي المبيعات (100%)','Base = Net sales (100%)')}</div>
+     <div class="fm">% = Item ÷ Net sales (Revenue)</div>
+     <ul class="ck"><li>${L('تكلفة البضاعة، المصروفات، الإهلاك، صافي الربح… كله ÷ المبيعات','COGS, expenses, depreciation, net income… ÷ sales')}</li></ul></div>
+    <div class="vs">VS</div>
+    <div class="side b"><h3 class="en">Balance Sheet</h3><div class="q">${L('الأساس = إجمالي الأصول (100%)','Base = Total assets (100%)')}</div>
+     <div class="fm">% = Item ÷ Total assets</div>
+     <ul class="ck"><li>${L('والخصوم وحقوق الملكية ممكن ÷ Total liabilities &amp; equity (نفس الرقم)','L&amp;E items may use total L&amp;E (same figure)')}</li></ul></div>
+   </div>
+   <div class="call tip"><span class="ci">🧮</span><div>${L('<b>مثال:</b> كاش 50,000 وإجمالي أصول 1,000,000 → الكاش = <b>5%</b> من الأصول.','<b>Example:</b> cash 50,000 / total assets 1,000,000 = <b>5%</b>.')}</div></div>
+  </div>
+
+  <div class="blk"><h2><span class="n">2</span>${L('البند ده أساسه إيه؟ (أسئلة مضمونة)','What is the base for this item?')}</h2>
+   <div class="tblwrap"><table class="cmp"><thead><tr><th>${L('البند','Item')}</th><th>${L('القايمة','Statement')}</th><th>${L('الأساس الصح','Correct base')}</th></tr></thead><tbody>
+    <tr><td class="en">Depreciation expense</td><td>${L('دخل','Income')}</td><td class="en"><b>Net sales</b></td></tr>
+    <tr><td class="en">COGS / Operating expenses</td><td>${L('دخل','Income')}</td><td class="en"><b>Net sales</b></td></tr>
+    <tr><td class="en">Current assets</td><td>${L('ميزانية','Balance sheet')}</td><td class="en"><b>Total assets</b></td></tr>
+    <tr><td class="en">Current liabilities</td><td>${L('ميزانية','Balance sheet')}</td><td class="en"><b>Total assets</b> (${L('مش Total liabilities','not total liabilities')})</td></tr>
+    <tr><td class="en">Inventory</td><td>${L('ميزانية','Balance sheet')}</td><td class="en"><b>Total liabilities &amp; equity</b> (= Total assets)</td></tr>
+   </tbody></table></div>
+   <div class="call warn"><span class="ci">⚠️</span><div>${L('<b>القاعدة الذهبية:</b> اسأل نفسك البند ده في أنهي قايمة؟ <b>دخل → المبيعات</b>، <b>ميزانية → إجمالي الأصول</b>. الاختيارات زي "Total current assets" أو "Total liabilities" أو "Fixed assets" فخ.','<b>Golden rule:</b> income statement → sales; balance sheet → total assets. “Total current assets / total liabilities / fixed assets” are traps.')}</div></div>
+  </div>
+
+  <div class="blk"><h2><span class="n">3</span>${L('القوايم ذات الحجم المشترك','Common-size statements')}</h2>
+   <p>${L('لما نطبق التحليل الرأسي، القوايم اللي بتطلع اسمها <b>Common-Size Statements</b> — كل البنود فيها <b>نسب مئوية</b>.','Applying vertical analysis produces <b>common-size statements</b> — all items in <b>percentages</b>.')}</p>
+   <div class="g3">
+    <div class="tile"><div class="ic">⚖️</div><h4>${L('مقارنة شركات مختلفة الحجم','Compare different sizes')}</h4><p>${L('لأن كله نسب، الحجم مبقاش فارق — دي <b>أهم ميزة</b>.','Percentages remove size — the <b>key benefit</b>.')}</p></div>
+    <div class="tile"><div class="ic">🗓️</div><h4>${L('مقارنة فترات','Compare periods')}</h4><p>${L('ممكن نقارن هيكل التكاليف من فترة لفترة.','Compare cost structure across periods.')}</p></div>
+    <div class="tile"><div class="ic">🎯</div><h4>${L('الغرض','Purpose')}</h4><p>${L('يوضح <b>علاقة كل بند بالإجمالي</b> جوه قايمة واحدة.','Show each <b>component’s relationship to the total</b>.')}</p></div>
+   </div>
+  </div>
+
+  <div class="blk"><h2><span class="n">4</span>${L('الأفقي ضد الرأسي','Horizontal vs Vertical')}</h2>
+   <div class="tblwrap"><table class="cmp">
+    <thead><tr><th></th><th class="fs en">Horizontal</th><th class="bp en">Vertical</th></tr></thead><tbody>
+    <tr><td>${L('الاسم التاني','Also called')}</td><td class="en">Trend analysis</td><td class="en">Common-size analysis</td></tr>
+    <tr><td>${L('بيقارن','Compares')}</td><td>${L('نفس البند <b>عبر سنين</b>','Same item <b>across years</b>')}</td><td>${L('كل بند <b>بالإجمالي</b> في نفس السنة','Each item <b>to the total</b>, same year')}</td></tr>
+    <tr><td>${L('الأساس','Base')}</td><td>${L('سنة الأساس','Base year')}</td><td>${L('المبيعات / إجمالي الأصول','Net sales / total assets')}</td></tr>
+    <tr><td>${L('الفترات','Periods')}</td><td>${L('كذا فترة','Multiple periods')}</td><td>${L('فترة واحدة','Single period')}</td></tr>
+   </tbody></table></div>
+   <div class="call mem"><span class="ci">🧠</span><div>${L('<b>أفقي ↔️</b> = بتمشي بعينك يمين وشمال على السنين. <b>رأسي ↕️</b> = بتمشي فوق وتحت جوه نفس العمود.','<b>Horizontal ↔️</b> = across years. <b>Vertical ↕️</b> = down one column.')}</div></div>
+  </div>
+
+  <div class="blk"><h2><span class="n">5</span>${L('مثال محلول (2024 و 2025)','Solved example (2024 & 2025)')}</h2>
+   <div class="tblwrap"><table class="cmp en">
+    <thead><tr><th>Item</th><th>2024</th><th>%</th><th>2025</th><th>%</th></tr></thead><tbody>
+    <tr><td>Revenue</td><td>1,000,000</td><td><b>100%</b></td><td>1,200,000</td><td><b>100%</b></td></tr>
+    <tr><td>Cost of goods sold</td><td>600,000</td><td>60%</td><td>780,000</td><td>65%</td></tr>
+    <tr><td>Operating expenses</td><td>200,000</td><td>20%</td><td>220,000</td><td>18.3%</td></tr>
+    <tr><td>Net income</td><td>200,000</td><td>20%</td><td>200,000</td><td>16.7%</td></tr>
+   </tbody></table></div>
+   <div class="call tip"><span class="ci">💡</span><div>${L('تكلفة البضاعة بقت بتاكل <b>65%</b> من كل جنيه مبيعات بدل 60% → صافي الربح نزل من 20% لـ <b>16.7%</b>. ولو مصروف زاد <b>أسرع</b> من الإيرادات، نسبته الرأسية <b>بتزيد</b>.','COGS now takes <b>65%</b> → net income fell to <b>16.7%</b>. An expense growing faster than revenue → its % <b>rises</b>.')}</div></div>
+  </div>
+
+  <div class="blk"><h2><span class="n">6</span>${L('حالة Pixar (2003 ← 2004)','Pixar case (2003 → 2004)')}</h2>
+   <div class="money">
+    <div><small>${L('نمو الإيرادات (أفقي)','Revenue growth (horizontal)')}</small><b>+4.19%</b></div>
+    <div><small>${L('R&amp;D كنسبة من الإيرادات','R&amp;D as % of revenue')}</small><b>5.8% → 6.4%</b></div>
+    <div><small>${L('هامش مجمل الربح','Gross profit margin')}</small><b>85.5% → 89.1%</b></div>
+   </div>
+   <div class="g2" style="margin-top:12px">
+    <div class="tile"><h4>🔬 ${L('ليه نسبة R&amp;D زادت؟','Why did R&amp;D % rise?')}</h4><p>${L('R&amp;D زاد <b>13.7%</b> (من 15.3 لـ 17.4 مليون) والإيرادات زادت <b>4.19%</b> بس → المصروف نمي أسرع → نسبته زادت.','R&amp;D grew <b>13.7%</b> vs revenue <b>4.19%</b> → its share rose.')}</p></div>
+    <div class="tile"><h4>🟢 ${L('نقلق من الـ Gross margin؟','Worry about gross margin?')}</h4><p>${L('<b>لأ</b> — الهامش <b>اتحسن</b> لـ 89.1%: كل جنيه إيراد بيفضل منه 89.1 قرش بعد التكاليف المباشرة، والتكلفة نزلت من 14.5% لـ 10.9% → تحكم أفضل في التكاليف أو قوة تسعير.','<b>No</b> — it <b>improved</b> to 89.1%; COGS fell from 14.5% to 10.9%.')}</p></div>
+   </div>
+   <div class="call mem"><span class="ci">🎬</span><div>${L('<b class="en">Blockbuster Strategy</b> = تكاليف <b>كبيرة في الأول</b> (up-front) وتكاليف إضافية <b>قليلة</b> بعد الإطلاق — مش العكس.','<b>Blockbuster Strategy</b> = <b>large up-front</b> costs, <b>few</b> costs after launch.')}</div></div>
+  </div>
+
+  <div class="blk recap"><h2><span class="n">★</span>${L('الخلاصة','Recap')}</h2><ol>
+   <li>${L('رأسي = Common-size = كل بند ÷ رقم أساس في نفس القايمة.','Vertical = common-size = item ÷ base in the same statement.')}</li>
+   <li>${L('قايمة دخل → <b>المبيعات</b> 100% · ميزانية → <b>إجمالي الأصول</b> 100%.','Income → <b>sales</b> 100% · balance sheet → <b>total assets</b> 100%.')}</li>
+   <li>${L('أهم ميزة: مقارنة شركات <b>مختلفة الحجم</b>.','Key benefit: compare <b>different sizes</b>.')}</li>
+   <li>${L('رأسي = فترة واحدة · أفقي = كذا فترة.','Vertical = one period · horizontal = many.')}</li>
+   <li>${L('مصروف بينمو أسرع من الإيرادات → نسبته الرأسية بتزيد (Pixar R&amp;D).','Expense outgrowing revenue → its % rises.')}</li></ol></div>`
 },
 { id:'s4', n:'04', c:'var(--s4)',
-  title:{ar:'تحليل السوق', en:'Market Analysis'},
-  desc:{ar:'تحليل الاتجاهات، مكونات تحليل السوق، PEST، توقع المبيعات، وعوائق الدخول.', en:'Trends, market analysis components, PEST, sales forecasting and barriers to entry.'},
-  topics:['Trends','Supply & Demand','Segmentation','PEST','Forecasting','Barriers'],
+  title:{ar:'تحليل النسب ونسب الربحية', en:'Ratio Analysis & Profitability'},
+  desc:{ar:'يعني إيه نسبة، نسب الربحية الخمسة، ROE و ROA، تحليل DuPont، والرافعة المالية مع تمارين محلولة.', en:'Ratios, the 5 profitability ratios, ROE & ROA, DuPont analysis and financial leverage with solved exercises.'},
+  topics:['ROE','ROA','Margins','DuPont','Leverage'],
   lesson:(L)=>`
-  <div class="blk"><h2><span class="n">1</span>${L('يعني إيه تحليل سوق؟','What is market analysis?')}</h2>
-   <p>${L('هو إنك <b>تدرس السوق</b> عشان تفهم: ظروفه الحالية، احتياجات العملاء، المنافسين، والفرص المتاحة — <b>قبل</b> ما تاخد أي قرار مهم.','Studying the market to understand current conditions, customer needs, competitors and opportunities — <b>before</b> big decisions.')}</p>
-   <div class="g3">
-    <div class="tile"><div class="ic">👥</div><h4>${L('مين عملائي المحتملين؟','Who are our customers?')}</h4></div>
-    <div class="tile"><div class="ic">🥊</div><h4>${L('مين منافسيني؟','Who are our competitors?')}</h4></div>
-    <div class="tile"><div class="ic">🚪</div><h4>${L('هل فيه فرصة في السوق؟','Is there an opportunity?')}</h4></div>
-   </div>
-   <div class="call tip"><span class="ci">☕</span><div>${L('<b>مثال:</b> عايز تفتح كافيه؟ أول حاجة تدرسها مش الديكور — تدرس السوق: مين هيشتري، مين حواليك، والناس محتاجة إيه.','<b>Example:</b> opening a coffee shop? First study the market, not the décor.')}</div></div>
-  </div>
-
-  <div class="blk"><h2><span class="n">2</span>${L('تحليل اتجاهات السوق','Market trends analysis')}</h2>
-   <p class="sub">${L('هدفه: نكتشف <b>أنماط سلوك المستهلك</b> ونتوقع <b>التغييرات الجاية</b>.','Goal: identify <b>consumer behavior patterns</b> and <b>anticipate future changes</b>.')}</p>
-   <div class="g4">
-    <div class="tile"><div class="ic">🛒</div><h4><span class="en">Consumer Behavior</span></h4><p>${L('عادات الشرا والتفضيلات','Buying habits & preferences')}</p></div>
-    <div class="tile"><div class="ic">🤖</div><h4><span class="en">Technological</span></h4><p>${L('AI، أتمتة، منصات رقمية','AI, automation, digital platforms')}</p></div>
-    <div class="tile"><div class="ic">📈</div><h4><span class="en">Economic</span></h4><p>${L('تضخم، دخل، طلب','Inflation, income, demand')}</p></div>
-    <div class="tile"><div class="ic">🎭</div><h4><span class="en">Social & Cultural</span></h4><p>${L('أسلوب الحياة والقيم','Lifestyle & values')}</p></div>
-   </div>
-   <h3 style="margin:22px 0 10px;font-size:17px">${L('إزاي تحلل ترند؟ (5 خطوات)','How to analyze a trend (5 steps)')}</h3>
-   <div class="steps">
-    <div class="step"><b><span class="en">Define goal</span></b><span>${L('حدد هدفك','Set the goal')}</span></div>
-    <div class="step"><b><span class="en">Collect data over time</span></b><span>${L('بيانات على فترة طويلة — عشان تشوف التغيير وسرعته','Over time — to see change & speed')}</span></div>
-    <div class="step"><b><span class="en">Segment customers</span></b><span>${L('قسّم العملاء','Split customers')}</span></div>
-    <div class="step"><b><span class="en">Understand context</span></b><span>${L('افهم السياق','Read context')}</span></div>
-    <div class="step"><b><span class="en">Insights → strategy</span></b><span>${L('حوّل النتايج لخطة','Turn into strategy')}</span></div>
-   </div>
-   <div class="call warn"><span class="ci">⚠️</span><div>${L('<b>مهم جدًا:</b> زيادة مفاجئة في الطلب (مثلًا بعد بوست على السوشيال) <b>مش دايمًا ترند</b>! اتأكد إنها <b>متكررة</b> مش حدث مرة واحدة. ولو عندك ملاحظة واحدة قصيرة → <b>اجمع بيانات أكتر</b> وافهم السياق قبل ما تغيّر استراتيجيتك. (أي سؤال فيه <b>always</b> هنا غالبًا غلط)','<b>Key:</b> a sudden spike is <b>not always a trend</b>. Check if it\'s <b>recurring</b>. With one short-term observation → <b>collect more data</b> first. ("always" here = usually False)')}</div></div>
-   <div class="g2" style="margin-top:12px">
-    <div class="tile"><h4>🔭 ${L('أدوات المتابعة','Monitoring tools')}</h4><p>${L('<b>Google Trends</b> و<b>النشرات المتخصصة</b> (industry newsletters) — مش إحساس المدير.','<b>Google Trends</b> & <b>industry newsletters</b> — not intuition.')}</p></div>
-    <div class="tile"><h4>🌍 <span class="en">Cross-market comparison</span></h4><p>${L('تقارن سلوك العملاء في أسواق/أماكن مختلفة عشان تعرف الترند <b>عالمي ولا إقليمي ولا محلي</b>.','Compare markets to see if a trend is <b>global, regional or local</b>.')}</p></div>
+  <div class="blk"><h2><span class="n">1</span>${L('يعني إيه تحليل نسب؟','What is ratio analysis?')}</h2>
+   <p>${L('بيوضح <b>العلاقة الرياضية</b> بين بندين من القوايم المالية، عشان نعرف السيولة والكفاءة التشغيلية والربحية. وهو <b>مش مقياس واحد</b> — ده مجموعة كبيرة من المقاييس.','Expresses the <b>mathematical relationship</b> between statement items to learn about liquidity, efficiency and profitability — <b>not a single metric</b>.')}</p>
+   <p class="sub">${L('مثال Nike: أصول متداولة 13,626 مليون وخصوم متداولة 3,926 مليون — العلاقة ممكن تتكتب 3 طرق:','Nike: CA $13,626M, CL $3,926M — three ways to express it:')}</p>
+   <div class="money">
+    <div><small>Percentage</small><b>347%</b></div>
+    <div><small>Rate</small><b>3.47 times</b></div>
+    <div><small>Proportion</small><b>3.47 : 1</b></div>
    </div>
   </div>
 
-  <div class="blk"><h2><span class="n">3</span>${L('المكونات الأربعة لتحليل السوق','4 key components of market analysis')}</h2>
-   <div class="g2">
-    <div class="tile"><h4>⚖️ <span class="en">Demand & Supply</span></h4><ul class="ck">
-     <li>${L('<b>Demand &gt; Supply</b> = فرصة لمنتجات أو داخلين جداد 🟢','<b>Demand &gt; Supply</b> = opportunity 🟢')}</li>
-     <li>${L('<b>Supply &gt; Demand</b> = منافسة أكتر (Oversupply) 🔴 → لازم <b>تتميز (Differentiation)</b> لأن العميل عنده بدائل كتير','<b>Supply &gt; Demand</b> = more competition 🔴 → <b>differentiate</b>')}</li></ul></div>
-    <div class="tile"><h4>👥 <span class="en">Customer Segmentation</span></h4><p>${L('تقسيم <b>العملاء</b> حسب: الديموجرافيا، الاهتمامات، السلوك، وأنماط الشرا — عشان تفصّل التسويق لكل مجموعة.','Divide <b>customers</b> by demographics, interests, behaviors, purchasing patterns.')}</p>
-     <p style="margin-top:6px">${L('<b>Demographic</b> = مين؟ — <b>Psychographic</b> = ليه؟','<b>Demographic</b> = who? — <b>Psychographic</b> = why?')}</p></div>
-    <div class="tile"><h4>🥊 <span class="en">Competitive Landscape</span></h4><p>${L('ادرس المنافسين: <b>نقاط القوة + الضعف + الاستراتيجيات + مكانتهم في السوق</b> (مش القوة بس).','Study rivals\' <b>strengths, weaknesses, strategies, positioning</b>.')}</p></div>
-    <div class="tile"><h4>🌐 <span class="en">External Factors (PEST)</span></h4><p>${L('العوامل الخارجية الأربعة — تحت بالتفصيل 👇','The 4 external factors — below 👇')}</p></div>
-   </div>
-  </div>
-
-  <div class="blk"><h2><span class="n">4</span>${L('تحليل PEST','PEST analysis')}</h2>
-   <div class="mnemo"><span>P</span><span>E</span><span>S</span><span>T</span></div>
-   <div class="tblwrap" style="margin-top:14px"><table class="cmp"><thead><tr><th></th><th>${L('بيشمل إيه','Covers')}</th><th>${L('مثال','Example')}</th></tr></thead><tbody>
-    <tr><td class="en">🏛️ Political</td><td>${L('قوانين الحكومة، السياسات، الاستقرار','Government regulations, policies, stability')}</td><td>${L('قوانين ضرايب جديدة','New tax laws')}</td></tr>
-    <tr><td class="en">💰 Economic</td><td>${L('التضخم، الفايدة، إنفاق المستهلك','Inflation, interest rates, consumer spending')}</td><td>${L('ارتفاع الأسعار','Rising prices')}</td></tr>
-    <tr><td class="en">👨‍👩‍👧 Social</td><td>${L('أسلوب الحياة، القيم، الثقافة','Lifestyle, values, culture')}</td><td>${L('ترند الصحة واللياقة','Health & wellness trends')}</td></tr>
-    <tr><td class="en">⚙️ Technological</td><td>${L('الابتكار، الرقمنة، AI','Innovation, digitalization, AI')}</td><td>${L('الأتمتة','Automation')}</td></tr>
+  <div class="blk"><h2><span class="n">2</span>${L('نسب الربحية الخمسة','The 5 profitability ratios')}</h2>
+   <p class="sub">${L('بتقيس قدرة الشركة تحقق ربح — وفيها كلها <b>الأعلى أحسن</b>.','Measure ability to generate profit — <b>higher is better</b>.')}</p>
+   <div class="tblwrap"><table class="cmp"><thead><tr><th>${L('النسبة','Ratio')}</th><th>${L('المعادلة','Formula')}</th><th>${L('بتقيس إيه','Meaning')}</th></tr></thead><tbody>
+    <tr><td class="en">ROE</td><td class="en">Net Income ÷ Equity</td><td>${L('العائد على فلوس المساهمين — الإدارة بتستخدم التمويل بالملكية كويس؟','Return on shareholders’ money')}</td></tr>
+    <tr><td class="en">ROA</td><td class="en">Net Income ÷ Total Assets</td><td>${L('ربح كل جنيه أصول — كفاءة استخدام الأصول','Profit per dollar of assets')}</td></tr>
+    <tr><td class="en">Net Profit Margin</td><td class="en">Net Income ÷ Revenues</td><td>${L('اللي بيفضل بعد <b>كل</b> المصاريف (حتى الفوايد والضرايب) — <b>المقياس النهائي</b>','After <b>all</b> expenses — the <b>ultimate</b> measure')}</td></tr>
+    <tr><td class="en">Gross Profit Margin</td><td class="en">Gross Profit ÷ Revenues</td><td>${L('بعد تكلفة البضاعة — كفاءة الإنتاج والتسعير','After COGS — production & pricing')}</td></tr>
+    <tr><td class="en">Operating Profit Margin</td><td class="en">EBIT ÷ Sales</td><td>${L('بعد المصروفات التشغيلية، <b>قبل</b> الفوايد والضرايب','After operating costs, <b>before</b> interest & tax')}</td></tr>
    </tbody></table></div>
-   <div class="call mem"><span class="ci">🧠</span><div>${L('<b>تضخم/إنفاق</b> = Economic · <b>قيم ثقافية/نمط حياة</b> = Social · <b>AI/أتمتة</b> = Technological · <b>ضرايب/قوانين</b> = Political','<b>Inflation/spending</b> = E · <b>culture/lifestyle</b> = S · <b>AI</b> = T · <b>taxes/laws</b> = P')}</div></div>
   </div>
 
-  <div class="blk"><h2><span class="n">5</span>${L('توقع المبيعات وعوائق الدخول','Sales forecasting & barriers to entry')}</h2>
-   <div class="g2">
-    <div class="tile"><h4>📊 <span class="en">Sales Forecasting</span></h4>
-     <p>${L('تتوقع مبيعاتك باستخدام <b>بيانات المبيعات القديمة + تأثيرات السوق الخارجية</b>. خد في اعتبارك:','Estimate sales from <b>historical data + external market influences</b>. Consider:')}</p>
-     <ul class="ck"><li class="en">Historical sales data</li><li class="en">Seasonality</li><li class="en">Economic conditions</li><li class="en">Competitive activity</li></ul>
-     <p style="margin-top:8px">${L('اعمل <b>3 سيناريوهات</b>: <b>Optimistic</b> (متفائل) · <b>Realistic</b> (واقعي) · <b>Conservative</b> (متحفظ) — عشان <b>تستعد لكل الظروف</b> (مش عشان تلغي عدم اليقين).','Build <b>3 scenarios</b>: optimistic · realistic · conservative — to <b>prepare for different conditions</b>.')}</p></div>
-    <div class="tile"><h4>🚧 <span class="en">Barriers to Entry</span></h4>
-     <p>${L('حاجات بتصعّب دخول شركات جديدة للسوق:','Obstacles for new entrants:')}</p>
-     <ul class="ck">
-      <li>${L('<b>Regulatory</b> — تراخيص وشهادات','<b>Regulatory</b> — licenses, certifications')}</li>
-      <li>${L('<b>Economic</b> — رأس مال كبير في الأول','<b>Economic</b> — high initial investment')}</li>
-      <li>${L('<b>Competitive</b> — منافسين أقوياء وولاء عملاء','<b>Competitive</b> — strong rivals, customer loyalty')}</li></ul>
-     <p style="margin-top:8px">✅ ${L('<b>الحل:</b> خطة لتقليل المخاطر + دوّر على <b>شريحة مهملة (Underserved niche)</b>.','<b>Solution:</b> mitigation plan + target an <b>underserved niche</b>.')}</p></div>
+  <div class="blk"><h2><span class="n">3</span>${L('ROE و ROA بالتفصيل','ROE & ROA in depth')}</h2>
+   <div class="fm">Average = (Beginning + Ending) ÷ 2</div>
+   <div class="g2" style="margin-top:12px">
+    <div class="tile hl"><h4><span class="en">ROE = NI ÷ Average Equity</span></h4><p>${L('ROE مستقر وبيزيد = إدارة كويسة وقيمة للمساهمين، ويتقارن بـ <b>تكلفة حقوق الملكية</b>. ROE بينزل مع الوقت ممكن يعني قرارات إعادة استثمار وحشة.','Stable, rising ROE = good management; compare to <b>cost of equity</b>. Declining ROE may mean poor reinvestment.')}</p></div>
+    <div class="tile hl"><h4><span class="en">ROA = NI ÷ Average Total Assets</span></h4><p>${L('<b>بيعتمد جدًا على الصناعة</b> — قارنه جوه نفس الصناعة بس. (مقارنة شركة كهربا بشركة استشارات = مضللة)','<b>Highly industry-dependent</b> — compare within one industry only.')}</p></div>
    </div>
-   <div class="call tip"><span class="ci">🎯</span><div>${L('لو السؤال قال <b>comprehensive</b> → الإجابة دايمًا: ادرس <b>كل حاجة مع بعض</b> (ترندات + عوامل خارجية + منافسة + عوائق).','If a question says <b>comprehensive</b> → examine <b>everything together</b>.')}</div></div>
+   <div class="g3 lights" style="margin-top:12px">
+    <div class="tile light-b"><div class="ic">🏭</div><h4 class="en">ROA &lt; 5%</h4><p>${L('صناعات كثيفة الأصول (كهربا، تصنيع)','Asset-intensive (utilities, manufacturing)')}</p></div>
+    <div class="tile light-g"><div class="ic">📊</div><h4 class="en">5% – 20%</h4><p>${L('أداء متوسط لقوي','Average to strong')}</p></div>
+    <div class="tile" style="--c:var(--ok)"><div class="ic">💻</div><h4 class="en" style="color:var(--ok)">ROA &gt; 20%</h4><p>${L('ممتاز — شركات خفيفة الأصول (سوفتوير، استشارات)','Excellent — asset-light (software, consulting)')}</p></div>
+   </div>
+  </div>
+
+  <div class="blk"><h2><span class="n">4</span>${L('تحليل DuPont','DuPont analysis')}</h2>
+   <p class="sub">${L('بيفكك الـ ROE عشان نعرف هو جاي منين: ربحية؟ كفاءة؟ ولا رافعة مالية؟','Breaks ROE down: profitability, efficiency or leverage?')}</p>
+   <div class="mnemo"><span>NPM<small>Margin</small></span><span>×</span><span>AT<small>Turnover</small></span><span>×</span><span>EM<small>Leverage</small></span></div>
+   <div class="fm">ROE = Net Profit Margin × Assets Turnover × Equity Multiplier</div>
+   <div class="g3" style="margin-top:12px">
+    <div class="tile"><h4 class="en">Net Profit Margin</h4><p class="en">Net Income ÷ Net Sales</p><p>${L('الربحية','Profitability')}</p></div>
+    <div class="tile"><h4 class="en">Assets Turnover</h4><p class="en">Net Sales ÷ Avg Total Assets</p><p>${L('كفاءة الأصول','Asset efficiency')}</p></div>
+    <div class="tile"><h4 class="en">Equity Multiplier</h4><p class="en">Avg Total Assets ÷ Avg Equity</p><p>${L('الرافعة المالية (Leverage)','Financial leverage')}</p></div>
+   </div>
+   <div class="fm" style="margin-top:12px">ROA = Profit Margin × Assets Turnover &nbsp;&nbsp;|&nbsp;&nbsp; ROE = ROA × Leverage</div>
+   <div class="call warn"><span class="ci">⚠️</span><div>${L('<b>Current Ratio مش من مكونات دوبونت</b> (دي نسبة سيولة). والرافعة العالية <b>بتكبّر</b> الـ ROE (لو ROA موجب) — مش "دايمًا بتقلله".','<b>Current ratio is not in DuPont.</b> High leverage <b>magnifies</b> ROE (if ROA &gt; 0) — never “always lower”.')}</div></div>
+  </div>
+
+  <div class="blk"><h2><span class="n">5</span>${L('تمارين محلولة','Solved exercises')}</h2>
+   <h3 style="margin:4px 0 10px;font-size:17px">${L('تمرين 1 — المتوسطات','Exercise 1 — averages')}</h3>
+   <div class="money">
+    <div><small>Avg assets (1.2M + 1.8M) ÷ 2</small><b>1,500,000</b></div>
+    <div><small>ROA = 150k ÷ 1.5M</small><b>10%</b></div>
+    <div><small>ROE = 150k ÷ 800k</small><b>18.75%</b></div>
+   </div>
+   <p style="margin-top:10px">${L('وبالمبيعات 1,500,000: Margin = 10% و Turnover = 1 → ROA = 10% × 1 = <b>10%</b> ✔ نفس الإجابة.','With sales of 1.5M: margin 10% × turnover 1 = <b>10%</b> ✔')}</p>
+
+   <h3 style="margin:22px 0 10px;font-size:17px">${L('تمرين 2 — أثر الرافعة المالية','Exercise 2 — financial leverage')}</h3>
+   <div class="tblwrap"><table class="cmp en"><thead><tr><th></th><th>Company A (no debt)</th><th>Company B (debt 1.2M)</th></tr></thead><tbody>
+    <tr><td>EBIT</td><td>300,000</td><td>300,000</td></tr>
+    <tr><td>Interest (8%)</td><td>0</td><td>(96,000)</td></tr>
+    <tr><td>Income before tax</td><td>300,000</td><td>204,000</td></tr>
+    <tr><td>Tax (30%)</td><td>(90,000)</td><td>(61,200)</td></tr>
+    <tr><td>Net income</td><td>210,000</td><td>142,800</td></tr>
+    <tr><td>Equity</td><td>2,000,000</td><td>800,000</td></tr>
+    <tr><td><b>ROE</b></td><td><b>10.5%</b></td><td><b>17.85%</b></td></tr>
+   </tbody></table></div>
+   <div class="call mem"><span class="ci">🧠</span><div>${L('B صافي ربحه <b>أقل</b> بس الـ ROE <b>أعلى</b> → ده <b>Positive financial leverage</b>: الدين كبّر عائد المساهمين، بس معاه <b>مخاطرة أعلى</b> لو الأرباح نزلت.','B earns <b>less</b> but has <b>higher</b> ROE → <b>positive leverage</b>, with <b>higher risk</b>.')}</div></div>
+
+   <h3 style="margin:22px 0 10px;font-size:17px">${L('تمرين 3 — نموذج البزنس من دوبونت','Exercise 3 — business models')}</h3>
+   <div class="tblwrap"><table class="cmp en"><thead><tr><th></th><th>Net margin</th><th>Assets turnover</th><th>Equity multiplier</th><th>ROE</th></tr></thead><tbody>
+    <tr><td>Retail Corp</td><td>4%</td><td>2.5</td><td>1.67</td><td>16.7%</td></tr>
+    <tr><td>Tech Innovators</td><td>8%</td><td>2.0</td><td>1.67</td><td>26.7%</td></tr>
+   </tbody></table></div>
+   <p style="margin-top:10px">${L('التجزئة = <b>هامش قليل + حجم مبيعات عالي</b>. التكنولوجيا = <b>ربح أعلى في كل بيعة</b> بس دوران أقل. والاتنين نفس الرافعة.','Retail = <b>low margin, high volume</b>; tech = <b>higher margin</b>, lower turnover; same leverage.')}</p>
+
+   <h3 style="margin:22px 0 10px;font-size:17px">${L('تمرين 4 و 5','Exercises 4 & 5')}</h3>
+   <div class="g2">
+    <div class="tile"><h4>${L('تمرين 4','Exercise 4')}</h4><p class="en">ROE = 150k ÷ 500k = <b>30%</b><br>DuPont = 15% × 1.33 × 1.5 ≈ <b>30%</b> ✔</p></div>
+    <div class="tile"><h4>${L('تمرين 5 — Firm X ضد Y','Exercise 5 — Firm X vs Y')}</h4><p>${L('نفس الهامش (6%) ونفس الرافعة (2)، بس X دوران أصوله <b>2</b> و Y <b>1.25</b> → ROE لـ X = 24% و Y = 15%. السبب: <b>دوران الأصول</b>.','Same margin & leverage; X turnover <b>2</b> vs <b>1.25</b> → ROE 24% vs 15%. Driver: <b>turnover</b>.')}</p></div>
+   </div>
   </div>
 
   <div class="blk recap"><h2><span class="n">★</span>${L('5 حاجات لازم تفتكرها','5 things to remember')}</h2><ol>
-   <li>${L('<b>Market Analysis</b>: افهم العملاء والمنافسين والفرص.','<b>Market Analysis</b>: customers, competitors, opportunities.')}</li>
-   <li>${L('<b>Market Trends</b>: اكتشف التغيير في سلوك المستهلك — والزيادة المفاجئة مش دايمًا ترند.','<b>Trends</b>: spot changes — a spike isn\'t always a trend.')}</li>
-   <li>${L('<b>Components</b>: عرض وطلب، عملاء، منافسين، PEST.','<b>Components</b>: supply/demand, customers, competitors, PEST.')}</li>
-   <li>${L('<b>Sales Forecasting</b>: بيانات قديمة + ظروف السوق + 3 سيناريوهات.','<b>Forecasting</b>: history + market + 3 scenarios.')}</li>
-   <li>${L('<b>Barriers to Entry</b>: تنظيمي، اقتصادي، تنافسي ← خطة + Niche.','<b>Barriers</b>: regulatory, economic, competitive → plan + niche.')}</li></ol></div>`
+   <li>${L('النسبة ممكن تتكتب: % أو مرات أو تناسب (347% = 3.47 = 3.47:1).','A ratio: %, rate or proportion.')}</li>
+   <li>${L('نسب الربحية: ROE، ROA، Net/Gross/Operating margin — الأعلى أحسن.','Profitability ratios — higher is better.')}</li>
+   <li>${L('المتوسط = (أول + آخر) ÷ 2، والـ ROA بيتقارن جوه نفس الصناعة.','Average = (begin + end)/2; compare ROA within an industry.')}</li>
+   <li>${L('DuPont: ROE = Margin × Turnover × Equity Multiplier — من غير Current ratio.','DuPont: margin × turnover × multiplier — no current ratio.')}</li>
+   <li>${L('الرافعة بتكبّر الـ ROE وبتزود المخاطرة.','Leverage magnifies ROE and risk.')}</li></ol></div>`
 },
 { id:'s5', n:'05', c:'var(--s5)',
-  title:{ar:'الجدوى القانونية والبيئية', en:'Legal & Environmental Feasibility'},
-  desc:{ar:'العناصر القانونية، الأشكال القانونية والمسؤولية، مراحل وأبعاد التقييم البيئي، والقوائم البيضا والرمادي والسودا.', en:'Legal elements, business structures & liability, environmental stages, dimensions and White/Gray/Black lists.'},
-  topics:['Legal Elements','Liability','Stages','Spatial / Temporal','White · Gray · Black'],
+  title:{ar:'نسب الكفاءة والسيولة والملاءة', en:'Efficiency, Liquidity & Solvency Ratios'},
+  desc:{ar:'معدلات الدوران وعدد الأيام، رأس المال العامل والنسبة السريعة، نسب الملاءة وتغطية الفوايد، مع تمارين محلولة.', en:'Turnovers and days, working capital and quick ratio, solvency and interest coverage, with solved exercises.'},
+  topics:['AR Turnover','Inventory days','Current · Quick','TIE','Debt / Equity'],
   lesson:(L)=>`
-  <div class="blk"><h2><span class="n">1</span>${L('الفكرة الأساسية','The big idea')}</h2>
-   <p>${L('المشروع ممكن يكون <b>مربح جدًا</b>… ومع ذلك <b>ميتعملش</b> لو مش قانوني أو بيضر البيئة بشكل مينفعش يتعالج. <b>Legal + Environmental = جزء من جدوى المشروع</b>.','A project can be <b>very profitable</b> yet <b>infeasible</b> if it is illegal or causes unfixable environmental harm.')}</p>
-   <div class="vsbox">
-    <div class="side a"><h3 class="en">⚖️ Legal Feasibility</h3><div class="q">${L('الأسئلة الأساسية','Key questions')}</div><ul class="ck">
-     <li>${L('هل المشروع ملتزم بالقوانين واللوائح؟','Compliant with laws & regulations?')}</li>
-     <li>${L('هل الشكل القانوني مناسب لأهداف البزنس؟','Does the legal structure fit the objectives?')}</li>
-     <li>${L('هل فيه مخاطر قانونية محتملة؟','Any potential legal risks?')}</li></ul></div>
-    <div class="vs">+</div>
-    <div class="side b" style="--sx:var(--s5)"><h3 class="en">🌍 Environmental Feasibility</h3><div class="q">${L('الأسئلة الأساسية','Key questions')}</div><ul class="ck">
-     <li>${L('إيه التأثيرات البيئية؟','What are the impacts?')}</li>
-     <li>${L('ينفع نقللها (mitigate)؟','Can they be mitigated?')}</li>
-     <li>${L('هل المشروع مستدام؟','Is it sustainable?')}</li></ul></div>
+  <div class="blk"><h2><span class="n">1</span>${L('3 عيلات من النسب','3 families of ratios')}</h2>
+   <div class="g3">
+    <div class="tile hl"><div class="ic">⚙️</div><h4><span class="en">Efficiency (Activity)</span></h4><p>${L('الشركة بتدير أصولها كويس عشان تبيع؟','How well assets generate sales')}</p></div>
+    <div class="tile hl"><div class="ic">💧</div><h4><span class="en">Liquidity</span></h4><p>${L('تقدر تسدد التزاماتها <b>قصيرة الأجل</b>؟','Pay <b>short-term</b> obligations?')}</p></div>
+    <div class="tile hl"><div class="ic">🏦</div><h4><span class="en">Solvency (Leverage)</span></h4><p>${L('تقدر تسدد ديونها <b>طويلة الأجل</b>؟ وهيكل تمويلها إيه؟','<b>Long-term</b> debt-paying ability & structure')}</p></div>
    </div>
   </div>
 
-  <div class="blk"><h2><span class="n">2</span>${L('العناصر القانونية الأربعة','4 key legal elements')}</h2>
-   <div class="g4">
-    <div class="tile"><div class="ic">📋</div><h4><span class="en">Regulations & Licenses</span></h4><p>${L('لو الترخيص مش ممكن يطلع → المشروع ممكن <b>يقف</b> حتى لو مربح.','No license → project may be <b>blocked</b>, even if profitable.')}</p></div>
-    <div class="tile"><div class="ic">🤝</div><h4><span class="en">Contracts & Agreements</span></h4><p>${L('بتوضح المسؤوليات وبتقلل <b>الخلافات</b> — لازم مواعيد تسليم وغرامات واضحة.','Clarify duties, reduce <b>disputes</b> — define deadlines & penalties.')}</p></div>
-    <div class="tile"><div class="ic">®️</div><h4><span class="en">Intellectual Property</span></h4><p>${L('حماية اسم البراند والعلامة التجارية — مهمة <b>للصغير والكبير</b>.','Protect brand names — matters for <b>small & large</b> firms.')}</p></div>
-    <div class="tile"><div class="ic">🏛️</div><h4><span class="en">Business Structure</span></h4><p>${L('الشكل القانوني — <b>مش قرار إداري وبس</b>، بيأثر على مسؤوليتك وتشغيل البزنس.','Not just admin — affects <b>liability & operations</b>.')}</p></div>
-   </div>
-  </div>
-
-  <div class="blk"><h2><span class="n">3</span>${L('الأشكال القانونية والمسؤولية','Business structures & liability')}</h2>
-   <div class="tblwrap"><table class="cmp"><thead><tr><th>${L('الشكل','Structure')}</th><th>${L('المسؤولية','Liability')}</th><th>${L('افتكرها كده','Remember it as')}</th></tr></thead><tbody>
-    <tr><td class="en">👤 Sole Proprietorship</td><td><b style="color:var(--bad)">${L('غير محدودة','Unlimited')}</b></td><td>${L('تحكم كامل… بس أملاكك الشخصية في خطر','Full control… but personal assets at risk')}</td></tr>
-    <tr><td class="en">👥 Partnership</td><td><b style="color:var(--s4)">${L('شخصية ومشتركة','Personal & joint')}</b></td><td>${L('الشركا مسؤولين مع بعض','Partners share responsibility')}</td></tr>
-    <tr><td class="en">🏢 Limited Liability</td><td><b style="color:var(--ok)">${L('محدودة (حماية)','Limited (protection)')}</b></td><td>${L('بتحمي أملاكك الشخصية','Protects personal assets')}</td></tr>
-    <tr><td class="en">🏬 Single-Person Company</td><td><b style="color:var(--ok)">${L('محدودة','Limited')}</b></td><td>${L('شخص واحد بس مسؤولية محدودة','One owner, limited liability')}</td></tr>
+  <div class="blk"><h2><span class="n">2</span>${L('نسب الكفاءة (Efficiency)','Efficiency ratios')}</h2>
+   <div class="tblwrap"><table class="cmp"><thead><tr><th>${L('النسبة','Ratio')}</th><th>${L('المعادلة','Formula')}</th><th>${L('بتقيس','Measures')}</th></tr></thead><tbody>
+    <tr><td class="en">AR Turnover</td><td class="en">Net Sales ÷ Avg Net AR</td><td>${L('بنحصّل المدينين كام مرة في السنة','Times AR is collected per year')}</td></tr>
+    <tr><td class="en">Days’ Sales in Receivables</td><td class="en">Avg Net AR ÷ Daily Net Sales</td><td>${L('متوسط أيام التحصيل (DSO)','Average days to collect (DSO)')}</td></tr>
+    <tr><td class="en">Inventory Turnover</td><td class="en"><b>COGS</b> ÷ Avg Inventory</td><td>${L('بنبيع ونجدد المخزون كام مرة','Times inventory is sold & replaced')}</td></tr>
+    <tr><td class="en">Days’ Sales in Inventory</td><td class="en">Avg Inventory ÷ Daily COGS</td><td>${L('المخزون بياخد كام يوم عشان يتباع','Days to sell average inventory')}</td></tr>
+    <tr><td class="en">Fixed Assets Turnover</td><td class="en">Net Sales ÷ Avg Net Fixed Assets</td><td>${L('كفاءة استخدام الأصول الثابتة (PP&amp;E)','Efficiency of PP&amp;E')}</td></tr>
    </tbody></table></div>
-   <div class="call mem"><span class="ci">🧠</span><div>${L('أي سؤال فيه "<b>عايز يحدد مسؤوليته الشخصية</b>" أو "<b>تجاهل الـ personal liability</b>" → الإجابة: <b>Legal structure</b>.','Any question about <b>limiting / ignoring personal liability</b> → <b>legal structure</b>.')}</div></div>
+   <div class="fm" style="margin-top:12px">Daily Net Sales = Net Sales ÷ 365 &nbsp;&nbsp;|&nbsp;&nbsp; Daily COGS = COGS ÷ 365</div>
+   <div class="call warn"><span class="ci">⚠️</span><div>${L('<b>فخ مشهور:</b> المدينين → <b>المبيعات</b>. المخزون → <b>تكلفة البضاعة المباعة (COGS)</b>. ودايمًا استخدم <b>المتوسط</b> مش رصيد آخر المدة.','<b>Trap:</b> receivables → <b>sales</b>; inventory → <b>COGS</b>. Always use the <b>average</b>.')}</div></div>
+   <div class="call mem"><span class="ci">🧠</span><div>${L('<b>Turnover عالي</b> = سريع وكويس (بيحصّل أو بيبيع بسرعة). <b>عدد أيام قليل</b> = كويس.','<b>High turnover</b> = fast = good. <b>Fewer days</b> = good.')}</div></div>
   </div>
 
-  <div class="blk"><h2><span class="n">4</span>${L('التقييم البيئي: المراحل والأبعاد','Environmental assessment: stages & dimensions')}</h2>
-   <p class="sub">${L('الجدوى البيئية = العلاقة بين المشروع والبيئة <b>في الاتجاهين</b> (كل واحد بيأثر على التاني).','Environmental feasibility = the <b>two-way</b> relationship between project and environment.')}</p>
-   <div class="flow">
-    <div class="fx"><b>📝 ${L('قبل','Before')}</b><small class="en">Planning</small></div><div class="ar">→</div>
-    <div class="fx"><b>⚙️ ${L('أثناء','During')}</b><small class="en">Implementation / Construction</small></div><div class="ar">→</div>
-    <div class="fx"><b>🌱 ${L('بعد','After')}</b><small class="en">Operation</small></div>
+  <div class="blk"><h2><span class="n">3</span>${L('نسب السيولة (Liquidity)','Liquidity ratios')}</h2>
+   <div class="g3">
+    <div class="tile"><h4 class="en">Working Capital</h4><p class="en">CA − CL</p><p>${L('بالطرح مش بالجمع!','Subtraction, not addition!')}</p></div>
+    <div class="tile"><h4 class="en">Current Ratio</h4><p class="en">CA ÷ CL</p><p>${L('كل الأصول المتداولة','All current assets')}</p></div>
+    <div class="tile hl"><h4 class="en">Quick (Acid-Test) Ratio</h4><p class="en">Quick Assets ÷ CL</p><p>${L('<b>أصرم</b> من الـ Current','<b>Stricter</b> than current')}</p></div>
    </div>
-   <div class="call warn"><span class="ci">⚠️</span><div>${L('لازم التقييم يغطي <b>كل المراحل</b>. مصنع تأثيره بسيط وقت البنا بس بيلوّث وقت التشغيل؟ → قيّم في كل مرحلة. ولو درست البيئة <b>بعد التشغيل بس</b> → غلطتك إنك أهملت <b>التخطيط المبكر</b>.','Assess <b>all stages</b>. Studying impacts <b>only after operation</b> ignores <b>early planning</b>.')}</div></div>
-   <div class="g2" style="margin-top:14px">
-    <div class="tile hl"><h4>🗺️ <span class="en">Spatial</span> — ${L('مكاني','place')}</h4><p>${L('التأثير وصل لفين؟ <b>محلي ← مجاور ← إقليمي ← عالمي</b>. (مش المكان اللي فيه المشروع بس)','Where? <b>local → neighboring → regional → global</b>.')}</p></div>
-    <div class="tile hl"><h4>🕒 <span class="en">Temporal</span> — ${L('زمني','time')}</h4><p>${L('التأثير إمتى؟ <b>قصير المدى / طويل المدى</b> وفي مراحل عمر المشروع المختلفة.','When? <b>short / long term</b> across project life stages.')}</p></div>
+   <div class="vsbox" style="margin-top:14px">
+    <div class="side a" style="--s1:var(--ok)"><h3>✅ ${L('Quick assets (بتدخل)','Quick assets (in)')}</h3>
+     <ul class="ck"><li class="en">Cash</li><li class="en">Marketable securities</li><li class="en">Temporary investments</li><li class="en">Accounts receivable</li><li class="en">Notes receivable</li></ul></div>
+    <div class="vs">≠</div>
+    <div class="side b" style="--sx:var(--bad)"><h3>❌ ${L('بتتشال','Excluded')}</h3>
+     <ul class="ck no"><li class="en">Merchandise inventory</li><li class="en">Prepaid expenses</li></ul>
+     <p style="margin-top:8px;font-size:14px">${L('لأنهم مش سهل يتحولوا لكاش بسرعة.','Not quickly convertible to cash.')}</p></div>
    </div>
   </div>
 
-  <div class="blk"><h2><span class="n">5</span>${L('التصنيف البيئي — زي إشارة المرور 🚦','Environmental classification 🚦')}</h2>
-   <div class="g3 lights">
-    <div class="tile light-w"><div class="ic">🌿</div><h4 class="en">White List</h4><p>${L('تأثير <b>بسيط</b> وتكلفة قليلة — ممكن ميحتاجش دراسة بيئية تفصيلية.','<b>Minimal</b> impact, low cost — may not need a detailed study.')}</p></div>
-    <div class="tile light-g"><div class="ic">⚠️</div><h4 class="en">Gray List</h4><p>${L('تأثير <b>كبير</b> بس <b>ينفع يتقلل</b>… بتكلفة واستثمار <b>عالي</b> (تكنولوجيا غالية).','<b>Significant</b> but <b>mitigable</b> — at <b>high cost</b>.')}</p></div>
-    <div class="tile light-b"><div class="ic">❌</div><h4 class="en">Black List</h4><p>${L('ضرر <b>خطير مش ممكن</b> يتجنب أو يتعالج — المشروع <b>ممكن يترفض</b>.','<b>Severe, unavoidable</b> damage — may be <b>rejected</b>.')}</p></div>
+  <div class="blk"><h2><span class="n">4</span>${L('نسب الملاءة (Solvency)','Solvency ratios')}</h2>
+   <div class="tblwrap"><table class="cmp"><thead><tr><th>${L('النسبة','Ratio')}</th><th>${L('المعادلة','Formula')}</th><th>${L('بتقيس','Measures')}</th></tr></thead><tbody>
+    <tr><td class="en">Fixed Assets to LT Liabilities</td><td class="en">Net Fixed Assets ÷ LT Liabilities</td><td>${L('الأصول الثابتة ممولة بديون طويلة قد إيه','Fixed assets vs long-term debt')}</td></tr>
+    <tr><td class="en">Liabilities to Equity</td><td class="en">Total Liabilities ÷ Total Equity</td><td>${L('نسبة التمويل بالدين مقابل الملكية','Debt vs equity financing')}</td></tr>
+    <tr><td class="en">Times Interest Earned</td><td class="en">(Income before tax <b>+ Interest</b>) ÷ Interest</td><td>${L('قدرة الشركة تدفع الفوايد','Ability to pay interest')}</td></tr>
+   </tbody></table></div>
+   <div class="g3" style="margin-top:12px">
+    <div class="tile"><h4 class="en">TIE = 0.8</h4><p>${L('أقل من 1 → الأرباح <b>مش مكفية</b> الفوايد 🔴','&lt; 1 → earnings <b>don’t cover</b> interest 🔴')}</p></div>
+    <div class="tile"><h4 class="en">Debt-to-Assets = 0.75</h4><p>${L('<b>75% من الأصول ممولة بديون</b> → مخاطرة عالية','<b>75% of assets financed by debt</b>')}</p></div>
+    <div class="tile"><h4 class="en">Equity Multiplier = 3</h4><p>${L('كل <b>1 جنيه ملكية</b> قصاده <b>3 جنيه أصول</b>','<b>$3 assets</b> per <b>$1 equity</b>')}</p></div>
    </div>
-   <div class="call mem"><span class="ci">🧠</span><div>${L('"ينفع يتعالج بس غالي" = <b>Gray</b> · "مستحيل يتعالج" = <b>Black</b>. (سؤال الـ Gray بـ "impossible" غلط!)','"Fixable but expensive" = <b>Gray</b> · "impossible to fix" = <b>Black</b>.')}</div></div>
+   <div class="call mem"><span class="ci">🧠</span><div>${L('<b>Liquidity = قصير</b> الأجل · <b>Solvency = طويل</b> الأجل. أي سؤال بيقول إن Liabilities/Equity بتقيس الديون قصيرة الأجل → غلط.','<b>Liquidity = short</b> · <b>Solvency = long</b> term.')}</div></div>
   </div>
 
-  <div class="blk"><h2><span class="n">6</span>${L('التنمية المستدامة','Sustainable development')}</h2>
-   <p>${L('توازن بين 3 حاجات:','A balance between 3 things:')}</p>
-   <div class="g3"><div class="tile" style="text-align:center"><div class="ic">🌱</div><h4 class="en">Environment</h4></div><div class="tile" style="text-align:center"><div class="ic">📈</div><h4 class="en">Economy</h4></div><div class="tile" style="text-align:center"><div class="ic">👨‍👩‍👧</div><h4 class="en">Society</h4></div></div>
+  <div class="blk"><h2><span class="n">5</span>${L('تمارين محلولة','Solved exercises')}</h2>
+   <h3 style="margin:4px 0 10px;font-size:17px">${L('تمرين 1 — Apex Trading','Exercise 1 — Apex Trading')}</h3>
+   <div class="tblwrap"><table class="cmp en"><tbody>
+    <tr><td>Net sales</td><td>1,250,000 − 50,000</td><td><b>1,200,000</b></td></tr>
+    <tr><td>Average AR</td><td>(150,000 + 250,000) ÷ 2</td><td>200,000</td></tr>
+    <tr><td>AR turnover</td><td>1,200,000 ÷ 200,000</td><td><b>6 times</b></td></tr>
+    <tr><td>Days’ sales in AR</td><td>200,000 ÷ (1,200,000 ÷ 365 = 3,287.67)</td><td><b>≈ 61 days</b></td></tr>
+    <tr><td>Average inventory</td><td>(80,000 + 100,000) ÷ 2</td><td>90,000</td></tr>
+    <tr><td>Inventory turnover</td><td>720,000 ÷ 90,000</td><td><b>8 times</b></td></tr>
+    <tr><td>Days’ sales in inventory</td><td>90,000 ÷ (720,000 ÷ 365 = 1,972.60)</td><td><b>≈ 46 days</b></td></tr>
+   </tbody></table></div>
+
+   <h3 style="margin:22px 0 10px;font-size:17px">${L('تمرين 2 — Nova Inc.','Exercise 2 — Nova Inc.')}</h3>
+   <div class="money">
+    <div><small>Working capital = 330k − 120k</small><b>210,000</b></div>
+    <div><small>Current ratio = 330k ÷ 120k</small><b>2.75</b></div>
+    <div><small>Quick ratio = 180k ÷ 120k</small><b>1.5</b></div>
+   </div>
+
+   <h3 style="margin:22px 0 10px;font-size:17px">${L('تمرين 3 — Orion','Exercise 3 — Orion')}</h3>
+   <div class="money">
+    <div><small>Inventory turnover = 730k ÷ 80k</small><b>9.125×</b></div>
+    <div><small>Days in inventory = 80k ÷ 2,000</small><b>40 days</b></div>
+    <div><small>TIE = (200k + 25k) ÷ 25k</small><b>9×</b></div>
+   </div>
+
+   <div class="call tip"><span class="ci">🎯</span><div>${L('<b>سؤال الـ Current ratio المشهور:</b> CA = 800k و CL = 400k (النسبة 2.0). استخدمنا 100k كاش نسدد دين <b>طويل الأجل</b> → CA تبقى 700k والـ CL <b>زي ما هي</b> (الدين مش متداول) → 700 ÷ 400 = <b>1.75</b>.','<b>Classic:</b> paying 100k of <b>long-term</b> debt with cash → CA 700k, CL unchanged → <b>1.75</b>.')}</div></div>
   </div>
 
-  <div class="blk recap"><h2><span class="n">★</span>${L('Key Takeaways','Key takeaways')}</h2><ol>
-   <li>${L('<b>Legal + Environmental = Project Feasibility</b> — الربح لوحده مش كفاية.','<b>Legal + Environmental = feasibility</b> — profit alone isn\'t enough.')}</li>
-   <li>${L('4 عناصر قانونية: تراخيص، عقود، ملكية فكرية، شكل قانوني.','4 legal elements: licenses, contracts, IP, structure.')}</li>
-   <li>${L('قيّم في <b>كل المراحل</b> (قبل/أثناء/بعد) وبالبعدين (مكاني/زمني).','Assess <b>all stages</b> and both dimensions.')}</li>
-   <li>${L('خد في اعتبارك التأثير <b>وتكلفة</b> علاجه (White/Gray/Black).','Weigh impact <b>and</b> mitigation cost.')}</li>
-   <li>${L('الهدف: نمو مستدام ومسؤول. 🌿','Aim for sustainable, responsible growth. 🌿')}</li></ol></div>`
+  <div class="blk recap"><h2><span class="n">★</span>${L('الخلاصة','Recap')}</h2><ol>
+   <li>${L('المدينين ÷ <b>المبيعات</b>، المخزون ÷ <b>COGS</b>، واستخدم المتوسط والـ 365 يوم.','AR uses <b>sales</b>, inventory uses <b>COGS</b>; use averages & 365.')}</li>
+   <li>${L('Working capital = CA − CL، و Current = CA ÷ CL.','WC = CA − CL; current = CA ÷ CL.')}</li>
+   <li>${L('Quick أصرم: من غير المخزون والمصروفات المقدمة.','Quick is stricter: no inventory or prepaids.')}</li>
+   <li>${L('TIE = (ربح قبل الضريبة + الفوايد) ÷ الفوايد، وأقل من 1 = خطر.','TIE = (EBT + interest) ÷ interest; &lt; 1 = danger.')}</li>
+   <li>${L('Liquidity قصير الأجل · Solvency طويل الأجل.','Liquidity short-term · solvency long-term.')}</li></ol></div>`
 },
 ];
 
+
 /* ================= i18n ================= */
 const T = {
-  ar:{brand:'مراجعة دراسة الجدوى',brandSub:'Feasibility Study · Fall 2025/2026',home:'الرئيسية',sec:'سكشن',
-    heroEyebrow:'مراجعة تفاعلية شاملة',heroA:'ذاكر',heroB:'دراسة الجدوى',heroC:'وامتحن نفسك صح',
-    heroLead:'كل السكاشن في مكان واحد: شرح مبسّط ومترتب، وبعدين بنك أسئلة تفاعلي — تختار إجابتك وتعرف فورًا صح ولا غلط وليه.',
+  ar:{brand:'مراجعة التحليل المالي',brandSub:'Financial Statements Analysis · 2026/2027',home:'الرئيسية',sec:'سكشن',
+    heroEyebrow:'مراجعة تفاعلية شاملة',heroA:'ذاكر',heroB:'التحليل المالي',heroC:'وامتحن نفسك صح',
+    heroLead:'السكاشن الخمسة في مكان واحد: شرح مبسّط ومترتب بالمعادلات والتمارين المحلولة، وبعدين بنك أسئلة تفاعلي — تختار إجابتك وتعرف فورًا صح ولا غلط وليه.',
     stSec:'سكاشن',stQ:'سؤال',stTF:'صح وغلط',stMC:'اختيار من متعدد',
     learn:'ذاكر الشرح',quiz:'امتحن نفسك',qcount:'سؤال',answered:'اتحل',correctPct:'صح',
     examTitle:'🎯 الامتحان الشامل',examDesc:'أسئلة عشوائية من السكاشن اللي تختارها — زي الامتحان الحقيقي بالظبط.',
@@ -1092,11 +1134,11 @@ const T = {
     reviewWrong:'راجع الأسئلة اللي غلطت فيها',yourAns:'إجابتك:',corrAns:'الصح:',
     ctaT:'خلصت الشرح؟',ctaP:'يلا اختبر نفسك على أسئلة السكشن ده',ctaB:'ابدأ الأسئلة',
     keys:'اختصارات:',noQ:'مفيش أسئلة هنا',notAnswered:'لسه مجاوبتش على {n} سؤال — تحب تنهي؟',
-    footer:'Feasibility Study · Sections 1, 2, 4, 5 · اتجمعت ومترتبة في ملف واحد',
+    footer:'Financial Statements Analysis · Sections 1–5 · Dr. Moustafa AL-saman · TA Ahmed Hamed',
     langBtn:'EN',resetDone:'تم المسح'},
-  en:{brand:'Feasibility Study Review',brandSub:'Fall Semester 2025/2026',home:'Home',sec:'Section',
-    heroEyebrow:'Complete interactive review',heroA:'Study',heroB:'Feasibility',heroC:'and test yourself',
-    heroLead:'All sections in one place: clear, simplified lessons, then an interactive question bank — pick your answer and instantly see if you are right, and why.',
+  en:{brand:'Financial Statements Analysis Review',brandSub:'Academic Year 2026/2027',home:'Home',sec:'Section',
+    heroEyebrow:'Complete interactive review',heroA:'Study',heroB:'Financial Analysis',heroC:'and test yourself',
+    heroLead:'All five sections in one place: clear lessons with formulas and solved exercises, then an interactive question bank — pick your answer and instantly see if you are right, and why.',
     stSec:'Sections',stQ:'Questions',stTF:'True / False',stMC:'Multiple choice',
     learn:'Study lesson',quiz:'Take quiz',qcount:'questions',answered:'answered',correctPct:'correct',
     examTitle:'🎯 Full Exam',examDesc:'Random questions from the sections you pick — just like the real exam.',
@@ -1115,13 +1157,13 @@ const T = {
     reviewWrong:'Review your mistakes',yourAns:'Your answer:',corrAns:'Correct:',
     ctaT:'Done with the lesson?',ctaP:'Test yourself on this section',ctaB:'Start questions',
     keys:'Shortcuts:',noQ:'No questions here',notAnswered:'{n} questions unanswered — finish anyway?',
-    footer:'Feasibility Study · Sections 1, 2, 4, 5 · merged into one file',
+    footer:'Financial Statements Analysis · Sections 1–5 · Dr. Moustafa AL-saman · TA Ahmed Hamed',
     langBtn:'ع',resetDone:'Cleared'}
 };
 
 /* ================= storage ================= */
-const store={get(k,d){try{const v=localStorage.getItem('fsr_'+k);return v?JSON.parse(v):d}catch(e){return d}},
-  set(k,v){try{localStorage.setItem('fsr_'+k,JSON.stringify(v))}catch(e){}}};
+const store={get(k,d){try{const v=localStorage.getItem('fsa_'+k);return v?JSON.parse(v):d}catch(e){return d}},
+  set(k,v){try{localStorage.setItem('fsa_'+k,JSON.stringify(v))}catch(e){}}};
 
 /* ================= state ================= */
 const ALLQ={}; // id -> question
